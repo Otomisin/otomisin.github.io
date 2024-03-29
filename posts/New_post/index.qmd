@@ -2,7 +2,7 @@
 title: "Post With Code"
 subtitle: "Seventy years of surveys tell us that two weeks before an election, about 20% of votes are still up for grabs"
 author: "Orenaike Oluwatosin"
-date: "2024-03-26"
+date: "2024-02-26"
 categories: [news, code, analysis]
 image: "image2.jpeg"
 ---

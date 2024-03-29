@@ -1,0 +1,150 @@
+---
+title: "Geofencing with R for Enhanced Data Collection in Kobotoolbox"
+subtitle: "Geofencing is a powerful tool that combines location technology with data analysis allowing you to automate and check data collection within predefined geographical boundaries."
+author: "Oluwatosin Orenaike"
+date: "2024-01-05"
+categories: [R, Kobotoolbox, Data Collection]
+image: thumbnail.png
+output:
+  html_document:
+    toc: true
+    df_print: paged
+    # keep_md: yes
+    number_sections: true
+  pdf_document:
+    toc: true
+    keep_md: yes
+    number_sections: true
+  word_document:
+    toc: true
+    keep_md: yes
+    number_sections: true
+---
+
+
+# **Introduction**
+
+Geofencing is a powerful tool that combines location technology with data analysis, allows you to automate data collection within predefined geographical boundaries. I will show you a step-by-step guide, using R, to integrate geofencing with Kobotoolbox and boost your data collection efficiency. This process involves two major steps:
+
+1. Getting the vertex for your location of interest.
+2. Uploading vertex to KoboToolbox (link to a video).
+
+Imagine this:
+
+- You enter a designated study area, and data collection triggers automatically. No more remembering to press buttons or check locations!
+- Your data comes from precisely where you need it, thanks to the power of geofencing boundaries. No more worrying about stray data points or missed locations!
+- Kobotoolbox forms adapt based on location, with possibilities of dynamically changing questions or displaying relevant information for specific areas.
+
+Let's dive in!
+
+
+```{r setup, include=FALSE}
+# if (!requireNamespace("sf", quietly = TRUE)) install.packages("sf")
+# if (!requireNamespace("tidyverse", quietly = TRUE)) install.packages("tidyverse")
+
+# Load libraries
+library(sf)
+library(tidyverse)
+```
+
+# **Load data**
+
+## **Step 1: Shape Up Your Boundaries**
+
+First, define your geofencing areas. Grab the shapefiles for your target zones — these handy files store information about geographical boundaries. Our example uses a sample shapefile named "Sample_locations" with details like Sites, Zones, House, and Blocks. Download it here: [link to your sample shapefile]
+```{r}
+# Load your shapefile (ensure you provide the correct path)
+Sample_locations <- st_read("./data/shp_file/Sample_locations.shp")
+
+# Check and plot the data table to understand its structure
+print(st_drop_geometry(Sample_locations))
+
+# Plot the locations
+Sample_locations |>
+  ggplot() +
+  geom_sf() +
+  geom_label(aes(x = st_coordinates(st_centroid(geometry))[, 1], 
+                 y = st_coordinates(st_centroid(geometry))[, 2], 
+                 label = House), 
+             size = 3, fill = "lightblue", color = "black") +
+  theme_void()
+
+```
+.
+
+
+## **Step 2: Extract Those Coordinates**
+
+Now, use R's **`st_geometry`** function to extract the precise latitude and longitude values from your shapefile. We’ll store these coordinates in a separate data frame for easier manipulation.
+```{r}
+# Extract coordinates using the same Coordinate Reference System (CRS) as the original data
+polygon_vertices <- lapply(st_geometry(Sample_locations), st_coordinates)
+
+# Map each polygon_vertices list to its OBJECTID row
+mapped_data_v1 <- Map(function(vertices, objectid) {
+  data.frame(OBJECTID = objectid,
+             p_longitude = vertices[, "X"],
+             p_latitude = vertices[, "Y"])
+}, polygon_vertices, Sample_locations$OBJECTID)
+
+# Combine the mapped data frames into a single data frame
+mapped_data_v1 <- do.call(rbind, mapped_data_v1)
+
+# Integrate the mapped data with the original shapefile data
+Sample_locations_points <- Sample_locations |>
+  as.data.frame() |>
+  left_join(mapped_data_v1, by = "OBJECTID") |>
+  st_as_sf(coords = c("p_longitude", "p_latitude"), crs = st_crs(Sample_locations))
+
+
+summary(Sample_locations_points)
+
+
+```
+
+## **Step 3: Generate Your ID Nodes**
+```{r}
+Sample_locations_points_v1 <- Sample_locations_points %>%
+  group_by(Block) %>%
+  mutate(id_node = paste0(Block, "_", row_number())) %>%
+  ungroup()
+
+# View the points and polygons on a map
+ggplot() +
+  geom_sf(data = Sample_locations) +
+  geom_label(data = Sample_locations_points_v1,
+             aes(x = st_coordinates(st_centroid(geometry))[, 1],
+                 y = st_coordinates(st_centroid(geometry))[, 2],
+                 label = House),
+             size = 3, fill = "lightblue", color = "black") +
+  geom_sf(data = Sample_locations_points_v1) +
+  theme_void()
+
+
+```
+## **Step 5: Export the Spatial Data for Kobotoolbox Integration**
+```{r}
+
+write.csv(Sample_locations_points_v1, "./Sample_locations_points_v1.csv")
+
+# The exported CSV file can now be used in Kobotoolbox for enhanced data collection with geofencing
+```
+**Step 5: Integrate with Kobotoolbox**
+
+Congratulations! You now have a spatial data frame enriched with precise coordinates and unique identifiers, ready to be seamlessly integrated with Kobotoolbox. Unleash the power of location-aware data collection, with automatic form triggers and data collection tailored to specific geographical zones.
+
+**Beyond the Code:** Here are some additional tips to take your geofencing journey to the next level:
+
+- **Real-world examples:** Think about using geofencing to study air quality in specific city districts, automatically triggering data collection at designated times.
+- **Challenges and solutions:** Consider potential challenges like battery drain on data collectors and GPS limitations. Optimize data collection forms and schedule strategically to mitigate these.
+- **Dive deeper:** Explore our GitHub repository (link [here](https://github.com/Otomisin/OPPWeek/blob/main/Geofencing/README.md)) for the full code buffet and detailed tutorials to become a geofencing master.
+
+Don’t let your data collection be stuck in the manual age! Leverage the magic of geofencing with R and Kobotoolbox to supercharge your fieldwork efficiency and precision and experience the power of automation, precision, and streamlined workflows!
+
+You can check how to integrate the output into Kobotoolbox. Check this [video](https://www.youtube.com/watch?v=yg26PLctcEQ) on how to.
+
+# **Conclusion**
+
+Don't let your data collection be stuck in the manual age! Leverage the magic of geofencing with R and Kobotoolbox to supercharge your fieldwork efficiency and precision, experiencing the power of automation, precision, and streamlined workflows.
+
+For detailed integration with Kobotoolbox, check this video on how to.
