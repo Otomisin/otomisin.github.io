@@ -1,0 +1,978 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@0,100;0,500;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/*-- scss:defaults --*/
+
+/* --- Fonts ------------------------------------------- */
+
+$font-family-sans-serif:         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-headings:           Karla, Helvetica, Arial, sans-serif !default;
+$font-family-code:               "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+/* --- Font sizes ------------------------------------------- */
+
+$font-size-base:                 1.1rem !default;
+$font-size-smaller:              1rem;
+
+$font-size-navbar-title:         1.65rem;
+$font-size-navbar-subtitle:      .9rem;
+$font-size-navbar-item:          1.1rem;
+
+$font-size-listing-title:        1.5rem;
+$font-size-listing-subtitle:     .95rem;
+$font-size-listing-date:         .88rem;
+$font-size-categories:           .65rem;
+$font-size-rbloggers:            .9rem;
+
+$font-size-post-title:           2.5rem;
+$font-size-post-subtitle:        calc(1.25rem + .15vw);
+$font-size-post-date:            1rem;
+
+$font-size-code:                 .75rem;
+$font-size-code-output:          .75rem;
+$font-size-cell-table:           .9rem;
+$font-size-cell-ojs:             .85rem;
+
+$font-size-blockquote:           1rem;
+
+$font-size-subpage-header:       2rem;
+$font-size-subpage-inline:       1.2rem;
+$font-size-subpage-text:         1.1rem;
+$font-size-subpage-note:         .75rem;
+
+/* --- Line heights ------------------------------------------- */
+
+$line-height-base:               1.6 !default;
+$line-height-smaller:            1.5;
+
+/* --- Margins ------------------------------------------- */
+
+$paragraph-margin-bottom:        1.5rem !default;
+$cell-margin-bottom:             1.4rem;
+
+/* --- Colors ------------------------------------------- */
+
+// Color Variables
+$primary: #04304e !default;
+$primary-light: #f9f3e1 !default; 
+
+$color-blue:                     #04304e;
+$color-listing-thumbnail-border: #e9ecef;
+$color-category-text:            #6c757d;
+$color-category-border:          #dee2e6;
+$color-category-active:          #e9ecef;
+
+$link-decoration:                none !default;
+
+
+/*-- scss:rules --*/
+
+/******************************************************************************/
+/*      GENERAL                                                               */
+/******************************************************************************/
+
+#title-block-header, .quarto-title-block.default, .quarto-title-banner, .quarto-title .title {
+  font-size: $font-size-base; // Assuming $font-size-base is defined elsewhere
+  color: #f3d26df2; // Correct, assuming you want the alpha transparency
+}
+
+
+p.subtitle.lead {
+    line-height: 1.5;
+    margin: .4em 0 1em 0;
+    color: #f9e9ba;
+    font-family: "Arial";
+}
+
+
+p.subtitle.lead {
+    line-height: 1.5;
+    margin: .4em 0 1em 0;
+    color: #f9e9ba;
+    font-family: "Arial";
+}
+
+.navbar-dark,.navbar[data-bs-theme=dark] {
+    --bs-navbar-color: #afbdc6;
+    --bs-navbar-hover-color: rgba(227, 193, 96, 0.8);
+    --bs-navbar-disabled-color: rgba(175, 189, 198, 0.75);
+    --bs-navbar-active-color: #e3c160;
+    --bs-navbar-brand-color: #afbdc6;
+    --bs-navbar-brand-hover-color: #e3c160;
+    --bs-navbar-toggler-border-color: rgba(175, 189, 198, 0);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23afbdc6' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+div.quarto-post a {
+    color: #1a242f;
+    text-decoration: none
+}
+
+
+
+// ABove is new
+
+#quarto-content {
+  margin-top: 3em;
+}
+
+main {
+  font: $font-family-sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: $font-family-headings;
+  font-weight: 700;
+}
+
+::selection {
+  background: #EDDE75;
+}
+
+ol, ul {
+  font-size: $font-size-base;
+  margin-bottom: 1.5rem;
+}
+
+div.quarto-appendix-contents ul {
+  margin: 0;
+}
+
+p > a:not(.footnote-ref) {
+  background-color: #f5f5f5;
+}
+
+p > a:not(.footnote-ref):hover {
+  background-color: #e1e1e1;
+  transition: background-color .2s;
+}
+
+.highlight {
+  background-color: #FDED5E;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  #quarto-content {
+    margin-top: 0 !important;
+  }
+  
+  main.content p,  main.content ol {
+    font-size: $font-size-base * .7;
+    line-height: $line-height-base * .95;
+    margin-bottom: $paragraph-margin-bottom * .5;
+  }
+  
+  #quarto-appendix.default {
+    font-size: $font-size-base * .7;
+  }
+  
+  div.cookie-consent-footer {
+    font-size: $font-size-base * .6;
+  }
+
+}
+
+/******************************************************************************/
+/*      NAVBAR                                                                */
+/******************************************************************************/
+
+nav.navbar-dark {                                /* Color */
+  background-color: $color-blue;
+}
+
+div.navbar-brand-container {                     /* Space to left of logo */
+  margin-left: 10px;
+}
+
+.navbar-brand.navbar-brand-logo {                /* Space bet logo and title */
+  margin-right: 15px;
+}
+
+.navbar-logo {                                   /* Logo size */
+  max-height: 35px;
+}
+
+.navbar-brand.navbar-brand-logo:hover {            
+  transform: scale(1.1, 1.1);
+  transition: transform .2s;
+}
+
+.navbar-brand {                                  /* Title spacing */
+  padding: 0.2rem 0;
+  margin: 0;
+}
+
+span.navbar-title {                              /* Title */
+  font-family: $font-family-headings;
+  font-size: $font-size-navbar-title;
+  font-weight: 700;
+}
+
+.navbar .dropdown-header {                       /* Subtitle */
+  color: white;
+  font-size: $font-size-navbar-subtitle;
+  text-transform: none;
+  opacity: .5;
+  padding-top: 5px;
+}
+
+li.nav-item span.menu-text {                     /* Menu items */
+  font-size: $font-size-navbar-item;
+}
+
+@media only screen and (max-width: 768px) {
+
+  div.navbar-brand-container {                   /* Space around logo & title */
+    margin: 0;
+  }
+  
+  div.navbar-brand.navbar-brand-logo {           /* Space bet logo and title */
+    margin-right: 10px;
+  }
+  
+  img.navbar-logo {                              /* Logo */
+    max-height: 15px;
+    padding-right: 0;
+  }
+  
+  a.navbar-brand {                               /* Title */
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+  
+  span.navbar-title {
+    font-size: $font-size-navbar-title * .55;
+    font-family: $font-family-headings;
+    font-weight: 700;
+  }
+  
+  .navbar-toggler {                              /* Toggle button */
+    padding: 0 .5rem .1rem .5rem;
+  }
+  
+  span.navbar-toggler-icon {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 1px;
+  }
+  
+  nav.navbar li.dropdown-header {                /* Subtitle */
+    font-size: $font-size-navbar-subtitle * .7;
+    padding: .2rem 0 .4rem 0;
+  }
+  
+  nav.navbar li.nav-item a.nav-link {            /* Menu items spacing */
+    padding: 0 0 0 .2rem;
+  }
+  
+  li.nav-item span.menu-text, li.nav-item i {    /* Menu items */
+    font-size: $font-size-navbar-item * .7;
+  }
+  
+  div.navbar-collapse button {                   /* Search */
+    padding: 0;
+  }
+
+}
+
+/******************************************************************************/
+/*      HOME PAGE                                                             */
+/******************************************************************************/
+
+#quarto-content.page-layout-full 
+#title-block-header {                            /* No home page title */
+  display: none;
+  margin: 0;
+}
+
+div.quarto-post .body {                          /* Space under navbar */
+  padding-top: 10px;
+}
+
+div.quarto-post .body h3.listing-title {         /* Post title */
+  font-size: $font-size-listing-title;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+div.quarto-post a:hover {
+  transition: color .2s;
+  color: $color-category-text;
+}
+
+div.quarto-post .body .listing-subtitle {        /* Post subtitle */
+  font-size: $font-size-listing-subtitle;
+  line-height: 1.5;
+}
+
+div.quarto-post .listing-categories {            /* Tags */
+  padding: 10px 0 20px 0;
+}
+
+div.quarto-post .listing-category:hover {        /* Tags hover */
+  background-color: $color-category-active;
+  transition: background-color .2s;
+}
+
+div.quarto-post .metadata {                      /* Date */
+  font-size: $font-size-listing-date;
+  margin-top: 15px;
+}
+
+
+
+/* --- Sidebar -------------------------------------------------------------- */
+
+#quarto-margin-sidebar.sidebar.margin-sidebar {
+  padding-left: 30px;
+}
+
+#quarto-margin-sidebar .quarto-listing-category div.category {
+  border: solid 1px $color-category-border;
+  border-radius: 0.25rem;
+  color: $color-category-text;
+  font-size: $font-size-categories;
+  text-transform: uppercase;
+  margin: 5px 40px 10px 0;
+  padding: .25em .75em;
+}
+
+div.category:hover, div.category.active {
+  background-color: $color-category-active;
+    //new  #f3d26df2; $color-category-active;
+  transition: background-color .2s;
+}
+
+div.category:hover {
+  transform: scale(1.05, 1.05);
+  transition: transform .2s;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  div.quarto-post .body h3.listing-title {       /* Post title */
+    font-size: $font-size-listing-title * .9;
+    font-family: $font-family-headings;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  div.quarto-post .body 
+  div.listing-subtitle {                         /* Post subtitle */
+    font-size: $font-size-listing-subtitle * .9;
+    line-height: 1.4;
+  }
+  
+  div.quarto-post .listing-categories 
+  .listing-category {                            /* Tags */
+    font-size: $font-size-post-date * .6;
+    padding: 1.5px 3.5px !important;
+    border-radius: 2px;
+  }
+  
+  div.quarto-post .listing-categories {
+    font-size: $font-size-post-date * .6;
+    padding: 5px 0 !important;
+  }
+  
+   div.quarto-post .thumbnail a {                 /* Preview image */
+    border: solid 5px #e9ecef !important;
+    border-radius: 0.25rem;
+  }
+  
+  div.quarto-post .metadata {                    /* Date */
+    font-size: $font-size-listing-date * .8;
+    margin: 5px 0 2px 0 !important;
+  }
+  
+}
+
+/******************************************************************************/
+/*      POSTS                                                                 */
+/******************************************************************************/
+
+div.quarto-title {                               /* Space bet header & navbar */
+  margin-top: 1rem;
+}
+
+#title-block-header h1.title {                   /* Post title */
+  font-size: $font-size-post-title;
+}
+
+p.subtitle.lead {                                /* Post subtitle */
+  font-size: $font-size-post-subtitle;
+  line-height: $line-height-smaller;
+  margin: .4em 0 1em 0;
+}
+
+.quarto-title .quarto-categories 
+.quarto-category {                               /* Tags */
+  border: solid 1px shift-color($color-category-border, 20%);
+}
+
+.quarto-title .quarto-categories
+.quarto-category:hover {                         /* Tags hover */
+  background-color: $color-category-active;
+  transition: background-color .2s;
+}
+
+div.quarto-title-meta {                          /* Date */
+  margin: 1em 0 3em 0;
+  color: #adb5bd;
+}
+
+#title-block-header.quarto-title-block.default 
+.quarto-title-meta-contents {
+  font-size: $font-size-post-date;
+}
+
+div.quarto-title-meta-heading {                  /* Remove "Published" */
+  display: none;
+}
+
+blockquote.blockquote {
+  font-size: $font-size-blockquote;
+  line-height: $line-height-smaller;
+  padding: 0 1.5rem 0 1rem;
+  margin: 0 0 1.75rem 0;
+}
+
+.quarto-figure {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+img.endmark {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-bottom: .25rem;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  #title-block-header {                          /* Space bet header & text */
+    margin-bottom: 2rem;
+  }
+  
+  #title-block-header h1.title {                 /* Post title */
+    font-size: 1.75rem;
+    font-family: $font-family-headings;
+    font-weight: 700;
+    line-height: $line-height-smaller * .7;
+  }
+  
+  #title-block-header p.subtitle.lead {          /* Post subtitle */
+    font-size: $font-size-base * .9;
+    line-height: $line-height-smaller * .9;
+    margin: 0 0 1em 0;
+  }
+
+  div.quarto-title-meta {                        /* Space around date */
+    margin: 8px 0;
+  }
+  
+  div.quarto-title-meta p {
+    font-size: $font-size-post-date * .75;       /* Date */
+    color: #6c757d;
+  }
+
+  .quarto-title .quarto-categories 
+  .quarto-category {                             /* Tags */
+    font-size: $font-size-post-date * .6;
+    border: solid 1px $color-category-border;
+    border-radius: 2px;
+    padding: 1.5px 3.5px !important;
+  }
+  
+  blockquote.blockquote {
+    font-size: .6rem;
+    line-height: 1.1;
+    margin: 0 0 .875rem 0;
+  }
+  
+  .quarto-figure {
+    margin-bottom: $paragraph-margin-bottom * .5;
+  }
+  
+  img.figure-img {
+    margin-bottom: 0;
+  }
+  
+  .panel-caption, .caption, .figure-caption {
+    font-size: .67rem;
+    margin-top: 0;
+    line-height: 1.4;
+  }
+  
+  img.endmark {
+    height: 1rem;
+    width: 1rem;
+    margin-bottom: .25rem;
+  }
+  
+   /* --- Panel set --------------------------------------------------------- */
+  
+  .panelset, .panel-tabset ul {
+    font-size: .7rem;
+  }
+  
+  .panel-tabset a.nav-link {
+    padding: 8.5px 12px;
+  }
+  
+  .panelset .panel-tabs .panel-tab {
+    min-height: 30px !important;
+    padding: .25em .5em;
+  }
+  
+  .panelset .panel-tabs .panel-tab-active {
+    border-top: 1.5px solid;
+    border-bottom: 1.5px solid;
+  }
+
+}
+
+/* --- Social media embeds -------------------------------------------------- */
+
+.instagram-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+@media only screen and (max-width: 768px) {
+  .instagram-container {
+    margin-bottom: $paragraph-margin-bottom * .5;
+  }
+}
+
+/******************************************************************************/
+/*      CODE CELLS                                                            */
+/******************************************************************************/
+
+div.cell, p + div.sourceCode {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+/* Cell bottom margin if a dummy code cell for column-page layouts  */
+div.cell.dummy {
+  margin-bottom: .35rem;
+}
+
+div.quarto-appendix-contents div.cell {
+  margin-bottom: 0;
+}
+
+div.cell + p {                                   /* Par after code cell */
+  margin-top: 0 !important;
+}
+
+details {                                        /* Code fold */
+  margin: 0 0 .35rem 0;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  div.cell {
+    margin-bottom: $paragraph-margin-bottom * .5;
+  }
+
+  details summary {
+    font-size: $font-size-base * .7;
+  }
+  
+  div.quarto-figure-spacer {
+    display: none;
+  }
+  
+}
+
+/* ------ Source code ------------------------------------------------------- */
+
+div.sourceCode pre {                             /* Box inner padding */
+  padding: 15px;
+}
+
+div.sourceCode code {                            /* Text */
+  font-size: $font-size-code;
+  padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  div.sourceCode pre {                           /* Box inner padding */
+    padding: 8px;
+  }
+
+  div.sourceCode code {                          /* Text */
+    font-size: $font-size-code * .7;
+    padding: 0;
+  }
+  
+}
+
+/* ------ Cell output ------------------------------------------------------- */
+
+div.sourceCode {
+  margin: 0;
+}
+
+div.cell-output-display {                        /* Space bet code & output */
+  margin: 1rem 0 0 0;
+}
+
+div.sourceCode.hidden +                          /* Space bet code & output */
+div.cell-output-display {                        /* if code chunk is hidden */
+  margin: 0;
+}
+
+div.cell-output pre {
+  margin: 1rem 0 .5rem 0;
+}
+
+div.quarto-layout-row + 
+div.quarto-layout-row 
+div.quarto-layout-cell {                        /* Special case: layout grid */
+  margin: 0;
+}
+
+div.cell p, div.cell table {                     /* Space bet output & text */
+  margin-bottom: .5rem;
+}
+
+div.cell-output pre {                            /* Code output */
+  font-size: $font-size-code;
+}
+
+div.cell-output-display table {                  /* Kable */
+  font-size: $font-size-cell-table;
+}
+  
+div.cell div.reactable {                         /* Reactable */
+  font-size: $font-size-cell-table;
+}
+
+div.cell-output-display.quarto-layout-cell {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  div.cell-output-display {
+    margin: .65rem 0 0 0;
+  }
+  
+  div.cell p, div.cell table {                   /* Space under code output */
+    margin-bottom: .25rem;
+  }
+  
+  div.cell-output pre code {                     /* Code output */
+    font-size: .525rem;
+  }
+  
+  div.quarto-layout-cell +
+  div.quarto-layout-cell {                       /* Special case: layout grid */
+    margin: 0;
+  }
+
+  div.cell-output-display table {                /* Kable */
+    font-size: .65rem;
+  }
+  
+  div.cell div.reactable {                       /* Reactable */
+    font-size: $font-size-cell-table * .6;
+  }
+  
+  div.rt-th-inner, div.rt-td-inner, input.rt-search {
+    padding: 4px 5px;
+  }
+
+}
+
+/* --- OJS charts ----------------------------------------------------------- */
+
+div.cell-output-display div.observablehq {
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-cell-ojs;
+  margin-top: 1rem;
+}
+
+div.sourceCode.hidden +                          /* Space bet code & output */
+div.cell-output-display                          /* if code chunk is hidden */
+div.observablehq {
+  margin: 0;
+}
+
+.ojs-title {
+  font-size: 1.4rem;
+  font-family: $font-family-headings;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+.ojs-subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0;
+}
+
+.ojs-caption {
+  font-size: $font-size-cell-ojs;
+  text-align: center;
+}
+
+.ojs-source {
+  font-size: $font-size-cell-ojs * .8;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  .ojs-title {
+    font-size: .9rem;
+    margin: 0 0 .15rem 0;
+  }
+
+  .ojs-subtitle {
+    font-size: .7rem;
+    line-height: 1.5;
+  }
+  
+  .ojs-caption {
+    font-size: $font-size-cell-ojs * .7;
+    line-height: 1.5;
+  }
+  
+  .ojs-source {
+    font-size: $font-size-cell-ojs * .7 * .8;
+  }
+  
+  div.cell-output-display div.observablehq {
+    font-size: $font-size-cell-ojs * .9;
+    margin-top: .5rem;
+  }
+  
+  div.observablehq svg {
+    --swatchWidth: 10px;
+    --swatchHeight: 10px;
+  }
+  
+  div.observablehq input {
+    border-width: 1px;
+  }
+  
+}
+
+/* --- Highcharts ----------------------------------------------------------- */
+
+text.highcharts-title {
+  font-family: $font-family-headings !important;
+  font-size: $font-size-base * 1.1 !important;
+  font-weight: 700 !important;
+}
+
+text.highcharts-subtitle {
+  font-family: $font-family-headings !important;
+  font-size: $font-size-base !important;
+}
+
+span.highcharts-caption {
+  font-family: $font-family-headings !important;
+  font-size: $font-size-base * .6 !important;
+}
+
+g.highcharts-axis {
+  font-family: $font-family-headings !important;
+  font-size: $font-size-base * .85 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  .highchart {
+    height: auto !important;
+  }
+  
+  text.highcharts-title {
+    font-family: $font-family-headings !important;
+    font-size: $font-size-base * .7 !important;
+    font-weight: 700 !important;
+  }
+
+  text.highcharts-subtitle {
+    font-family: $font-family-headings !important;
+    font-size: $font-size-base * .6 !important;
+  }
+
+  span.highcharts-caption {
+    font-family: $font-family-headings !important;
+    font-size: $font-size-base * .3 !important;
+  }
+
+  g.highcharts-axis, g.highcharts-axis-labels text {
+    font-family: $font-family-headings !important;
+    font-size: $font-size-base * .6 !important;
+  }
+
+}
+
+/******************************************************************************/
+/*      SUBPAGES                                                              */
+/******************************************************************************/
+
+.subpage {
+  text-align: center;
+  max-width: 650px;
+  margin: auto;
+}
+
+.subpage-subscribe {
+  text-align: center;
+  max-width: 550px;
+  margin: auto;
+}
+
+.subpage-subscribe p {
+  margin-bottom: $paragraph-margin-bottom * .5;
+}
+
+h1.subpage-header {
+  font-size: $font-size-subpage-header;
+  font-family: $font-family-headings;
+  margin-bottom: 2rem;
+}
+
+h1.subpage-subscribe-header {
+  font-size: $font-size-subpage-header;
+  font-family: $font-family-headings;
+  margin-bottom: 1.5rem;
+}
+
+p.subpage-header-2 {
+  font-size: $font-size-subpage-text * 1.2;
+  font-family: $font-family-headings;
+  font-weight: 700;
+  margin: 2rem 0 .75rem 0
+}
+
+span.subpage-inline {
+  font-family: Karla, Helvetica, Arial, sans-serif;
+  font-size: $font-size-subpage-inline;
+  font-weight: 700;
+  color: $color-blue;
+}
+
+p.subpage-text {
+  font-size: $font-size-subpage-text;
+}
+
+p.subpage-note {
+  font-size: $font-size-subpage-note;
+  margin: 1rem 0 0 0
+}
+
+.rblogger {
+  font-size: $font-size-rbloggers;
+  text-align: center;
+  line-height: 1.25;
+  background-color: shift-color($color-blue, -90%);
+  border-radius: .25rem;
+  width: 22%;
+  margin: auto;
+  padding: .3rem 0;
+}
+
+.rblogger:hover {            
+  transform: scale(1.05, 1.05);
+  transition: transform .2s;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  main.content h1.subpage-header {
+    font-size: $font-size-subpage-header * .8;
+    font-family: $font-family-headings;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  main.content h1.subpage-subscribe-header {
+    font-size: $font-size-subpage-header * .8;
+    font-family: $font-family-headings;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  main.content p.subpage-header-2 {
+    font-size: $font-size-subpage-text;
+    font-family: $font-family-headings;
+    font-weight: 700;
+    margin: 2rem 0 .75rem 0
+  }
+
+  span.subpage-inline {
+    font-size: $font-size-subpage-inline *.7;
+    font-family: $font-family-headings;
+    font-weight: 700;
+  }
+
+  main.content p.subpage-note {
+    font-size: $font-size-subpage-note * .8;
+  }
+  
+  img.subpage-img {
+    width: auto;
+    height: 200px;
+  }
+  
+  .rblogger {
+    font-size: .7rem;
+    width: 30%;
+  }
+
+}
+
+/* --- Subscription --------------------------------------------------------- */
+
+div.sib-form .entry__field {
+  border: solid 1px #6c757d;
+}
+
+#sib-container {
+  padding: 1rem 0 !important;
+}
+
+@media only screen and (max-width: 768px) {
+
+  div.sib-form__declaration p {
+    font-size: $font-size-base * .6 !important;
+    margin-bottom: 0 !important;
+  }
+
+}
+
+/******************************************************************************/
+/*      MISCELLANEOUS                                                         */
+/******************************************************************************/
+
+/* --- Icon link ------------------------------------------------------------ */
+
+p a.icon-link {
+  background-color: #04304e;
+  border: none;
+  font-size: $font-size-base;
+  color: $white;
+  padding: 5px 7px 5px 7px;
+  margin: 0 5px 0 5px;
+  border-radius: 3px;
+}
+
+p a.icon-link:hover {
+  background-color: shift-color(#04304e, -20%);
+  transform: scale(1.1, 1.1);
+  transition: transform .2s;
+}

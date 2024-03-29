@@ -1,0 +1,56 @@
+---
+# title: "portfolio"
+output: 
+  html_document:
+    # theme: flatly
+    # self_contained: true
+    # df_print: paged # if you are displaying data frames
+---
+
+
+<hr>
+
+<a href="https://github.com/Otomisin?tab=repositories">
+  <img src="images/WelcomePage.png" alt="Welcome Page">
+</a>
+
+<hr>
+
+## **Welcome to my page!**
+Here, you will find samples of my work. I specialize in using **R**, **Python**, and **Adobe Creative Suite**, including **InDesign**, **Photoshop**, and **Illustrator**, for data visualization, data wrangling, and data analysis. I also have experience with **ArcGIS Pro**, **ArcGIS Online**, and **QGIS** for **geospatial data analysis**, as well as Jupyter and R Markdown for data visualization and geospatial analysis. I can use **SQL** in managing relational database. Additionally, I am currently learning Web Development.
+
+
+<!-- <center><img src="https://media.giphy.com/media/wLNuW1tCKRiPmDV5Y4/giphy.gif"></center> -->
+
+
+
+**My core skills include:**
+
+- Strong computer background with experience in relational databases, Microsoft applications, spreadsheets, word processing, **GIS**, graphic design, and desktop publishing.
+- Data management, research, and analysis experience with both quantitative and qualitative data.
+- Experience with analytics and visualization tools such as open viz libraries like **Shiny** and **flexdashboard**.
+- Demonstrated experience developing **risk index model** at national and global scale
+- Proficient in using and maintaining spatial and non-spatial technology products.
+- Strong information management architecture knowledge, Kobo development, concepts of
+Relational Database Systems.
+- Experience working with local and international organizations, including UN-IOM, UNDP, UNSPIDER and EU.
+- Excellent analytical and organizational skills, communication, writing and reporting skills, and multicultural skills.
+- Expertise in Earth Observation and GIS Risk Analysis and remote sensing analysis (Floods
+extraction, buildings damage assessment, population affected monitoring).
+- Ability to build strong and sustainable relationships, interact at all levels within the organization, work independently, and lead teams. 
+- Thematic experience includes Migration, Displacement, Humanitarian and Droughts.I am also exploring application of AI to optimize outputs.
+
+<center><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDAwNjJiYjBlNGI1YTk1NWZkYmYxOWYyNGRkMjY1MGVlNzY3YzI0MSZjdD1n/33PMXr72xOqBdOUzTO/giphy.gif"></center>
+
+<br>
+Thanks for stopping by! If you have any questions or would like to work together, please don't hesitate to [contact me](mailto:orenaiket@yahoo.com).
+<hr>
+![](images/Page1.png){ width=200% height=50% }
+<hr>
+<div class="icons">
+  <a href="mailto:orenaiket(@)yahoo.com"><i class="fas fa-envelope fa-2x"></i></a>
+  <a href="https://twitter.com/orenaiket"><i class="fab fa-twitter fa-2x"></i></a>
+  <a href="https://www.linkedin.com/in/tosin-orenaike"><i class="fab fa-linkedin fa-2x"></i></a>
+  <a href="https://github.com/Otomisin"><i class="fab fa-github fa-2x"></i></a>
+</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">

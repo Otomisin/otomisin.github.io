@@ -1,0 +1,2016 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Oluwatosin Orenaike">
+<meta name="dcterms.date" content="2024-03-13">
+
+<title>Orenaikeblog - Attempting drivers of migration</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Orenaikeblog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text"><strong>Welcome to my page!</strong></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../talks.html"> 
+<span class="menu-text">Quarto Testing</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Otomisin"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/orenaiket"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/tosin-orenaike"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Attempting drivers of migration</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Machine Learning</div>
+                <div class="quarto-category">Migration</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Oluwatosin Orenaike </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 13, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load-necessary-libraries" id="toc-load-necessary-libraries" class="nav-link active" data-scroll-target="#load-necessary-libraries">Load Necessary Libraries</a></li>
+  <li><a href="#step-1-data-gathering" id="toc-step-1-data-gathering" class="nav-link" data-scroll-target="#step-1-data-gathering">Step 1: Data Gathering</a></li>
+  <li><a href="#step-2-combined-all-sourced-data-into-one" id="toc-step-2-combined-all-sourced-data-into-one" class="nav-link" data-scroll-target="#step-2-combined-all-sourced-data-into-one">Step 2: Combined all Sourced data into one</a></li>
+  <li><a href="#step-3-data-checks-and-cleaning" id="toc-step-3-data-checks-and-cleaning" class="nav-link" data-scroll-target="#step-3-data-checks-and-cleaning">Step 3: Data Checks and Cleaning</a>
+  <ul class="collapse">
+  <li><a href="#handling-missing-values" id="toc-handling-missing-values" class="nav-link" data-scroll-target="#handling-missing-values">- Handling Missing Values</a></li>
+  <li><a href="#mean-imputation-and-re-check" id="toc-mean-imputation-and-re-check" class="nav-link" data-scroll-target="#mean-imputation-and-re-check">- Mean imputation and re-check</a></li>
+  <li><a href="#outlier-detection-and-management" id="toc-outlier-detection-and-management" class="nav-link" data-scroll-target="#outlier-detection-and-management">- Outlier Detection and Management</a></li>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">- Correlation Analysis</a></li>
+  <li><a href="#data-trend-over-the-year" id="toc-data-trend-over-the-year" class="nav-link" data-scroll-target="#data-trend-over-the-year">Data Trend over the year</a></li>
+  </ul></li>
+  <li><a href="#step-4-model-all-variable" id="toc-step-4-model-all-variable" class="nav-link" data-scroll-target="#step-4-model-all-variable">Step 4: Model all variable</a>
+  <ul class="collapse">
+  <li><a href="#model-training-using-all-variables" id="toc-model-training-using-all-variables" class="nav-link" data-scroll-target="#model-training-using-all-variables">- Model Training using all variables</a></li>
+  <li><a href="#optimizing-model-1-using-backward-elimination" id="toc-optimizing-model-1-using-backward-elimination" class="nav-link" data-scroll-target="#optimizing-model-1-using-backward-elimination">- Optimizing model 1 using Backward Elimination</a></li>
+  </ul></li>
+  <li><a href="#step-5-linearity-assumptions-checks" id="toc-step-5-linearity-assumptions-checks" class="nav-link" data-scroll-target="#step-5-linearity-assumptions-checks">Step 5: Linearity assumptions checks</a>
+  <ul class="collapse">
+  <li><a href="#lm-diagnostic-plots" id="toc-lm-diagnostic-plots" class="nav-link" data-scroll-target="#lm-diagnostic-plots">- LM Diagnostic Plots</a></li>
+  <li><a href="#multicollinearity-check-vif" id="toc-multicollinearity-check-vif" class="nav-link" data-scroll-target="#multicollinearity-check-vif">- Multicollinearity Check (VIF)</a></li>
+  <li><a href="#independence-of-residuals" id="toc-independence-of-residuals" class="nav-link" data-scroll-target="#independence-of-residuals">- Independence of Residuals</a></li>
+  <li><a href="#independence-of-observations" id="toc-independence-of-observations" class="nav-link" data-scroll-target="#independence-of-observations">- Independence of Observations</a></li>
+  <li><a href="#check-outlier-influence" id="toc-check-outlier-influence" class="nav-link" data-scroll-target="#check-outlier-influence">- Check outlier influence</a></li>
+  </ul></li>
+  <li><a href="#step-6-generalized-additive-model-gam" id="toc-step-6-generalized-additive-model-gam" class="nav-link" data-scroll-target="#step-6-generalized-additive-model-gam">Step 6: Generalized Additive Model (GAM)</a>
+  <ul class="collapse">
+  <li><a href="#gam-diagnostic-plots" id="toc-gam-diagnostic-plots" class="nav-link" data-scroll-target="#gam-diagnostic-plots">- GAM Diagnostic Plots</a></li>
+  </ul></li>
+  <li><a href="#step-7-compare-model-lm-and-gam-1" id="toc-step-7-compare-model-lm-and-gam-1" class="nav-link" data-scroll-target="#step-7-compare-model-lm-and-gam-1">Step 7: Compare model LM and GAM 1</a>
+  <ul class="collapse">
+  <li><a href="#comparison-of-model-performance-lm80-training-data-and-gam-91-training-data" id="toc-comparison-of-model-performance-lm80-training-data-and-gam-91-training-data" class="nav-link" data-scroll-target="#comparison-of-model-performance-lm80-training-data-and-gam-91-training-data">- Comparison of Model Performance: LM(80% Training Data) and GAM (91% Training Data)</a></li>
+  <li><a href="#model_v3--change-sample-size-for-lm-model_v1" id="toc-model_v3--change-sample-size-for-lm-model_v1" class="nav-link" data-scroll-target="#model_v3--change-sample-size-for-lm-model_v1">- Model_v3- Change Sample size for LM model_v1</a></li>
+  <li><a href="#comparison-of-model-performance-model_v3-lm91-training-data-and-gam-91-training-data---equal-sample" id="toc-comparison-of-model-performance-model_v3-lm91-training-data-and-gam-91-training-data---equal-sample" class="nav-link" data-scroll-target="#comparison-of-model-performance-model_v3-lm91-training-data-and-gam-91-training-data---equal-sample">- Comparison of Model Performance: model_v3 LM(91% Training Data) and GAM (91% Training Data) - Equal Sample</a></li>
+  </ul></li>
+  <li><a href="#step-8-conclusion" id="toc-step-8-conclusion" class="nav-link" data-scroll-target="#step-8-conclusion">Step 8: Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="load-necessary-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-necessary-libraries">Load Necessary Libraries</h2>
+<p>This is a note for the assessment for the position of a data analyist. The model shows the drivers of international migration at Macro, Meso and Micro. The argument is that migration is likely to increase if current drivers persist. This assessment will focus on the macro level variables for easy data access. Micro and Meso level are however recommended to take country nuances into consideration. The following variables will be considered in this assessment.</p>
+<p>Data were gathered from the following links and sources, incorporating specific variables relevant to the study:</p>
+<ul>
+<li><strong>Net Migration</strong>: The difference between the number of people entering and leaving a geographic area over a specific period, serving as a proxy for population movement. <a href="https://data.worldbank.org/indicator/SM.POP.NETM?view=chart">World Bank - Net Migration</a></li>
+<li><strong>Independent Variables</strong>:
+<ul>
+<li><strong>Economic Factors</strong>:
+<ul>
+<li><strong>Employment Rate</strong>: Reflects the availability of jobs and the health of the economic environment. Regions with higher employment rates attract people due to better job opportunities, acting as a push or pull factor for migrants. This variable is closely linked to <strong>Unemployment</strong> rates, where lower unemployment rates indicate higher employment opportunities. <a href="https://data.worldbank.org/indicator/SL.UEM.TOTL.NE.ZS">World Bank - Unemployment</a></li>
+<li><strong>Income Levels</strong>: The average income or economic prosperity in a region, influencing migration as higher income levels often correlate with a higher standard of living. <a href="https://data.worldbank.org/indicator/NY.GNP.PCAP.CD?view=chart">World Bank - Income Level</a></li>
+</ul></li>
+<li><strong>Social and Demographic Factors</strong>:
+<ul>
+<li><strong>Mortality Rate</strong>: While not a direct predictor of migration, it can influence the desirability of a location indirectly through its impact on life expectancy and the quality of healthcare services. <a href="https://data.worldbank.org/indicator/SH.DYN.MORT?view=chart">World Bank - Mortality Rate</a></li>
+</ul></li>
+<li><strong>Population Density</strong>: Provides insight into how densely populated a region is, which can impact migrants’ decisions. <a href="https://data.worldbank.org/indicator/EN.POP.DNST?view=chart">World Bank - Population Density</a></li>
+<li><strong>Political Instability</strong>: An indicator of the stability of governance in a region, which can significantly affect migration patterns. <a href="https://databank.worldbank.org/source/worldwide-governance-indicators/Series/PV.EST#">World Bank - Worldwide Governance Indicators</a></li>
+</ul></li>
+</ul>
+<p>NetMigration ~ EmploymentRate + IncomeLevels + MortalityRate Net Migration = pol_instab + pop_density + under_5_mortality_rate + total_unemployment + govt_expenditure_education + gni_income</p>
+<p><strong>Model Equation</strong></p>
+<blockquote class="blockquote">
+<ul>
+<li><em>NetMigration</em> = <span class="math inline">\(\beta_0\)</span> + <span class="math inline">\(\beta_1\)</span> x Political Instability + <span class="math inline">\(\beta_2\)</span> x Mortiality rate (under 5) + <span class="math inline">\(\beta_3\)</span>x unemployment + <span class="math inline">\(\beta_4\)</span> x Government expenditure onEducation + <span class="math inline">\(\beta_5\)</span> x GNI Income* x e</li>
+</ul>
+</blockquote>
+<p><span class="math inline">\(\beta_0\)</span> as intercept, <span class="math inline">\(\beta_1\)</span> , <span class="math inline">\(\beta_2\)</span> , <span class="math inline">\(\beta_3\)</span> , <span class="math inline">\(\beta_4\)</span> , and <span class="math inline">\(\beta_5\)</span> as coefficients</p>
+<p>The model will try to understand what affects net migration (the difference between the number of people entering and leaving a country) by looking at several factors: political instability, mortality rate for children under 5 years old, unemployment rate, government spending on education, and Gross National Income (GNI) per capital.</p>
+</section>
+<section id="step-1-data-gathering" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-data-gathering">Step 1: Data Gathering</h2>
+<p>Load the variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load first set of dataset  -------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the base directory</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>base_dir <span class="ot">&lt;-</span> <span class="st">"C:/Users/orenaike/OneDrive/02_JOBS/OT_CV/Jobs_Application/IOM/Interview_Prep/Prep_Grace"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define subdirectories</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sub_dirs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"API_EN.POP.DNST_DS2_en_csv_v2_1512_Pop_Density"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"API_SH.DYN.MORT_DS2_en_csv_v2_1984_mortality"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">"API_NY.GNP.PCAP.KD_DS2_en_csv_v2_3157_GNI"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>              <span class="st">"API_SL.UEM.TOTL.NE.ZS_DS2_en_csv_v2_Unemployment"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">"API_SE.XPD.TOTL.GD.ZS_DS2_en_csv_v2_14_govt_exp"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>              <span class="st">"API_SM.POP.NETM_DS2_en_csv_v2_105_Net migration"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize an empty list to store data frames</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>df_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subdirectory</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(dir <span class="cf">in</span> sub_dirs) {</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Construct the full path to the directory</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  full_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(base_dir, dir)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find the CSV file that starts with "API" in the directory</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># csv_file &lt;- list.files(full_dir, pattern = "^API.*//.csv$", full.names = TRUE)</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  csv_file <span class="ot">&lt;-</span> <span class="fu">list.files</span>(full_dir, <span class="at">pattern =</span> <span class="st">"^API.*</span><span class="sc">\\</span><span class="st">.csv$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Check if exactly one file is found</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(csv_file) <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read the CSV file from row 5, skip the first 4 rows</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(csv_file, <span class="at">skip =</span> <span class="dv">4</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the data frame to the list</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    df_list[[dir]] <span class="ot">&lt;-</span> data</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">"No file or multiple files found in"</span>, dir, <span class="st">"/n"</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate all data frames in the list into one</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_list) <span class="co"># The data is currently in wide format. We need to cover to Long for easy analysis </span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the structure of the concatenated data frame</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(all_data) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1596   68</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load political instability data ----------------</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>political_instab <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:/Users/orenaike/OneDrive/02_JOBS/OT_CV/Jobs_Application/IOM/Interview_Prep/Prep_Grace/P_Data_Extract_From_Worldwide_Governance_Indicators/0ac43a1d-ff11-4838-93a9-738e096ed561_Data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 219 Columns: 15
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (15): Series Name, Series Code, Country Name, Country Code, 2000 [YR2000...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>political_instab_v1 <span class="ot">&lt;-</span> political_instab <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(series_name <span class="sc">==</span> <span class="st">"Political Stability and Absence of Violence/Terrorism: Estimate"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(political_instab_v1) <span class="co">#check the first few</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 15
+  series_name    series_code country_name country_code x2000_yr2000 x2013_yr2013
+  &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;       
+1 Political Sta… PV.EST      Afghanistan  AFG          -2.43896889… -2.51934909…
+2 Political Sta… PV.EST      Albania      ALB          -0.53998959… 0.091929785…
+3 Political Sta… PV.EST      Algeria      DZA          -1.43257737… -1.20237147…
+4 Political Sta… PV.EST      American Sa… ASM          ..           0.928985774…
+5 Political Sta… PV.EST      Andorra      AND          1.166981458… 1.283926010…
+6 Political Sta… PV.EST      Angola       AGO          -2.03817391… -0.39123347…
+# ℹ 9 more variables: x2014_yr2014 &lt;chr&gt;, x2015_yr2015 &lt;chr&gt;,
+#   x2016_yr2016 &lt;chr&gt;, x2017_yr2017 &lt;chr&gt;, x2018_yr2018 &lt;chr&gt;,
+#   x2019_yr2019 &lt;chr&gt;, x2020_yr2020 &lt;chr&gt;, x2021_yr2021 &lt;chr&gt;,
+#   x2022_yr2022 &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="step-2-combined-all-sourced-data-into-one" class="level1">
+<h1>Step 2: Combined all Sourced data into one</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Treating first set of data from world bank--------------------------</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>all_data_V1 <span class="ot">&lt;-</span> all_data <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"x"</span>),  <span class="co"># Select columns to gather</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,        <span class="co"># Name of the new column for years</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"x"</span>,       <span class="co"># Remove 'x' prefix from year values</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"value"</span>       <span class="co"># Name of the new column for values</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Filter countries of Choice and rename variables</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>all_data_V2 <span class="ot">&lt;-</span> all_data_V1 <span class="sc">|&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">indicator_name =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    indicator_name <span class="sc">==</span> <span class="st">"GNI per capita (constant 2015 US$)"</span> <span class="sc">~</span> <span class="st">"gni_Income"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    indicator_name <span class="sc">==</span> <span class="st">"Mortality rate, under-5 (per 1,000 live births)"</span> <span class="sc">~</span> <span class="st">"Under-5_Mortality_Rate"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    indicator_name <span class="sc">==</span> <span class="st">"Net migration"</span> <span class="sc">~</span> <span class="st">"Net_Migration"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    indicator_name <span class="sc">==</span> <span class="st">"Population density (people per sq. km of land area)"</span> <span class="sc">~</span> <span class="st">"Pop_Density"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    indicator_name <span class="sc">==</span> <span class="st">"Unemployment, total (% of total labor force) (national estimate)"</span> <span class="sc">~</span> <span class="st">"Total_Unemployment"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    indicator_name <span class="sc">==</span> <span class="st">"Government expenditure on education, total (% of GDP)"</span> <span class="sc">~</span> <span class="st">"Govt_expenditure_education"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> indicator_name</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>indicator_code, <span class="sc">-</span>country_code) <span class="sc">|&gt;</span> </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(year))</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="do">### Treating second data source political instability ------------</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>political_instab_v2 <span class="ot">&lt;-</span> political_instab_v1 <span class="sc">|&gt;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">"year"</span>, <span class="at">value =</span> <span class="st">"value"</span>, <span class="sc">-</span><span class="fu">c</span>(series_name, series_code, country_name, country_code)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">indicator_name =</span> <span class="fu">case_when</span>(</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    series_name <span class="sc">==</span> <span class="st">"Political Stability and Absence of Violence/Terrorism: Estimate"</span> <span class="sc">~</span> <span class="st">"pol_instab"</span>,    <span class="cn">TRUE</span> <span class="sc">~</span> series_name</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span>  </span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"x(</span><span class="sc">\\</span><span class="st">d+)_yr</span><span class="sc">\\</span><span class="st">d+"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, year))) <span class="sc">|&gt;</span> </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">as.numeric</span>(<span class="fu">ifelse</span>(value <span class="sc">==</span> <span class="st">".."</span>, <span class="cn">NA</span>, value))) <span class="sc">|&gt;</span>  </span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>series_code, <span class="sc">-</span>country_code, <span class="sc">-</span>series_name)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co"># combined all data</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>combined_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(political_instab_v2, all_data_V2)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for country of interest </span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>combined_data_v1 <span class="ot">&lt;-</span> combined_data <span class="sc">|&gt;</span> </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"Mexico"</span>)</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert from long to wide format</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>combined_data_v2 <span class="ot">&lt;-</span> combined_data_v1 <span class="sc">|&gt;</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> indicator_name, <span class="co"># Use the indicator name for new column names</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> value          <span class="co"># The values to populate in the new columns</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="st">"Mexico"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(combined_data_v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+  country_name  year pol_instab pop_density under_5_mortality_rate gni_income
+  &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;                  &lt;dbl&gt;      &lt;dbl&gt;
+1 Mexico        2000     -0.200        50.3                   28.3      9457.
+2 Mexico        2013     -0.714        60.3                   17.3      9542.
+3 Mexico        2014     -0.854        61.1                   16.8      9712.
+4 Mexico        2015     -0.802        61.8                   16.2      9846.
+5 Mexico        2016     -0.634        62.5                   15.7      9896.
+6 Mexico        2017     -0.806        63.2                   15.2      9979.
+# ℹ 3 more variables: total_unemployment &lt;dbl&gt;,
+#   govt_expenditure_education &lt;dbl&gt;, net_migration &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Data Overview before Cleaning</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(combined_data_v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> country_name            year        pol_instab       pop_density   
+ Length:63          Min.   :1960   Min.   :-0.8539   Min.   :19.26  
+ Class :character   1st Qu.:1976   1st Qu.:-0.8039   1st Qu.:31.10  
+ Mode  :character   Median :1991   Median :-0.7142   Median :42.88  
+                    Mean   :1991   Mean   :-0.6999   Mean   :42.91  
+                    3rd Qu.:2006   3rd Qu.:-0.6812   3rd Qu.:54.98  
+                    Max.   :2022   Max.   :-0.2002   Max.   :65.18  
+                                   NA's   :52        NA's   :2      
+ under_5_mortality_rate   gni_income    total_unemployment
+ Min.   : 13.20         Min.   : 4098   Min.   :1.760     
+ 1st Qu.: 22.30         1st Qu.: 6647   1st Qu.:3.275     
+ Median : 44.35         Median : 8080   Median :3.733     
+ Mean   : 58.09         Mean   : 7839   Mean   :3.936     
+ 3rd Qu.: 87.42         3rd Qu.: 9380   3rd Qu.:4.441     
+ Max.   :155.20         Max.   :10073   Max.   :7.095     
+ NA's   :1                              NA's   :30        
+ govt_expenditure_education net_migration    
+ Min.   :2.282              Min.   :-641663  
+ 1st Qu.:3.681              1st Qu.:-320352  
+ Median :4.658              Median :-138534  
+ Mean   :4.285              Mean   :-223830  
+ 3rd Qu.:4.948              3rd Qu.: -72537  
+ Max.   :5.257              Max.   :  33094  
+ NA's   :35                                  </code></pre>
+</div>
+</div>
+<p>A brief overview of the data reveals the presence of missing values (NAs), which require attention before proceeding with modeling</p>
+</section>
+<section id="step-3-data-checks-and-cleaning" class="level1">
+<h1>Step 3: Data Checks and Cleaning</h1>
+<p>This step is crucial for ensuring the quality and reliability of our dataset before moving on to further analysis or modeling. Our approach involves several key actions:</p>
+<p>Remove rows with NA values and handle outliers as needed. - Handling Missing Values - Outlier Detection and Management - Check for correlation in variables - Encode the categorical if needed</p>
+<section id="handling-missing-values" class="level3">
+<h3 class="anchored" data-anchor-id="handling-missing-values">- Handling Missing Values</h3>
+<p>Check missing values and justification for mean imputation</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial check for missing values</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>missing_values <span class="ot">&lt;-</span> <span class="fu">sapply</span>(combined_data_v2, <span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">is.na</span>(x)))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(missing_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              country_name                       year 
+                         0                          0 
+                pol_instab                pop_density 
+                        52                          2 
+    under_5_mortality_rate                 gni_income 
+                         1                          0 
+        total_unemployment govt_expenditure_education 
+                        30                         35 
+             net_migration 
+                         0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate and print skewness for selected columns with skewness rounded to two decimal places</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>calculate_skewness <span class="ot">&lt;-</span> <span class="cf">function</span>(data, columns) {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (column <span class="cf">in</span> columns) {</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Exclude NA values for skewness calculation</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    valid_values <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(data[[column]])</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate skewness</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    skewness <span class="ot">&lt;-</span> <span class="fu">sum</span>((valid_values <span class="sc">-</span> <span class="fu">mean</span>(valid_values))<span class="sc">^</span><span class="dv">3</span> <span class="sc">/</span> <span class="fu">sd</span>(valid_values)<span class="sc">^</span><span class="dv">3</span>) <span class="sc">/</span> (<span class="fu">length</span>(valid_values) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print skewness with two decimal places</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">sprintf</span>(<span class="st">"Skewness for %s: %.2f"</span>, column, skewness))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the columns you want to analyze</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>columns_to_analyze <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pol_instab"</span>, <span class="st">"pop_density"</span>, <span class="st">"under_5_mortality_rate"</span>, <span class="st">"gni_income"</span>, <span class="st">"total_unemployment"</span>, <span class="st">"govt_expenditure_education"</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="fu">calculate_skewness</span>(combined_data_v2[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)], columns_to_analyze)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Skewness for pol_instab: 1.93"
+[1] "Skewness for pop_density: -0.05"
+[1] "Skewness for under_5_mortality_rate: 0.77"
+[1] "Skewness for gni_income: -0.61"
+[1] "Skewness for total_unemployment: 0.68"
+[1] "Skewness for govt_expenditure_education: -0.95"</code></pre>
+</div>
+</div>
+<p>Checking missing values and the skewness of the data, median imputation is generally the most appropriate method for our dataset. This decision is based on the robustness of the median to outliers, which are likely present in distributions exhibiting significant skewness, either to the left or right.</p>
+</section>
+<section id="mean-imputation-and-re-check" class="level3">
+<h3 class="anchored" data-anchor-id="mean-imputation-and-re-check">- Mean imputation and re-check</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision criterion: Focus on data from the last 20 years with &lt;= 24% missing values</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing value imputation for selected columns</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>columns_to_impute <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pol_instab"</span>, <span class="st">"pop_density"</span>, <span class="st">"under_5_mortality_rate"</span>, <span class="st">"total_unemployment"</span>, <span class="st">"govt_expenditure_education"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>combined_data_v2[columns_to_impute] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(combined_data_v2[columns_to_impute], <span class="cf">function</span>(x) <span class="fu">ifelse</span>(<span class="fu">is.na</span>(x), <span class="fu">median</span>(x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), x))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-check for missing values</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(combined_data_v2)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              country_name                       year 
+                         0                          0 
+                pol_instab                pop_density 
+                         0                          0 
+    under_5_mortality_rate                 gni_income 
+                         0                          0 
+        total_unemployment govt_expenditure_education 
+                         0                          0 
+             net_migration 
+                         0 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Overview after mean imputation</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(combined_data_v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> country_name            year        pol_instab       pop_density   
+ Length:63          Min.   :1960   Min.   :-0.8539   Min.   :19.26  
+ Class :character   1st Qu.:1976   1st Qu.:-0.7142   1st Qu.:31.56  
+ Mode  :character   Median :1991   Median :-0.7142   Median :42.88  
+                    Mean   :1991   Mean   :-0.7117   Mean   :42.91  
+                    3rd Qu.:2006   3rd Qu.:-0.7142   3rd Qu.:54.61  
+                    Max.   :2022   Max.   :-0.2002   Max.   :65.18  
+ under_5_mortality_rate   gni_income    total_unemployment
+ Min.   : 13.20         Min.   : 4098   Min.   :1.760     
+ 1st Qu.: 22.50         1st Qu.: 6647   1st Qu.:3.680     
+ Median : 44.35         Median : 8080   Median :3.733     
+ Mean   : 57.87         Mean   : 7839   Mean   :3.839     
+ 3rd Qu.: 86.55         3rd Qu.: 9380   3rd Qu.:3.793     
+ Max.   :155.20         Max.   :10073   Max.   :7.095     
+ govt_expenditure_education net_migration    
+ Min.   :2.282              Min.   :-641663  
+ 1st Qu.:4.658              1st Qu.:-320352  
+ Median :4.658              Median :-138534  
+ Mean   :4.492              Mean   :-223830  
+ 3rd Qu.:4.658              3rd Qu.: -72537  
+ Max.   :5.257              Max.   :  33094  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check check by years</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># combined_data_v2 |&gt; filter(year == 1960) |&gt; summary()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="outlier-detection-and-management" class="level3">
+<h3 class="anchored" data-anchor-id="outlier-detection-and-management">- Outlier Detection and Management</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing non-numeric columns for outlier detection</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>combined_data_v3  <span class="ot">&lt;-</span>  combined_data_v2[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="co"># Removing Frst two columns are country and year</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>combined_data_v4 <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(combined_data_v3)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating boxplots for outlier detection</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the data to long format</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>combined_data_long <span class="ot">&lt;-</span> combined_data_v4 <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Variable"</span>, <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create box plots for all variables</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(combined_data_long, <span class="fu">aes</span>(<span class="at">x =</span> Variable, <span class="at">y =</span> Value)) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Rotate x-axis labels for better readability</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Variable"</span>, <span class="at">y =</span> <span class="st">"Value"</span>, <span class="at">title =</span> <span class="st">"Box Plot of All Variables"</span>) <span class="sc">+</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variable, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span> <span class="co"># Create separate plots for each variable with free y-axis scales </span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Identification</em>: Outliers are detected using boxplots for each numerical variable, offering a visual examination of data spread and identifying data points that deviate significantly from other observations.</p>
+<p><em>Decision and Handling:</em> After identifying notable outliers in key variables like Political Instability, Total Unemployment, and Government Expenditure on Education, the decision to leave these outliers untreated was made based on several thoughtful considerations:</p>
+<ol type="1">
+<li><p>Natural Variability: Certain variables, such as Political Instability, are prone to exhibit extreme values in specific contexts due to extraordinary circumstances. These outliers are not just anomalies but represent significant real-world phenomena that merit inclusion in the analysis.</p></li>
+<li><p>Data Integrity and Information Loss: Especially relevant to migration data, outlier removal might lead to the loss of crucial information. The integrity of the original data is paramount, and premature treatment of outliers could risk distorting meaningful patterns, which could be essential for comprehensive analysis.</p></li>
+<li><p>Dataset Considerations: Given the size and scope of the dataset, outright removal of outliers was deemed impractical. It was important to maintain a broad perspective and ensure that any data processing steps did not eliminate valuable insights that could influence the overall findings.</p></li>
+</ol>
+</section>
+<section id="correlation-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-analysis">- Correlation Analysis</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation at 2 decimal places</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">cor</span>(combined_data_v4), <span class="dv">2</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute and show the  result</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(corr_matrix, <span class="at">hc.order =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizing pairwise relationships</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(combined_data_v4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Initial Correlation Check:</em> A correlation matrix is generated for all numerical variables to identify any significant relationships between them, this is significant for potential multicollinearity. <em>Findings:</em> Notable correlations are observed, such as a strong negative correlation between Under-5 Mortality Rate and GNI Income, and a strong positive correlation between Pop Density and GNI Income. <em>Decision:</em> While correlations are identified, there’s no immediate action to remove or adjust variables based solely on correlation..</p>
+</section>
+<section id="data-trend-over-the-year" class="level3">
+<h3 class="anchored" data-anchor-id="data-trend-over-the-year">Data Trend over the year</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(combined_data_v2, </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(country_name, year), </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">names_to =</span> <span class="st">"Indicator"</span>, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusting the script for color differentiation</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> Value, <span class="at">color =</span> Indicator)) <span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"pol_instab"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"pop_density"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"Under-5_Mortality_Rate"</span> <span class="ot">=</span> <span class="st">"green"</span>, </span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"gni_Income"</span> <span class="ot">=</span> <span class="st">"orange"</span>, <span class="st">"total_unemployment"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Govt_expenditure_education"</span> <span class="ot">=</span> <span class="st">"brown"</span>, </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"net_migration"</span> <span class="ot">=</span> <span class="st">"pink"</span>)) <span class="sc">+</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Indicator, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Trends of Various Indicators Over Time for Mexico"</span>,</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Value"</span>) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggsave("indicator_trends_colored.png", width = 12, height = 8)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="step-4-model-all-variable" class="level1">
+<h1>Step 4: Model all variable</h1>
+<p>I choose linear regression because it’s straightforward and a solid first step. It shows me how various factors, like population size, impact something else, such as migration. If my initial look at the data suggests clear, straight-line relationships, linear regression is my go-to method. It’s also great because I can easily explain it to people who aren’t experts, making it very useful for predicting migration patterns.</p>
+<p>In this section, I trained a linear regression model using the <code>caret</code> package, with the goal of predicting net migration based on other factors in the dataset. The model’s performance is evaluated using cross-validation.</p>
+<section id="model-training-using-all-variables" class="level3">
+<h3 class="anchored" data-anchor-id="model-training-using-all-variables">- Model Training using all variables</h3>
+<p>Net Migration = pol_instab + pop_density + under_5_mortality_rate + total_unemployment + govt_expenditure_education + gni_income</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># For createDataPartition and postResample</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing non-numeric columns for outlier detection</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>combined_data_v2a  <span class="ot">&lt;-</span>  combined_data_v2[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="co"># Removing First two columns are country and year </span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>combined_data_v5 <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(combined_data_v2a)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting data into training (80%) and testing (20%) sets</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>splitIndex_all <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v5<span class="sc">$</span>net_migration, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>trainData_all <span class="ot">&lt;-</span> combined_data_v5[splitIndex_all, ]</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>testData_all <span class="ot">&lt;-</span> combined_data_v5[<span class="sc">-</span>splitIndex_all, ]</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>model_v1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(net_migration <span class="sc">~</span> ., <span class="at">data =</span> trainData_all)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = net_migration ~ ., data = trainData_all)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-326950  -65575   36473   90490  220227 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -2.052e+06  7.086e+05  -2.895  0.00588 **
+pol_instab                 -1.273e+05  2.829e+05  -0.450  0.65503   
+pop_density                 1.193e+04  3.804e+03   3.136  0.00305 **
+under_5_mortality_rate      7.228e+03  2.911e+03   2.483  0.01692 * 
+gni_income                  6.538e+01  6.353e+01   1.029  0.30904   
+total_unemployment          3.019e+04  3.615e+04   0.835  0.40828   
+govt_expenditure_education  3.937e+04  4.106e+04   0.959  0.34278   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 149700 on 44 degrees of freedom
+Multiple R-squared:  0.3434,    Adjusted R-squared:  0.2539 
+F-statistic: 3.836 on 6 and 44 DF,  p-value: 0.003669</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>actual_responses_all <span class="ot">&lt;-</span> testData_all<span class="sc">$</span>net_migration</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the argument name to 'newdata'</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>predicted_responses_all <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v1, <span class="at">newdata =</span> testData_all)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example evaluation metric: RMSE</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses_all, <span class="at">obs =</span> actual_responses_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        RMSE     Rsquared          MAE 
+1.370799e+05 6.208449e-01 1.175555e+05 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use postResample to get RMSE and R^2, then calculate MAE separately</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>evaluation_metrics_all <span class="ot">&lt;-</span> <span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses_all, <span class="at">obs =</span> actual_responses_all)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>lm_rmse_m1 <span class="ot">&lt;-</span> evaluation_metrics_all[<span class="dv">1</span>]</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>lm_mae_m1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(predicted_responses_all <span class="sc">-</span> actual_responses_all))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>lm_r2_m1 <span class="ot">&lt;-</span> evaluation_metrics_all[<span class="dv">2</span>]</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Outputting the values</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LM 1 Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM 1 Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, lm_rmse_m1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 137079.9 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, lm_mae_m1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 117555.5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2:"</span>, lm_r2_m1, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.6208449 </code></pre>
+</div>
+</div>
+<p>The model starts with a base(intercept) level of net migration at negative 2,052,000, which means if all other factors were at zero, the net migration would be a huge negative number. However, this is a theoretical scenario because factors like unemployment rate or GNI per capital can’t actually be zero. This also shows that political instability doesn’t significantly impact migration in Mexico. A rise in population density increases net migration by 11,930 per unit, suggesting a strong link. Increase in net migration in this context refers to making the net migration number less negative or moving towards a positive value, effectively meaning more people are entering the country than leaving.</p>
+<p>Higher child mortality rates also boost net migration, by 7,228 per increase in mortality rate. However, variations in GNI per capita, unemployment rates, and government education spending don’t significantly affect migration patterns.</p>
+</section>
+<section id="optimizing-model-1-using-backward-elimination" class="level3">
+<h3 class="anchored" data-anchor-id="optimizing-model-1-using-backward-elimination">- Optimizing model 1 using Backward Elimination</h3>
+<p>There may be a possibility to optimize model_v1 if insignificant variables is eliminated, sometimes called “Backward Elimination” in model building, where you start with all variables and systematically remove the least significant one at each step, based on statistical tests.</p>
+<section id="model_v1a" class="level4">
+<h4 class="anchored" data-anchor-id="model_v1a">- model_v1a</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing political instability</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>combined_data_v6 <span class="ot">&lt;-</span> combined_data_v5 <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>pol_instab)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting data into training (80%) and testing (20%) sets</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>splitIndex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v6<span class="sc">$</span>net_migration, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>trainData <span class="ot">&lt;-</span> combined_data_v6[splitIndex, ]</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>testData <span class="ot">&lt;-</span> combined_data_v6[<span class="sc">-</span>splitIndex, ]</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>model_v1a <span class="ot">&lt;-</span> <span class="fu">lm</span>(net_migration <span class="sc">~</span> ., <span class="at">data =</span> trainData)</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_v1a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = net_migration ~ ., data = trainData)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-329738  -66926   42885   91552  220684 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.967e+06  6.771e+05  -2.905  0.00567 **
+pop_density                 1.202e+04  3.765e+03   3.194  0.00257 **
+under_5_mortality_rate      7.182e+03  2.883e+03   2.491  0.01650 * 
+gni_income                  6.322e+01  6.278e+01   1.007  0.31935   
+total_unemployment          3.324e+04  3.519e+04   0.945  0.34994   
+govt_expenditure_education  4.145e+04  4.043e+04   1.025  0.31069   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 148400 on 45 degrees of freedom
+Multiple R-squared:  0.3404,    Adjusted R-squared:  0.2671 
+F-statistic: 4.645 on 5 and 45 DF,  p-value: 0.001675</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>actual_responses <span class="ot">&lt;-</span> testData<span class="sc">$</span>net_migration</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the argument name to 'newdata'</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>predicted_responses <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v1a, <span class="at">newdata =</span> testData)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example evaluation metric: RMSE</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        RMSE     Rsquared          MAE 
+1.374380e+05 6.169030e-01 1.181483e+05 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use postResample to get RMSE and R^2, then calculate MAE separately</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>evaluation_metrics <span class="ot">&lt;-</span> <span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>lm_rmse_mv1a <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">1</span>] </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>lm_mae_mv1a <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(predicted_responses <span class="sc">-</span> actual_responses))</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>lm_r2_mv1a <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">2</span>] <span class="co"># R^2 is the second element</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Outputting the values</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LM 2 Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM 2 Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, lm_rmse_mv1a, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 137438 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, lm_mae_mv1a, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 118148.3 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2:"</span>, lm_r2_mv1a, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.616903 </code></pre>
+</div>
+</div>
+</section>
+<section id="model_v1b" class="level4">
+<h4 class="anchored" data-anchor-id="model_v1b">- model_v1b</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing political instability</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>combined_data_v6 <span class="ot">&lt;-</span> combined_data_v5 <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>pol_instab, <span class="sc">-</span>total_unemployment)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting data into training (80%) and testing (20%) sets</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>splitIndex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v6<span class="sc">$</span>net_migration, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>trainData <span class="ot">&lt;-</span> combined_data_v6[splitIndex, ]</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>testData <span class="ot">&lt;-</span> combined_data_v6[<span class="sc">-</span>splitIndex, ]</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>model_v1b <span class="ot">&lt;-</span> <span class="fu">lm</span>(net_migration <span class="sc">~</span> ., <span class="at">data =</span> trainData)</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_v1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = net_migration ~ ., data = trainData)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-345496  -84985   55726   88515  211264 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)   
+(Intercept)                -1.585e+06  5.421e+05  -2.923  0.00536 **
+pop_density                 1.236e+04  3.744e+03   3.301  0.00187 **
+under_5_mortality_rate      5.809e+03  2.487e+03   2.335  0.02393 * 
+gni_income                  3.087e+01  5.256e+01   0.587  0.55985   
+govt_expenditure_education  5.622e+04  3.724e+04   1.509  0.13805   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 148200 on 46 degrees of freedom
+Multiple R-squared:  0.3273,    Adjusted R-squared:  0.2688 
+F-statistic: 5.596 on 4 and 46 DF,  p-value: 0.000934</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>actual_responses <span class="ot">&lt;-</span> testData<span class="sc">$</span>net_migration</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the argument name to 'newdata'</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>predicted_responses <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v1b, <span class="at">newdata =</span> testData)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example evaluation metric: RMSE</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        RMSE     Rsquared          MAE 
+1.584531e+05 4.064123e-01 1.341404e+05 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use postResample to get RMSE and R^2, then calculate MAE separately</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>evaluation_metrics <span class="ot">&lt;-</span> <span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>lm_rmse_mv1b <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">1</span>] </span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>lm_mae_mv1b <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(predicted_responses <span class="sc">-</span> actual_responses))</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>lm_r2_mv1b <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">2</span>] <span class="co"># R^2 is the second element</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Outputting the values</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LM 2 Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM 2 Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, lm_rmse_mv1b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 158453.1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, lm_mae_mv1b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 134140.4 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2:"</span>, lm_r2_mv1b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.4064123 </code></pre>
+</div>
+</div>
+</section>
+<section id="model_v1c" class="level4">
+<h4 class="anchored" data-anchor-id="model_v1c">- model_v1c</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing political instability</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>combined_data_v6 <span class="ot">&lt;-</span> combined_data_v5 <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>pol_instab, <span class="sc">-</span>total_unemployment, <span class="sc">-</span>gni_income)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting data into training (80%) and testing (20%) sets</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>splitIndex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v6<span class="sc">$</span>net_migration, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>trainData <span class="ot">&lt;-</span> combined_data_v6[splitIndex, ]</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>testData <span class="ot">&lt;-</span> combined_data_v6[<span class="sc">-</span>splitIndex, ]</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>model_v1c <span class="ot">&lt;-</span> <span class="fu">lm</span>(net_migration <span class="sc">~</span> ., <span class="at">data =</span> trainData)</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_v1c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = net_migration ~ ., data = trainData)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-367616  -77530   52164   85696  223190 
+
+Coefficients:
+                           Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -1298687     236653  -5.488 1.59e-06 ***
+pop_density                   12430       3716   3.346 0.001621 ** 
+under_5_mortality_rate         4544       1235   3.679 0.000601 ***
+govt_expenditure_education    62172      35587   1.747 0.087159 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 147200 on 47 degrees of freedom
+Multiple R-squared:  0.3223,    Adjusted R-squared:  0.279 
+F-statistic:  7.45 on 3 and 47 DF,  p-value: 0.0003517</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>actual_responses <span class="ot">&lt;-</span> testData<span class="sc">$</span>net_migration</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the argument name to 'newdata'</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>predicted_responses <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v1c, <span class="at">newdata =</span> testData)</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example evaluation metric: RMSE</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        RMSE     Rsquared          MAE 
+1.650779e+05 3.335848e-01 1.373180e+05 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use postResample to get RMSE and R^2, then calculate MAE separately</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>evaluation_metrics <span class="ot">&lt;-</span> <span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>lm_rmse_mv1c <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">1</span>] </span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>lm_mae_mv1c <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(predicted_responses <span class="sc">-</span> actual_responses))</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>lm_r2_mv1c <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">2</span>] <span class="co"># R^2 is the second element</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Outputting the values</span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LM 2 Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM 2 Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, lm_rmse_mv1c, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 165077.9 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, lm_mae_mv1c, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 137318 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2:"</span>, lm_r2_mv1c, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.3335848 </code></pre>
+</div>
+</div>
+</section>
+<section id="model_v1d" class="level4">
+<h4 class="anchored" data-anchor-id="model_v1d">- model_v1d</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing political instability</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>combined_data_v6 <span class="ot">&lt;-</span> combined_data_v5 <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>pol_instab, <span class="sc">-</span>total_unemployment,<span class="sc">-</span>gni_income, <span class="sc">-</span>govt_expenditure_education )</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting data into training (80%) and testing (20%) sets</span></span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>splitIndex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v6<span class="sc">$</span>net_migration, <span class="at">p =</span> .<span class="dv">8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>trainData <span class="ot">&lt;-</span> combined_data_v6[splitIndex, ]</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>testData <span class="ot">&lt;-</span> combined_data_v6[<span class="sc">-</span>splitIndex, ]</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>model_v1d <span class="ot">&lt;-</span> <span class="fu">lm</span>(net_migration <span class="sc">~</span> ., <span class="at">data =</span> trainData)</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_v1d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = net_migration ~ ., data = trainData)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-371085  -74282   34622   89212  242203 
+
+Coefficients:
+                       Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)            -1137628     222569  -5.111 5.51e-06 ***
+pop_density               14326       3629   3.948 0.000257 ***
+under_5_mortality_rate     5181       1205   4.300 8.32e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 150300 on 48 degrees of freedom
+Multiple R-squared:  0.2783,    Adjusted R-squared:  0.2482 
+F-statistic: 9.254 on 2 and 48 DF,  p-value: 0.000399</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>actual_responses <span class="ot">&lt;-</span> testData<span class="sc">$</span>net_migration</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the argument name to 'newdata'</span></span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>predicted_responses <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v1d, <span class="at">newdata =</span> testData)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example evaluation metric: RMSE</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        RMSE     Rsquared          MAE 
+1.591383e+05 5.786589e-01 1.280952e+05 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use postResample to get RMSE and R^2, then calculate MAE separately</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>evaluation_metrics <span class="ot">&lt;-</span> <span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses, <span class="at">obs =</span> actual_responses)</span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>lm_rmse_mv1d <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">1</span>] </span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>lm_mae_mv1d <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(predicted_responses <span class="sc">-</span> actual_responses))</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>lm_r2_mv1d <span class="ot">&lt;-</span> evaluation_metrics[<span class="dv">2</span>] <span class="co"># R^2 is the second element</span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Outputting the values</span></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LM 2 Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM 2 Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, lm_rmse_mv1d, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 159138.3 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, lm_mae_mv1d, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 128095.2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2:"</span>, lm_r2_mv1d, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.5786589 </code></pre>
+</div>
+</div>
+<p>Removing factors generally leads to a decrease in R-squared, suggesting a decline in the model’s explanatory power. Though However, removing GNI income and government expenditure on education in model_v1d seems to have resulted in a significant improvement in R-squared. comprehensive model (v1) had a good balance of explanatory power and prediction accuracy, with an R² of approximately 0.6208.</p>
+</section>
+</section>
+</section>
+<section id="step-5-linearity-assumptions-checks" class="level1">
+<h1>Step 5: Linearity assumptions checks</h1>
+<p>L: Linearity of Variable outcomes I: Independence of residuals N: Normality of residuals E: Equality of variance (homoscedasticity)</p>
+<section id="lm-diagnostic-plots" class="level3">
+<h3 class="anchored" data-anchor-id="lm-diagnostic-plots">- LM Diagnostic Plots</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10</span>)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model_v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Diagnostic plots reveal potential non-linearity, heteroscedasticity, deviations from normality in residuals, and influential observations.</p>
+<p>The diagnostic plots for the linear regression model suggest several issues regarding the linearity assumptions:</p>
+<ol type="1">
+<li><p><strong>Residuals vs Fitted Plot</strong>: The residuals do not appear to be randomly dispersed around the horizontal line at zero. Instead, they show a pattern, which is not ideal.</p></li>
+<li><p><strong>Q-Q Plot of Residuals</strong>: The Q-Q plot deviates from the straight line, particularly at the ends, suggesting the residuals do not follow a normal distribution perfectly, which could affect the model’s reliability.</p></li>
+<li><p><strong>Scale-Location Plot</strong>: This plot, also known as the Spread-Location plot, shows a pattern (funnel shape), which implies heteroscedasticity — the variance of the residuals is not constant across all levels of fitted values.</p></li>
+<li><p><strong>Residuals vs Leverage Plot</strong>: This plot helps us to find observations that have a more pronounced effect on the calculation of the regression coefficients. The presence of points in the top right and bottom right corners could indicate influential outliers.</p></li>
+</ol>
+</section>
+<section id="multicollinearity-check-vif" class="level3">
+<h3 class="anchored" data-anchor-id="multicollinearity-check-vif">- Multicollinearity Check (VIF)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating VIF</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>vif_results <span class="ot">&lt;-</span> <span class="fu">vif</span>(model_v1)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(vif_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                pol_instab                pop_density 
+                  1.119655                   6.180243 
+    under_5_mortality_rate                 gni_income 
+                 32.828127                  28.457074 
+        total_unemployment govt_expenditure_education 
+                  1.627980                   1.413640 </code></pre>
+</div>
+</div>
+<p>The Variance Inflation Factor (VIF) results reveal high values for ‘under_5_mortality_rate’ and ‘gni_income’, which suggest significant multicollinearity; these variables are not independent of each other and could be inflating the variance of the coefficient estimates.</p>
+</section>
+<section id="independence-of-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="independence-of-residuals">- Independence of Residuals</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(model_v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1       0.6407516     0.7097702       0
+ Alternative hypothesis: rho != 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aim: To check that the residuals are independent, an assumption that autocorrelation violates.</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">dwtest</span>(model_v1) <span class="co"># Durbin-Watson test for autocorrelation # Aim: DW statistic close to 2 suggests independence; &lt;1 or &gt;3 indicates potential autocorrelation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  model_v1
+DW = 0.70977, p-value = 0.000000003988
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+<p>The Durbin-Watson test result (DW = 0.70977) indicates a strong positive autocorrelation in the residuals, as the value is much less than 2. This is further supported by the very low p-value, implying that the independence of residuals assumption is violated.</p>
+</section>
+<section id="independence-of-observations" class="level3">
+<h3 class="anchored" data-anchor-id="independence-of-observations">- Independence of Observations</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="do">###  Checking for Independence of Observations ------------</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Durbin-Watson test</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(model_v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  model_v1
+DW = 0.70977, p-value = 0.000000003988
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+</section>
+<section id="check-outlier-influence" class="level3">
+<h3 class="anchored" data-anchor-id="check-outlier-influence">- Check outlier influence</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Outliers and Influential Data Points -----</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Aim: To identify and investigate outliers and influential observations that could unduly affect the model.</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_plot_dfbetas</span>(model_v1) <span class="co">#Aim: Values &gt; 1 suggest influential observations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>olsrr<span class="sc">::</span><span class="fu">ols_test_outlier</span>(model_v1) <span class="co"># Statistical test for outliers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   studentized_residual unadjusted_p_val bonferroni_p_val
+11            -4.570857    0.00004071165      0.002076294</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model_v1, <span class="at">which =</span> <span class="dv">4</span>) <span class="co"># Cook's distance for influential outliers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In conclusion, the linear regression model does not fully meet the assumptions of linearity, homoscedasticity, independence of residuals, and normality of errors. Hence the need to consider a different modeling approaches like GAM, which can handle these complexities more effectively.</p>
+</section>
+</section>
+<section id="step-6-generalized-additive-model-gam" class="level1">
+<h1>Step 6: Generalized Additive Model (GAM)</h1>
+<p>The next attempt was to use Generalized Additive Model (GAM) due to the shortcoming os LN. GAM is a flexible approach to modeling relationships between a dependent variable and one or more independent variables. It is an extension of General Linear Models (GLM) where the linear predictor involves a sum of smooth functions of predictors rather than just the predictors themselves.This allows GAMs to handle non-linear relationships in a straightforward manner, providing a powerful tool for exploring complex data structures.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean names first</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>combined_data_v3 <span class="ot">&lt;-</span> combined_data_v2 <span class="sc">|&gt;</span> <span class="fu">clean_names</span>()</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensure reproducibility</span></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>training_index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v3<span class="sc">$</span>net_migration, <span class="at">p =</span> <span class="fl">0.91</span>, <span class="at">list =</span> <span class="cn">FALSE</span>) <span class="co"># 0.91 was used because the models need for higher observation</span></span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>training_data <span class="ot">&lt;-</span> combined_data_v3[training_index, ]</span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>testing_data <span class="ot">&lt;-</span> combined_data_v3[<span class="sc">-</span>training_index, ]</span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, ensure 'year' is treated as numeric</span></span>
+<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a>training_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(training_data<span class="sc">$</span>year))</span>
+<span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a>testing_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(testing_data<span class="sc">$</span>year)) <span class="co"># Do the same for testing data</span></span>
+<span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a GAM model on the training data</span></span>
+<span id="cb98-14"><a href="#cb98-14" aria-hidden="true" tabindex="-1"></a>gam_model_t <span class="ot">&lt;-</span> <span class="fu">gam</span>(net_migration <span class="sc">~</span> <span class="fu">s</span>(pol_instab) <span class="sc">+</span> <span class="fu">s</span>(under_5_mortality_rate) <span class="sc">+</span> <span class="fu">s</span>(gni_income) <span class="sc">+</span> </span>
+<span id="cb98-15"><a href="#cb98-15" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">s</span>(total_unemployment) <span class="sc">+</span> <span class="fu">s</span>(year, <span class="at">bs=</span><span class="st">"cr"</span>), <span class="at">data=</span>training_data)</span>
+<span id="cb98-16"><a href="#cb98-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gam_model_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Family: gaussian 
+Link function: identity 
+
+Formula:
+net_migration ~ s(pol_instab) + s(under_5_mortality_rate) + s(gni_income) + 
+    s(total_unemployment) + s(year, bs = "cr")
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -222991       6746  -33.05   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                            edf Ref.df     F  p-value    
+s(pol_instab)             1.000  1.000 0.798 0.376753    
+s(under_5_mortality_rate) 8.247  8.430 5.229 0.000230 ***
+s(gni_income)             2.475  3.255 2.032 0.143593    
+s(total_unemployment)     1.000  1.000 2.175 0.147772    
+s(year)                   3.534  3.916 7.537 0.000257 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.912   Deviance explained = 93.7%
+GCV = 3.7953e+09  Scale est. = 2.6853e+09  n = 59</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the testing data -----------</span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>gam_predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(gam_model_t, testing_data)</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now define 'actual' as the true net_migration values from the testing_data</span></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> testing_data<span class="sc">$</span>net_migration</span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> actual <span class="sc">-</span> gam_predictions <span class="co"># Calculate residuals</span></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>SS_res <span class="ot">&lt;-</span> <span class="fu">sum</span>(residuals<span class="sc">^</span><span class="dv">2</span>) <span class="co"># Calculate SS_res (sum of squares of residuals)</span></span>
+<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate SS_tot (total sum of squares)</span></span>
+<span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a>mean_actual <span class="ot">&lt;-</span> <span class="fu">mean</span>(actual)</span>
+<span id="cb100-10"><a href="#cb100-10" aria-hidden="true" tabindex="-1"></a>SS_tot <span class="ot">&lt;-</span> <span class="fu">sum</span>((actual <span class="sc">-</span> mean_actual)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb100-11"><a href="#cb100-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate R^2</span></span>
+<span id="cb100-12"><a href="#cb100-12" aria-hidden="true" tabindex="-1"></a>R2 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (SS_res <span class="sc">/</span> SS_tot)</span>
+<span id="cb100-13"><a href="#cb100-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-14"><a href="#cb100-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate MAE and RMSE using actual and predicted values</span></span>
+<span id="cb100-15"><a href="#cb100-15" aria-hidden="true" tabindex="-1"></a>gam_mae <span class="ot">&lt;-</span> <span class="fu">mae</span>(actual, gam_predictions)</span>
+<span id="cb100-16"><a href="#cb100-16" aria-hidden="true" tabindex="-1"></a>gam_rmse <span class="ot">&lt;-</span> <span class="fu">rmse</span>(actual, gam_predictions)</span>
+<span id="cb100-17"><a href="#cb100-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-18"><a href="#cb100-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the metrics</span></span>
+<span id="cb100-19"><a href="#cb100-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"GAM Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GAM Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, gam_mae, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 93105.75 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, gam_rmse, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 115846.4 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R-squared:"</span>, R2, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R-squared: 0.7237168 </code></pre>
+</div>
+</div>
+<p>GAM model analysis indicates that child mortality rate and time (year) are significant predictors of net migration, while political instability, income levels, and unemployment are not significant. The model explains a large portion of the variance in net migration (93.7% deviance explained) and performs well on test data with an adjusted R-squared value of 0.72, suggesting good predictive power. The model’s predictions are relatively accurate, with a Mean Absolute Error (MAE) of approximately 93,106 and a Root Mean Square Error (RMSE) of approximately 115,846, which are the average deviations from the actual values. There will be a need to also carry out a diagnostics test next.</p>
+<section id="gam-diagnostic-plots" class="level3">
+<h3 class="anchored" data-anchor-id="gam-diagnostic-plots">- GAM Diagnostic Plots</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10</span>)</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gam_model_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The partial regression plots suggest that political instability and unemployment have little effect on net migration, whereas under-5 mortality rate, GNI income, and possibly time show nonlinear relationships with net migration. The model’s complexity and non-linear terms indicate intricate dynamics in how these predictors influence net migration trends.</p>
+</section>
+</section>
+<section id="step-7-compare-model-lm-and-gam-1" class="level1">
+<h1>Step 7: Compare model LM and GAM 1</h1>
+<p>I compared the linear model (LM) performance with the Generalized Additive Model (GAM), performance based on three statistical measures:</p>
+<ul>
+<li>RMSE: Reflects the average error in predictions. Lower values indicate higher accuracy.</li>
+<li>R-squared: Shows how much of the migration variance is explained by the model. Higher values mean a better fit.</li>
+<li>MAE: Represents the average absolute error in predictions.</li>
+</ul>
+<section id="comparison-of-model-performance-lm80-training-data-and-gam-91-training-data" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-of-model-performance-lm80-training-data-and-gam-91-training-data">- Comparison of Model Performance: LM(80% Training Data) and GAM (91% Training Data)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># for prediction and possibly for RMSE and MAE if used directly</span></span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv) <span class="co"># for GAM models</span></span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming other necessary libraries (like janitor) are loaded</span></span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming dataset is loaded, pre-processed, and models (lm and gam) are trained</span></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate metrics for Linear Model</span></span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a>lm_predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v1, <span class="at">newdata =</span> testData_all)</span>
+<span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a>lm_mae <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(lm_predicted <span class="sc">-</span> testData_all<span class="sc">$</span>net_migration))</span>
+<span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a>lm_rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((lm_predicted <span class="sc">-</span> testData_all<span class="sc">$</span>net_migration)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb109-12"><a href="#cb109-12" aria-hidden="true" tabindex="-1"></a>lm_r2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_v1)<span class="sc">$</span>r.squared</span>
+<span id="cb109-13"><a href="#cb109-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-14"><a href="#cb109-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically calculate metrics for GAM Model</span></span>
+<span id="cb109-15"><a href="#cb109-15" aria-hidden="true" tabindex="-1"></a>gam_predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(gam_model_t, <span class="at">newdata =</span> testing_data)</span>
+<span id="cb109-16"><a href="#cb109-16" aria-hidden="true" tabindex="-1"></a>gam_mae <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(gam_predictions <span class="sc">-</span> testing_data<span class="sc">$</span>net_migration))</span>
+<span id="cb109-17"><a href="#cb109-17" aria-hidden="true" tabindex="-1"></a>gam_rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((gam_predictions <span class="sc">-</span> testing_data<span class="sc">$</span>net_migration)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb109-18"><a href="#cb109-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-19"><a href="#cb109-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating R2 for GAM using the residuals and total sum of squares</span></span>
+<span id="cb109-20"><a href="#cb109-20" aria-hidden="true" tabindex="-1"></a>gam_residuals <span class="ot">&lt;-</span> testing_data<span class="sc">$</span>net_migration <span class="sc">-</span> gam_predictions</span>
+<span id="cb109-21"><a href="#cb109-21" aria-hidden="true" tabindex="-1"></a>SS_res_gam <span class="ot">&lt;-</span> <span class="fu">sum</span>(gam_residuals<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb109-22"><a href="#cb109-22" aria-hidden="true" tabindex="-1"></a>SS_tot_gam <span class="ot">&lt;-</span> <span class="fu">sum</span>((testing_data<span class="sc">$</span>net_migration <span class="sc">-</span> <span class="fu">mean</span>(testing_data<span class="sc">$</span>net_migration))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb109-23"><a href="#cb109-23" aria-hidden="true" tabindex="-1"></a>gam_r2 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (SS_res_gam <span class="sc">/</span> SS_tot_gam)</span>
+<span id="cb109-24"><a href="#cb109-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-25"><a href="#cb109-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine metrics into a data frame for comparison</span></span>
+<span id="cb109-26"><a href="#cb109-26" aria-hidden="true" tabindex="-1"></a>comparison_table_v1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb109-27"><a href="#cb109-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"LM_v1"</span>, <span class="st">"GAM"</span>),</span>
+<span id="cb109-28"><a href="#cb109-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">MAE =</span> <span class="fu">c</span>(lm_mae, gam_mae),</span>
+<span id="cb109-29"><a href="#cb109-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">RMSE =</span> <span class="fu">c</span>(lm_rmse, gam_rmse),</span>
+<span id="cb109-30"><a href="#cb109-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">R_squared =</span> <span class="fu">c</span>(lm_r2, gam_r2)</span>
+<span id="cb109-31"><a href="#cb109-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-32"><a href="#cb109-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-33"><a href="#cb109-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-34"><a href="#cb109-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Comapare model_v1 and Model GAM ----------------------------------</span></span>
+<span id="cb109-35"><a href="#cb109-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-36"><a href="#cb109-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the comparison table</span></span>
+<span id="cb109-37"><a href="#cb109-37" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison_table_v1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Model       MAE     RMSE R_squared
+1 LM_v1 117555.45 137079.9 0.3434263
+2   GAM  93105.75 115846.4 0.7237168</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Melting the data frame to use with ggplot</span></span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>comparison_table_long <span class="ot">&lt;-</span> comparison_table_v1 <span class="sc">%&gt;%</span></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(MAE, RMSE, R_squared), <span class="at">names_to =</span> <span class="st">"Metric"</span>, <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting with faceting</span></span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comparison_table_long, <span class="fu">aes</span>(<span class="at">x =</span> Model, <span class="at">y =</span> Value, <span class="at">fill =</span> Model)) <span class="sc">+</span></span>
+<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Comparison of Model Performance Across Metrics Model_v1 and GAM"</span>,</span>
+<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Value"</span>) <span class="sc">+</span></span>
+<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Metric, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 1
+ $ legend.position: chr "none"
+ - attr(*, "class")= chr [1:2] "theme" "gg"
+ - attr(*, "complete")= logi FALSE
+ - attr(*, "validate")= logi TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="model_v3--change-sample-size-for-lm-model_v1" class="level3">
+<h3 class="anchored" data-anchor-id="model_v3--change-sample-size-for-lm-model_v1">- Model_v3- Change Sample size for LM model_v1</h3>
+<p>It may be fair to attempt and compare using same sampple data i.e 91% Since the GAM model’s approach to partitioning more data for training (91%) vs.&nbsp;the LM’s 80% might have contributed to its better performance by allowing the model to learn more nuanced patterns in the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># For createDataPartition and postResample</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Ensuring reproducibility</span></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing non-numeric columns for outlier detection</span></span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>combined_data_v2a  <span class="ot">&lt;-</span>  combined_data_v2[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)] <span class="co"># Removing First two columns are country and year </span></span>
+<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>combined_data_v5 <span class="ot">&lt;-</span> janitor<span class="sc">::</span><span class="fu">clean_names</span>(combined_data_v2a)</span>
+<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Splitting data into training (80%) and testing (20%) sets</span></span>
+<span id="cb114-10"><a href="#cb114-10" aria-hidden="true" tabindex="-1"></a>splitIndex_all <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(combined_data_v5<span class="sc">$</span>net_migration, <span class="at">p =</span> .<span class="dv">91</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb114-11"><a href="#cb114-11" aria-hidden="true" tabindex="-1"></a>trainData_all <span class="ot">&lt;-</span> combined_data_v5[splitIndex_all, ]</span>
+<span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a>testData_all <span class="ot">&lt;-</span> combined_data_v5[<span class="sc">-</span>splitIndex_all, ]</span>
+<span id="cb114-13"><a href="#cb114-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-14"><a href="#cb114-14" aria-hidden="true" tabindex="-1"></a>model_v3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(net_migration <span class="sc">~</span> ., <span class="at">data =</span> trainData_all)</span>
+<span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_v3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = net_migration ~ ., data = trainData_all)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-347844  -55003   42524   89701  228756 
+
+Coefficients:
+                              Estimate  Std. Error t value Pr(&gt;|t|)    
+(Intercept)                -2626877.98   653807.41  -4.018 0.000190 ***
+pol_instab                  -119642.57   266979.21  -0.448 0.655918    
+pop_density                   11442.52     3696.86   3.095 0.003164 ** 
+under_5_mortality_rate         9738.22     2707.12   3.597 0.000716 ***
+gni_income                      123.37       61.21   2.015 0.049042 *  
+total_unemployment            58252.22    32883.38   1.771 0.082341 .  
+govt_expenditure_education    15857.21    35950.14   0.441 0.660977    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 146100 on 52 degrees of freedom
+Multiple R-squared:  0.3745,    Adjusted R-squared:  0.3024 
+F-statistic:  5.19 on 6 and 52 DF,  p-value: 0.0003013</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>actual_responses_all <span class="ot">&lt;-</span> testData_all<span class="sc">$</span>net_migration</span>
+<span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the argument name to 'newdata'</span></span>
+<span id="cb116-4"><a href="#cb116-4" aria-hidden="true" tabindex="-1"></a>predicted_responses_all <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v3, <span class="at">newdata =</span> testData_all)</span>
+<span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example evaluation metric: RMSE</span></span>
+<span id="cb116-7"><a href="#cb116-7" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses_all, <span class="at">obs =</span> actual_responses_all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          RMSE       Rsquared            MAE 
+124442.8394807      0.7363499 109559.1876224 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use postResample to get RMSE and R^2, then calculate MAE separately</span></span>
+<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>evaluation_metrics_all <span class="ot">&lt;-</span> <span class="fu">postResample</span>(<span class="at">pred =</span> predicted_responses_all, <span class="at">obs =</span> actual_responses_all)</span>
+<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>lm_rmse_mv3 <span class="ot">&lt;-</span> evaluation_metrics_all[<span class="dv">1</span>]</span>
+<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>lm_mae_mv3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(predicted_responses_all <span class="sc">-</span> actual_responses_all))</span>
+<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>lm_r2_mv3 <span class="ot">&lt;-</span> evaluation_metrics_all[<span class="dv">2</span>]</span>
+<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Outputting the values</span></span>
+<span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LM 1 Model Performance on Test Data:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LM 1 Model Performance on Test Data:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"MAE:"</span>, lm_rmse_mv3, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE: 124442.8 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"RMSE:"</span>, lm_mae_mv3, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RMSE: 109559.2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"R^2:"</span>, lm_r2_mv3, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2: 0.7363499 </code></pre>
+</div>
+</div>
+</section>
+<section id="comparison-of-model-performance-model_v3-lm91-training-data-and-gam-91-training-data---equal-sample" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-of-model-performance-model_v3-lm91-training-data-and-gam-91-training-data---equal-sample">- Comparison of Model Performance: model_v3 LM(91% Training Data) and GAM (91% Training Data) - Equal Sample</h3>
+<p>This is a comparison of LM and GAM Model on equal sampling</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="co"># for prediction and possibly for RMSE and MAE if used directly</span></span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mgcv) <span class="co"># for GAM models</span></span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming other necessary libraries (like janitor) are loaded</span></span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming dataset is loaded, pre-processed, and models (lm and gam) are trained</span></span>
+<span id="cb126-7"><a href="#cb126-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-8"><a href="#cb126-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate metrics for Linear Model</span></span>
+<span id="cb126-9"><a href="#cb126-9" aria-hidden="true" tabindex="-1"></a>lm_predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_v3, <span class="at">newdata =</span> testData_all)</span>
+<span id="cb126-10"><a href="#cb126-10" aria-hidden="true" tabindex="-1"></a>lm_mae <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(lm_predicted <span class="sc">-</span> testData_all<span class="sc">$</span>net_migration))</span>
+<span id="cb126-11"><a href="#cb126-11" aria-hidden="true" tabindex="-1"></a>lm_rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((lm_predicted <span class="sc">-</span> testData_all<span class="sc">$</span>net_migration)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb126-12"><a href="#cb126-12" aria-hidden="true" tabindex="-1"></a>lm_r2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(model_v3)<span class="sc">$</span>r.squared</span>
+<span id="cb126-13"><a href="#cb126-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-14"><a href="#cb126-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically calculate metrics for GAM Model</span></span>
+<span id="cb126-15"><a href="#cb126-15" aria-hidden="true" tabindex="-1"></a>gam_predictions_v3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(gam_model_t, <span class="at">newdata =</span> testing_data)</span>
+<span id="cb126-16"><a href="#cb126-16" aria-hidden="true" tabindex="-1"></a>gam_mae_v3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(gam_predictions_v3 <span class="sc">-</span> testing_data<span class="sc">$</span>net_migration))</span>
+<span id="cb126-17"><a href="#cb126-17" aria-hidden="true" tabindex="-1"></a>gam_rmse_v3 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((gam_predictions_v3 <span class="sc">-</span> testing_data<span class="sc">$</span>net_migration)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb126-18"><a href="#cb126-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-19"><a href="#cb126-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating R2 for GAM using the residuals and total sum of squares</span></span>
+<span id="cb126-20"><a href="#cb126-20" aria-hidden="true" tabindex="-1"></a>gam_residuals_v3 <span class="ot">&lt;-</span> testing_data<span class="sc">$</span>net_migration <span class="sc">-</span> gam_predictions_v3</span>
+<span id="cb126-21"><a href="#cb126-21" aria-hidden="true" tabindex="-1"></a>SS_res_gam_v3 <span class="ot">&lt;-</span> <span class="fu">sum</span>(gam_residuals_v3<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb126-22"><a href="#cb126-22" aria-hidden="true" tabindex="-1"></a>SS_tot_gam_v3 <span class="ot">&lt;-</span> <span class="fu">sum</span>((testing_data<span class="sc">$</span>net_migration <span class="sc">-</span> <span class="fu">mean</span>(testing_data<span class="sc">$</span>net_migration))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb126-23"><a href="#cb126-23" aria-hidden="true" tabindex="-1"></a>gam_r2_v3 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (SS_res_gam_v3 <span class="sc">/</span> SS_tot_gam_v3)</span>
+<span id="cb126-24"><a href="#cb126-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-25"><a href="#cb126-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine metrics into a data frame for comparison</span></span>
+<span id="cb126-26"><a href="#cb126-26" aria-hidden="true" tabindex="-1"></a>comparison_table_v2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb126-27"><a href="#cb126-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"LM_V3"</span>, <span class="st">"GAM"</span>),</span>
+<span id="cb126-28"><a href="#cb126-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">MAE =</span> <span class="fu">c</span>(lm_mae, gam_mae_v3),</span>
+<span id="cb126-29"><a href="#cb126-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">RMSE =</span> <span class="fu">c</span>(lm_rmse, gam_rmse_v3),</span>
+<span id="cb126-30"><a href="#cb126-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">R_squared =</span> <span class="fu">c</span>(lm_r2, gam_r2_v3)</span>
+<span id="cb126-31"><a href="#cb126-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb126-32"><a href="#cb126-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-33"><a href="#cb126-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the comparison table</span></span>
+<span id="cb126-34"><a href="#cb126-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison_table_v2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Model       MAE     RMSE R_squared
+1 LM_V3 109559.19 124442.8 0.3745465
+2   GAM  93105.75 115846.4 0.7237168</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Comapare model_v3 and Model GAM ----------------------------------</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Melting the data frame to use with ggplot</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>comparison_table_long <span class="ot">&lt;-</span> comparison_table_v2 <span class="sc">%&gt;%</span></span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(MAE, RMSE, R_squared), <span class="at">names_to =</span> <span class="st">"Metric"</span>, <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting with faceting</span></span>
+<span id="cb128-9"><a href="#cb128-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(comparison_table_long, <span class="fu">aes</span>(<span class="at">x =</span> Model, <span class="at">y =</span> Value, <span class="at">fill =</span> Model)) <span class="sc">+</span></span>
+<span id="cb128-10"><a href="#cb128-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="cb128-11"><a href="#cb128-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb128-12"><a href="#cb128-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Comparison of Model Performance Across Metrics Model_v3 and GAM"</span>,</span>
+<span id="cb128-13"><a href="#cb128-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb128-14"><a href="#cb128-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Value"</span>) <span class="sc">+</span></span>
+<span id="cb128-15"><a href="#cb128-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb128-16"><a href="#cb128-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Metric, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">nrow =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb128-17"><a href="#cb128-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 1
+ $ legend.position: chr "none"
+ - attr(*, "class")= chr [1:2] "theme" "gg"
+ - attr(*, "complete")= logi FALSE
+ - attr(*, "validate")= logi TRUE</code></pre>
+</div>
+</div>
+<p>Even with the adjustment of the samples for LN. the R Square is still compared to GAM</p>
+</section>
+</section>
+<section id="step-8-conclusion" class="level1">
+<h1>Step 8: Conclusion</h1>
+<p>I attempt to understand the factors influencing net migration, including political instability, population density, mortality rates, unemployment, education expenditure, and income levels in Mexico. For this purpose, I use two statistical models: Linear Regression (LM) and Generalized Additive Models (GAM).</p>
+<p><strong>Key Findings:</strong></p>
+<ul>
+<li><p>In the <strong>Linear Regression (LM)</strong> analysis, I found that population density and under-5 mortality rates significantly influence net migration. A higher population density correlates with increased net migration, suggesting that denser areas might be more appealing to migrants. Interestingly, the under-5 mortality rate, a surprising predictor, also showed a positive association, hinting at complex underlying socio-economic factors. Specifically, for every unit increase in population density, net migration increases by approximately 11,440 people. Furthermore, an increase in the under-5 mortality rate by one unit is associated with an increase in net migration by about 7,228 people. However the linear regression model does not fully meet the assumptions of linearity, homoscedasticity, independence of residuals, and normality of errors hence the need for GAM.</p></li>
+<li><p>The <strong>Generalized Additive Model (GAM)</strong> highlighted non-linear relationships between the predictors and net migration, especially emphasizing the role of time and under-5 mortality rates. This indicates that the impact of these factors on migration is more intricate than initially assumed. The GAM model explained roughly 93.7% of the variance in net migration, demonstrating its strong predictive capability.</p></li>
+</ul>
+<p><strong>Model Performance:</strong></p>
+<ul>
+<li>The GAM model achieved an R-squared value of 0.72, showing that it could explain 72% of the variation in net migration. This represents a significant improvement over the linear regression model.</li>
+</ul>
+<p><strong>Conclusion:</strong> My analysis highlights the complexity of migration and the significance of considering a range of socio-economic and demographic factors in understanding in mexico. While LM provided initial insights, the flexibility of GAM in modeling non-linear relationships offered a deeper understanding of the dynamics involved. This analysis can guide policymakers and researchers in recognizing the multifaceted nature of migration, emphasizing the need for nuanced approaches in both research and policy-making.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/oredesigns\.blog");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2021, O.Orenaike</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Otomisin">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/orenaiket">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/tosin-orenaike">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,15 @@
+{
+  "hash": "0193549a87e8c84669c41d1904800636",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Post With Code\"\nsubtitle: \"Seventy years of surveys tell us that two weeks before an election, about 20% of votes are still up for grabs\"\nauthor: \"Orenaike Oluwatosin\"\ndate: \"2024-03-26\"\ncategories: [news, code, analysis]\nimage: \"image2.jpeg\"\n---\n\n\nThis is a post with executable code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\nIn a [previous post](https://twopoints.blog/posts/2023-01-26-oscars/), we talked about the Oscars and whether prestige awards still matter. Let's turn now to what is perhaps the mother of all prestige awards --- the Nobel Prize. The legacy of Swedish industrialist Alfred Nobel, it honors outstanding achievement in the fields of chemistry, literature, medicine, peace, physics, and, since 1969, economics. Winners --- ahem, *laureates* --- receive unparalleled stature not just in their fields but in the public sphere (deservedly [or otherwise](https://en.wikipedia.org/wiki/Nobel_disease)).\n\nIn its 120-year history, close to a thousand individuals (and some two dozen organizations) have been given a Nobel. What are they like? As an elite group, you can probably guess that they would tend towards oldness, whiteness, and maleness. But how old, how white, and how male? Fortunately, NobelPrize.org has an [API](https://www.nobelprize.org/about/developer-zone-2/) for downloading data on all laureates, through which I was able to compile, for each laureate: the year and category they won in, their sex, their birth date, and their birth country (using modern borders). I won't be including organizations in my analysis.\n\nLet's take a look at the cleaned dataset using [`reactable`](https://glin.github.io/reactable/), a wonderful table-making package by Greg Lin that I sure wish I discovered earlier. Below is a sortable, searchable, paginated table of the complete dataset:",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
