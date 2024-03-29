@@ -4,6 +4,7 @@ project:
   render:
   - "*.qmd"
   - "!*.ipynb"
+  - "*.Rmd"
 
 website:
   title: "Orenaikeblog"
@@ -14,6 +15,8 @@ website:
       - about.qmd
       - portfolio.qmd
       - talks.qmd
+      - Maps.Rmd
+      - Contacts.Rmd
       - icon: github
         href: https://github.com/Otomisin
       - icon: twitter
