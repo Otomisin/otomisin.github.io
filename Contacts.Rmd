@@ -1,0 +1,18 @@
+---
+output: html_document
+---
+
+<center><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODQ3N2UwMjEyZWE0MDM5ZWRlMzhhNDkwMmYwN2FhYjUzZTk1NzA5ZCZjdD1n/SWoSkN6DxTszqIKEqv/giphy.gif"></center>
+
+<hr>
+
+<div class="icons">
+  <a href="mailto:orenaiket(@)yahoo.com"><i class="fas fa-envelope fa-2x"></i></a>
+  <a href="https://twitter.com/orenaiket"><i class="fab fa-twitter fa-2x"></i></a>
+  <a href="https://www.linkedin.com/in/tosin-orenaike"><i class="fab fa-linkedin fa-2x"></i></a>
+  <a href="https://github.com/Otomisin"><i class="fab fa-github fa-2x"></i></a>
+</div>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+
+<hr>
