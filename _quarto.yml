@@ -7,15 +7,15 @@ project:
   - "*.Rmd"
 
 website:
-  title: "Orenaikeblog"
+  title: "Knowledge Sharing"
   site-url: https://oredesigns.blog
   description: "Here and now — by O.Orenaike"
   navbar:
     right:
       - about.qmd
-      - portfolio.qmd
-      - talks.qmd
-      - Maps.Rmd
+      # - portfolio.qmd
+      # - welcome.qmd
+      # - Maps.Rmd
       - Contacts.Rmd
       - icon: github
         href: https://github.com/Otomisin
