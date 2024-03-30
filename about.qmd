@@ -1,9 +1,9 @@
 ---
-title: "About me"
+# title: "About me"
 about:
   id: hero-heading
   template: jolla
-  image: profile.jpg
+  image: Oluwatosin.png
   links:
     - icon: twitter
       text: twitter
@@ -11,34 +11,25 @@ about:
     - icon: github
       text: Github
       href: https://github.com
+    - icon: linkedin
+      text: linkedin
+      href: https://www.linkedin.com/in/tosin-orenaike
+    - icon: Goodreads
+      text: Goodreads
+      href: https://www.goodreads.com/user/show/60984731-orenaike-tosin
+
 ---
 
-### About.
+::: {#hero-heading}
 
-:::{#hero-heading}
+I'm a passionate data scientist with expertise in leveraging geospatial technologies to tackle environmental challenges, enhance human security, and support safe migration in humanitarian efforts.  At the Global Data Institute(GDI) specifically, the Analytics, Knowledge and Output (AKO) unit I provide operatonal support for country missions with data collection tools, data-driven analysis and insights, the creation of informative maps, and training & capacity building programs. My experience spans,**Data Management & Analysis**. **GIS & Remote Sensing:** and **Information Management:** 
 
-Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.
-
-## Education
-
-University of California, San Diego | San Diego, CA
-PhD in Mathematics | Sept 2011 - June 2015
-
-Macalester College | St. Paul MA
-B.A in Economics | Sept 2007 - June 2011
-
-## Experience
-
-Wengo Analytics | Head Data Scientist | April 2018 - present
-
-GeoScynce | Chief Analyst | Sept 2012 - April 2018
-
+<br> Thanks for stopping by!
+If you have any questions or would like to work together, please don't hesitate to [contact me](mailto:orenaiket@yahoo.com).
 :::
 
-<br>
-Thanks for stopping by! If you have any questions or would like to work together, please don't hesitate to [contact me](mailto:orenaiket@yahoo.com).
-
-
 <hr>
-![](images/Page1.png){ width=100% height=50% }
+
+![](images/Page1.png){width="100%" height="50%"}
+
 <hr>
