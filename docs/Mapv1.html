@@ -141,7 +141,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About.</span></a>
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./portfolio.html"> 
+<span class="menu-text"><strong>Welcome to my page!</strong></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Maps.html"> 
+<span class="menu-text">MAPS</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./Contacts.html"> 
@@ -218,19 +226,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- # library(gridExtra) -->
 <!-- # library(knitr) -->
 <!-- # ``` -->
-<hr>
-<img src="images/Page.png" style="width:200.0%;height:50.0%">
-<hr>
+<!-- <hr> -->
+<!-- ::: column-screen -->
+<!-- ![](images/Page.png){width="200%" height="50%"} -->
+<!-- ::: -->
+<!-- <hr> -->
 <section id="static-maps" class="level2">
 <h2 class="anchored" data-anchor-id="static-maps"><strong>1.0 STATIC MAPS</strong></h2>
 <section id="arctic-sea-ice-decline" class="level3">
 <h3 class="anchored" data-anchor-id="arctic-sea-ice-decline">Arctic Sea Ice decline</h3>
-<img src="images/Arctic.png" class="img-fluid">
+<p><img src="images/Arctic.png" class="img-fluid"></p>
 <hr>
 </section>
 <section id="report-maps" class="level3">
 <h3 class="anchored" data-anchor-id="report-maps">Report Maps</h3>
-<img src="images/Page1.png" class="img-fluid"> <a href="https://dtm.iom.int/reports/nigeria-north-central-and-north-west-mobility-tracking-round-10-idp-atlas-october-2022">Link to Report publication</a>
+<p><img src="images/Page1.png" class="img-fluid"> <a href="https://dtm.iom.int/reports/nigeria-north-central-and-north-west-mobility-tracking-round-10-idp-atlas-october-2022">Link to Report publication</a></p>
 <hr>
 </section>
 <section id="papau-new-guinea" class="level3">
@@ -255,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- ### Map of Vanuatu -->
 <!-- ![**Context:** Arctic Sea Ice decline made from a turoral. <br> **Tools**: ArcGIS Pro <br>**Date:** January 2023](images/Vanuatu6.png) -->
 <hr>
-<strong>## 2.0 INTERACTIVE MAPS</strong>
+<p><strong>## 2.0 INTERACTIVE MAPS</strong></p>
 <hr>
 </section>
 <section id="argis-online" class="level3">
@@ -269,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <p><a href="https://africageoportal.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=2757cff308dd4e1f9bbf36e8052ee1f0">Somalia River Basin</a> The River Basins in Somalia</p>
 <iframe src="https://africageoportal.maps.arcgis.com/apps/instant/interactivelegend/index.html?appid=2757cff308dd4e1f9bbf36e8052ee1f0" width="800" height="600" frameborder="0" style="border:0" allowfullscreen="">
-iFrames are not supported on this page.
+<p>iFrames are not supported on this page.</p>
 </iframe>
 </section>
 <section id="west-african-cities-in-progress" class="level3">
@@ -310,8 +320,8 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste</span>(country, <span class="st">"&lt;br&gt;"</span>, capital_city, <span class="at">sep =</span> <span class="st">""</span>)</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-709ef7cfb185339dd677" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-709ef7cfb185339dd677">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"width":"800px"},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[9.076499999999999,5.6037,8.484,6.3106,6.8206,12.3714,12.6392,14.7167,11.863,9.5357,13.4531,6.1319,6.4968],[7.3986,-0.187,-13.2299,-10.8047,-5.2764,-1.533,-8.0029,-17.4677,-15.5976,-13.6788,-16.579,1.2221,2.6059],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Nigeria<br>Abuja","Ghana<br>Accra","Sierra Leone<br>Freetown","Liberia<br>Monrovia","Cote d'Ivoire<br>Yamoussoukro","Burkina Faso<br>Ouagadougou","Mali<br>Bamako","Senegal<br>Dakar","Guinea-Bissau<br>Bissau","Guinea<br>Conakry","Gambia<br>Banjul","Togo<br>Lome","Benin<br>Porto-Novo"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[5.6037,14.7167],"lng":[-17.4677,7.3986]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-3223160aa6c90ad3f490" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-3223160aa6c90ad3f490">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"width":"800px"},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[9.076499999999999,5.6037,8.484,6.3106,6.8206,12.3714,12.6392,14.7167,11.863,9.5357,13.4531,6.1319,6.4968],[7.3986,-0.187,-13.2299,-10.8047,-5.2764,-1.533,-8.0029,-17.4677,-15.5976,-13.6788,-16.579,1.2221,2.6059],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Nigeria<br>Abuja","Ghana<br>Accra","Sierra Leone<br>Freetown","Liberia<br>Monrovia","Cote d'Ivoire<br>Yamoussoukro","Burkina Faso<br>Ouagadougou","Mali<br>Bamako","Senegal<br>Dakar","Guinea-Bissau<br>Bissau","Guinea<br>Conakry","Gambia<br>Banjul","Togo<br>Lome","Benin<br>Porto-Novo"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[5.6037,14.7167],"lng":[-17.4677,7.3986]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
