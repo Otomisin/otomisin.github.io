@@ -1,5 +1,6 @@
 ---
 title: "Attempting drivers of migration"
+subtitle: "Mexico on the Move: How Macro Forces Drive Migration"
 author: "Oluwatosin Orenaike"
 date: "2024-02-13"
 categories: [R, Machine Learning, Migration]
@@ -25,43 +26,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Load Necessary Libraries
 
 ```{r include=FALSE}
@@ -84,24 +48,32 @@ library(kableExtra) # for enhancing knitr tables
 
 ```
 
+Migration patterns are a complex interplay influenced by a multitude of factors. This assessment delves into the case of Mexico, a country with a long history of emigration, exploring how persistent macro-level trends might fuel future migration flows. Mexico's position as a major sending country, with a significant number of emigrants compared to immigrants, makes it a compelling case study for analyzing potential drivers of migration.
 
-This is a note for the assessment for the position of a data analyist. The model shows the drivers of international migration at Macro, Meso and Micro.  The argument is that migration is likely to increase if current drivers persist. This assessment will focus on the macro level variables for easy data access. Micro and Meso level are however recommended to take country nuances into consideration. The following variables will be considered in this assessment.
+Data from the World Bank indicates Mexico has the highest number of emigrants (11.22 million) in the world, while immigration remains lower (1.2 million) [World Bank - Population Review ](https://worldpopulationreview.com/country-rankings/immigration-by-country). Net migration figures further support this trend, with Mexico experiencing a net loss of -51,399 migrants in 2022 and an average negative net migration of -223,830 over the past 63 years [World Bank](https://data.worldbank.org/indicator/SM.POP.NETM?most_recent_value_desc=false).
 
+The International Organization for Migration's (IOM) [framework](https://emm.iom.int/handbooks/global-context-international-migration/drivers-international-migration#:~:text=Drivers%20include%20economic%2C%20political%2C%20demographic,to%20move%20to%20another%20country) guides this analysis, examining drivers of international migration at Macro, Meso, and Micro levels.  While migration is likely to increase if current trends persist, this assessment focuses on Macro-level variables due to easier data access and modeling. More so allows us to build a strong foundation for analysis. This approach allows for future upscaling to continental or state levels. Analyzing Micro and Meso levels is recommended for in-depth understanding of country-specific nuances.
+
+::: {.callout-caution collapse="true"}
+## - General Caveat
+
+- It's important to acknowledge that this analysis focuses on macro-level variables. While these factors provide valuable insights, they may not capture the full complexity of individual migration decisions. Micro and meso factors, such as individual circumstances, family networks, and local community dynamics, can also significantly influence people's choices to migrate.
+
+- It's important to recognize that machine learning models can inherit biases from the data used for training.  The results presented here should be interpreted cautiously, acknowledging the potential for biases that might overestimate or underestimate the impact of certain factors.  
+:::
 
 Data were gathered from the following links and sources, incorporating specific variables relevant to the study:
 
-- **Net Migration**: The difference between the number of people entering and leaving a geographic area over a specific period, serving as a proxy for population movement. [World Bank - Net Migration](https://data.worldbank.org/indicator/SM.POP.NETM?view=chart)
+- **Dependent Variables**:
+    - **Net Migration**: The difference between the number of people entering and leaving a geographic area over a specific period, serving as a proxy for population movement. [World Bank - Net Migration](https://data.worldbank.org/indicator/SM.POP.NETM?view=chart)
 - **Independent Variables**:
     - **Economic Factors**:
         - **Employment Rate**: Reflects the availability of jobs and the health of the economic environment. Regions with higher employment rates attract people due to better job opportunities, acting as a push or pull factor for migrants. This variable is closely linked to **Unemployment** rates, where lower unemployment rates indicate higher employment opportunities. [World Bank - Unemployment](https://data.worldbank.org/indicator/SL.UEM.TOTL.NE.ZS)
         - **Income Levels**: The average income or economic prosperity in a region, influencing migration as higher income levels often correlate with a higher standard of living. [World Bank - Income Level](https://data.worldbank.org/indicator/NY.GNP.PCAP.CD?view=chart)
     - **Social and Demographic Factors**:
         - **Mortality Rate**: While not a direct predictor of migration, it can influence the desirability of a location indirectly through its impact on life expectancy and the quality of healthcare services. [World Bank - Mortality Rate](https://data.worldbank.org/indicator/SH.DYN.MORT?view=chart)
-    - **Population Density**: Provides insight into how densely populated a region is, which can impact migrants' decisions. [World Bank - Population Density](https://data.worldbank.org/indicator/EN.POP.DNST?view=chart)
-    - **Political Instability**: An indicator of the stability of governance in a region, which can significantly affect migration patterns. [World Bank - Worldwide Governance Indicators](https://databank.worldbank.org/source/worldwide-governance-indicators/Series/PV.EST#)
-
-NetMigration ~ EmploymentRate + IncomeLevels + MortalityRate
-Net Migration  = pol_instab + pop_density + under_5_mortality_rate + total_unemployment + govt_expenditure_education + gni_income
+        - **Population Density**: Provides insight into how densely populated a region is, which can impact migrants' decisions. [World Bank - Population Density](https://data.worldbank.org/indicator/EN.POP.DNST?view=chart)
+        - **Political Instability**: An indicator of the stability of governance in a region, which can significantly affect migration patterns. [World Bank - Worldwide Governance Indicators](https://databank.worldbank.org/source/worldwide-governance-indicators/Series/PV.EST#)
 
 **Model Equation**
 
@@ -120,6 +92,8 @@ Load the variables
 # Define the base directory
 base_dir <- "C:/Users/orenaike/OneDrive/02_JOBS/OT_CV/Jobs_Application/IOM/Interview_Prep/Prep_Grace"
 
+# Variables
+# Net Migration ~  pol_instab + pop_density + under_5_mortality_rate + total_unemployment + govt_expenditure_education + gni_income
 
 # Define subdirectories
 sub_dirs <- c("API_EN.POP.DNST_DS2_en_csv_v2_1512_Pop_Density",
@@ -238,7 +212,7 @@ head(combined_data_v2)
 summary(combined_data_v2)
 ```
 
-A brief overview of the data reveals the presence of missing values (NAs), which require attention before proceeding with modeling
+A brief overview of the data reveals the presence of missing values (NAs), which require attention before proceeding with modeling.
 
 # Step 3: Data Checks and Cleaning
 
@@ -289,8 +263,7 @@ Checking missing values and the skewness of the data, median imputation is gener
 ### - Mean imputation and re-check
 ```{r}
 
-# Decision criterion: Focus on data from the last 20 years with <= 24% missing values
-# Missing value imputation for selected columns
+# Missing value imputation for selected columns with missing values
 columns_to_impute <- c("pol_instab", "pop_density", "under_5_mortality_rate", "total_unemployment", "govt_expenditure_education")
 
 combined_data_v2[columns_to_impute] <- lapply(combined_data_v2[columns_to_impute], function(x) ifelse(is.na(x), median(x, na.rm = TRUE), x))
@@ -300,12 +273,13 @@ print(colSums(is.na(combined_data_v2)))
 
 
 # Data Overview after mean imputation
-
 summary(combined_data_v2)
 
 # Check check by years
 # combined_data_v2 |> filter(year == 1960) |> summary()
 ```
+Alternative approach is to remove all rows with NAs, implication of this is small sample data. 
+
 
 ### - Outlier Detection and Management
 ```{r}
@@ -368,7 +342,6 @@ long_data <- pivot_longer(combined_data_v2,
                           names_to = "Indicator", 
                           values_to = "Value")
 
-# Adjusting the script for color differentiation
 ggplot(long_data, aes(x = year, y = Value, color = Indicator)) +
   geom_line() +
   geom_point() +
@@ -397,13 +370,13 @@ In this section, I trained a linear regression model using the `caret` package, 
 ### - Model Training using all variables
 
 Net Migration  = pol_instab + pop_density + under_5_mortality_rate + total_unemployment + govt_expenditure_education + gni_income
+
 ```{r}
 library(caret) # For createDataPartition and postResample
 set.seed(123) # Ensuring reproducibility
 
-
 # Removing non-numeric columns for outlier detection
-combined_data_v2a  <-  combined_data_v2[,-c(1,2)] # Removing First two columns are country and year 
+combined_data_v2a  <-  combined_data_v2[,-c(1,2)] # Removing first two columns as they are country and year 
 combined_data_v5 <- janitor::clean_names(combined_data_v2a)
 
 # Splitting data into training (80%) and testing (20%) sets
@@ -422,19 +395,20 @@ predicted_responses_all <- predict(model_v1, newdata = testData_all)
 # Example evaluation metric: RMSE
 postResample(pred = predicted_responses_all, obs = actual_responses_all)
 
-
 # Use postResample to get RMSE and R^2, then calculate MAE separately
 evaluation_metrics_all <- postResample(pred = predicted_responses_all, obs = actual_responses_all)
 lm_rmse_m1 <- evaluation_metrics_all[1]
 lm_mae_m1 <- mean(abs(predicted_responses_all - actual_responses_all))
 lm_r2_m1 <- evaluation_metrics_all[2]
 
-# Outputting the values
+# Outputting the corrected values
 cat("LM 1 Model Performance on Test Data:\n")
-cat("MAE:", lm_rmse_m1, "\n")
-cat("RMSE:", lm_mae_m1, "\n")
+cat("RMSE:", lm_rmse_m1, "\n")
+cat("MAE:", lm_mae_m1, "\n")
 cat("R^2:", lm_r2_m1, "\n")
+
 ```
+
 
 The model starts with a base(intercept) level of net migration at negative 2,052,000, which means if all other factors were at zero, the net migration would be a huge negative number. However, this is a theoretical scenario because factors like unemployment rate or GNI per capital can't actually be zero. This also shows that political instability doesn't significantly impact migration in Mexico. A rise in population density increases net migration by 11,930 per unit, suggesting a strong link. Increase in net migration in this context refers to making the net migration number less negative or moving towards a positive value, effectively meaning more people are entering the country than leaving.
 
@@ -454,7 +428,7 @@ set.seed(123) # Ensuring reproducibility
 combined_data_v6 <- combined_data_v5 %>%
   select(-pol_instab)
 
-set.seed(123) # Ensuring reproducibility
+set.seed(123) # Ensuring reproducibility again
 # Splitting data into training (80%) and testing (20%) sets
 splitIndex <- createDataPartition(combined_data_v6$net_migration, p = .8, list = FALSE)
 trainData <- combined_data_v6[splitIndex, ]
@@ -465,12 +439,8 @@ summary(model_v1a)
 
 actual_responses <- testData$net_migration
 
-# Correcting the argument name to 'newdata'
+# Correcting the argument name to 'newdata' for prediction
 predicted_responses <- predict(model_v1a, newdata = testData)
-
-# Example evaluation metric: RMSE
-postResample(pred = predicted_responses, obs = actual_responses)
-
 
 # Use postResample to get RMSE and R^2, then calculate MAE separately
 evaluation_metrics <- postResample(pred = predicted_responses, obs = actual_responses)
@@ -478,17 +448,17 @@ lm_rmse_mv1a <- evaluation_metrics[1]
 lm_mae_mv1a <- mean(abs(predicted_responses - actual_responses))
 lm_r2_mv1a <- evaluation_metrics[2] # R^2 is the second element
 
-# Outputting the values
+# Corrected Outputting the values
 cat("LM 2 Model Performance on Test Data:\n")
-cat("MAE:", lm_rmse_mv1a, "\n")
-cat("RMSE:", lm_mae_mv1a, "\n")
+cat("RMSE:", lm_rmse_mv1a, "\n")
+cat("MAE:", lm_mae_mv1a, "\n")
 cat("R^2:", lm_r2_mv1a, "\n")
 
 ```
 
 #### - model_v1b
 ```{r}
-# Removing political instability
+# Removing political instability and total unemployment
 combined_data_v6 <- combined_data_v5 %>%
   select(-pol_instab, -total_unemployment)
 
@@ -503,12 +473,8 @@ summary(model_v1b)
 
 actual_responses <- testData$net_migration
 
-# Correcting the argument name to 'newdata'
+# Correcting the argument name to 'newdata' for prediction
 predicted_responses <- predict(model_v1b, newdata = testData)
-
-# Example evaluation metric: RMSE
-postResample(pred = predicted_responses, obs = actual_responses)
-
 
 # Use postResample to get RMSE and R^2, then calculate MAE separately
 evaluation_metrics <- postResample(pred = predicted_responses, obs = actual_responses)
@@ -516,15 +482,16 @@ lm_rmse_mv1b <- evaluation_metrics[1]
 lm_mae_mv1b <- mean(abs(predicted_responses - actual_responses))
 lm_r2_mv1b <- evaluation_metrics[2] # R^2 is the second element
 
-# Outputting the values
+# Corrected Outputting the values
 cat("LM 2 Model Performance on Test Data:\n")
-cat("MAE:", lm_rmse_mv1b, "\n")
-cat("RMSE:", lm_mae_mv1b, "\n")
+cat("RMSE:", lm_rmse_mv1b, "\n")
+cat("MAE:", lm_mae_mv1b, "\n")
 cat("R^2:", lm_r2_mv1b, "\n")
+
 ```
 #### - model_v1c
 ```{r}
-# Removing political instability
+# Removing political instability, total unemployment and GNI income
 combined_data_v6 <- combined_data_v5 %>%
   select(-pol_instab, -total_unemployment, -gni_income)
 
@@ -560,9 +527,9 @@ cat("R^2:", lm_r2_mv1c, "\n")
 ```
 #### - model_v1d
 ```{r}
-# Removing political instability
+# Removing political instability, total unemployment, GNI income, and government expenditure on education
 combined_data_v6 <- combined_data_v5 %>%
-  select(-pol_instab, -total_unemployment,-gni_income, -govt_expenditure_education )
+  select(-pol_instab, -total_unemployment, -gni_income, -govt_expenditure_education)
 
 set.seed(123) # Ensuring reproducibility
 # Splitting data into training (80%) and testing (20%) sets
@@ -575,12 +542,8 @@ summary(model_v1d)
 
 actual_responses <- testData$net_migration
 
-# Correcting the argument name to 'newdata'
+# Correcting the argument name to 'newdata' for prediction
 predicted_responses <- predict(model_v1d, newdata = testData)
-
-# Example evaluation metric: RMSE
-postResample(pred = predicted_responses, obs = actual_responses)
-
 
 # Use postResample to get RMSE and R^2, then calculate MAE separately
 evaluation_metrics <- postResample(pred = predicted_responses, obs = actual_responses)
@@ -588,11 +551,12 @@ lm_rmse_mv1d <- evaluation_metrics[1]
 lm_mae_mv1d <- mean(abs(predicted_responses - actual_responses))
 lm_r2_mv1d <- evaluation_metrics[2] # R^2 is the second element
 
-# Outputting the values
+# Corrected Outputting the values
 cat("LM 2 Model Performance on Test Data:\n")
-cat("MAE:", lm_rmse_mv1d, "\n")
-cat("RMSE:", lm_mae_mv1d, "\n")
+cat("RMSE:", lm_rmse_mv1d, "\n")
+cat("MAE:", lm_mae_mv1d, "\n")
 cat("R^2:", lm_r2_mv1d, "\n")
+
 ```
 
 Removing factors generally leads to a decrease in R-squared, suggesting a decline in the model's explanatory power. Though However, removing GNI income and government expenditure on education in model_v1d seems to have resulted in a significant improvement in R-squared. comprehensive model (v1) had a good balance of explanatory power and prediction accuracy, with an R² of approximately 0.6208.
@@ -657,7 +621,7 @@ The Durbin-Watson test result (DW = 0.70977) indicates a strong positive autocor
 dwtest(model_v1)
 
 ```
-### - Check outlier influence 
+### - Check Outlier Influence 
 ```{r}
 # Outliers and Influential Data Points -----
 # Aim: To identify and investigate outliers and influential observations that could unduly affect the model.
@@ -670,40 +634,35 @@ plot(model_v1, which = 4) # Cook's distance for influential outliers
 In conclusion, the linear regression model does not fully meet the assumptions of linearity, homoscedasticity, independence of residuals, and normality of errors. Hence the need to consider a different modeling approaches like GAM, which can handle these complexities more effectively.
 
 # Step 6:  Generalized Additive Model (GAM)
-The next attempt was to use Generalized Additive Model (GAM) due to the shortcoming os LN. GAM is a flexible approach to modeling relationships between a dependent variable and one or more independent variables. It is an extension of General Linear Models (GLM) where the linear predictor involves a sum of smooth functions of predictors rather than just the predictors themselves.This allows GAMs to handle non-linear relationships in a straightforward manner, providing a powerful tool for exploring complex data structures.
+The next attempt was to use Generalized Additive Model (GAM) due to the shortcoming of LN. GAM is a flexible approach to modeling relationships between a dependent variable and one or more independent variables. It is an extension of General Linear Models (GLM) where the linear predictor involves a sum of smooth functions of predictors rather than just the predictors themselves.This allows GAMs to handle non-linear relationships in a straightforward manner, providing a powerful tool for exploring complex data structures.
 
 ```{r}
-
-# Clean names first
 combined_data_v3 <- combined_data_v2 |> clean_names()
 
 set.seed(123) # Ensure reproducibility
-training_index <- createDataPartition(combined_data_v3$net_migration, p = 0.91, list = FALSE) # 0.91 was used because the models need for higher observation
+training_index <- createDataPartition(combined_data_v3$net_migration, p = 0.91, list = FALSE) # 0.91 was used due to the need for a larger training set
 training_data <- combined_data_v3[training_index, ]
 testing_data <- combined_data_v3[-training_index, ]
 
-# Then, ensure 'year' is treated as numeric
+# Ensure 'year' is treated as numeric
 training_data$year <- as.numeric(as.character(training_data$year))
-testing_data$year <- as.numeric(as.character(testing_data$year)) # Do the same for testing data
+testing_data$year <- as.numeric(as.character(testing_data$year))
 
 # Fit a GAM model on the training data
 gam_model_t <- gam(net_migration ~ s(pol_instab) + s(under_5_mortality_rate) + s(gni_income) + 
                  s(total_unemployment) + s(year, bs="cr"), data=training_data)
 summary(gam_model_t)
 
-
-# Make predictions on the testing data -----------
+# Make predictions on the testing data
 gam_predictions <- predict(gam_model_t, testing_data)
 
 # Now define 'actual' as the true net_migration values from the testing_data
 actual <- testing_data$net_migration
 residuals <- actual - gam_predictions # Calculate residuals
 SS_res <- sum(residuals^2) # Calculate SS_res (sum of squares of residuals)
-# Calculate SS_tot (total sum of squares)
 mean_actual <- mean(actual)
-SS_tot <- sum((actual - mean_actual)^2)
-# Calculate R^2
-R2 <- 1 - (SS_res / SS_tot)
+SS_tot <- sum((actual - mean_actual)^2) # Calculate SS_tot (total sum of squares)
+R2 <- 1 - (SS_res / SS_tot) # Calculate R^2
 
 # Calculate MAE and RMSE using actual and predicted values
 gam_mae <- mae(actual, gam_predictions)
@@ -714,7 +673,9 @@ cat("GAM Model Performance on Test Data:\n")
 cat("MAE:", gam_mae, "\n")
 cat("RMSE:", gam_rmse, "\n")
 cat("R-squared:", R2, "\n")
+
 ```
+
 
 GAM model analysis indicates that child mortality rate and time (year) are significant predictors of net migration, while political instability, income levels, and unemployment are not significant. The model explains a large portion of the variance in net migration (93.7% deviance explained) and performs well on test data with an adjusted R-squared value of 0.72, suggesting good predictive power. The model's predictions are relatively accurate, with a Mean Absolute Error (MAE) of approximately 93,106 and a Root Mean Square Error (RMSE) of approximately 115,846, which are the average deviations from the actual values. There will be a need to also carry out a diagnostics test next.
 
@@ -903,20 +864,36 @@ ggplot(comparison_table_long, aes(x = Model, y = Value, fill = Model)) +
 
 Even with the adjustment of the samples for LN. the R Square is still compared to GAM
 
-# Step 8: Conclusion
+# Step 8: Result and Conclusion
 
 I attempt to understand the factors influencing net migration, including political instability, population density, mortality rates, unemployment, education expenditure, and income levels in Mexico. For this purpose, I use two statistical models: Linear Regression (LM) and Generalized Additive Models (GAM).
 
-**Key Findings:**
+Based on examination of factors influencing net migration with a specific focus on Mexico, this analysis employed two statistical models: Linear Regression (LM) and Generalized Additive Models (GAM). Below is a summarized statement of the findings and their implications within the Mexican context:
 
-- In the **Linear Regression (LM)** analysis, I found that population density and under-5 mortality rates significantly influence net migration. A higher population density correlates with increased net migration, suggesting that denser areas might be more appealing to migrants. Interestingly, the under-5 mortality rate, a surprising predictor, also showed a positive association, hinting at complex underlying socio-economic factors. Specifically, for every unit increase in population density, net migration increases by approximately 11,440 people. Furthermore, an increase in the under-5 mortality rate by one unit is associated with an increase in net migration by about 7,228 people. However the linear regression model does not fully meet the assumptions of linearity, homoscedasticity, independence of residuals, and normality of errors hence the need for GAM.
+**Summary of Findings:**
 
-- The **Generalized Additive Model (GAM)** highlighted non-linear relationships between the predictors and net migration, especially emphasizing the role of time and under-5 mortality rates. This indicates that the impact of these factors on migration is more intricate than initially assumed. The GAM model explained roughly 93.7% of the variance in net migration, demonstrating its strong predictive capability.
+- **Linear Regression (LM)** analysis identified population density and under-5 mortality rate as significant predictors of net migration in Mexico. The model quantitatively demonstrated that an increase in population density correlates with a rise in net migration, suggesting areas with higher density may offer more attractive opportunities for migrants. Furthermore, an unexpected finding was the positive association of the under-5 mortality rate with net migration, indicating complex underlying factors driving migration decisions. Despite its insights, the LM model faced challenges in meeting certain statistical assumptions, limiting its overall effectiveness.
+
+- **Generalized Additive Model (GAM)** provided a nuanced understanding of the non-linear relationships between various predictors and net migration. Particularly, it underscored the importance of temporal factors and under-5 mortality rates in influencing migration trends in Mexico. The GAM's superior predictive capability, explaining approximately 93.7% of the variance in net migration, underscores its utility in capturing the complexities of migration dynamics.
 
 **Model Performance:**
 
-- The GAM model achieved an R-squared value of 0.72, showing that it could explain 72% of the variation in net migration. This represents a significant improvement over the linear regression model.
+- The GAM model achieved an R-squared value of 0.72, showing that it could explain 72% of the variation in net migration. This represents a significant improvement over the linear regression mode
+
+**Implications for Mexico:**
+
+- The significant role of **population density** in driving net migration suggests that urban and densely populated areas in Mexico may be key targets for migration due to perceived opportunities. This insight could guide Mexican policymakers in resource allocation and infrastructure development to better manage migration inflows.
+- The association between **under-5 mortality rates and net migration** highlights the influence of socio-economic conditions on migration. Improving healthcare and reducing child mortality could thus form part of a broader strategy to manage migration by addressing some of its root causes.
+- The influence of **temporal changes** on migration patterns highlights the evolving nature of migration drivers over time. For Mexico, this suggests the need for dynamic and adaptable migration policies that can respond to changing global and domestic conditions.
+- The predictive strength of the **GAM model** emphasizes the complexity of migration issues and the need for sophisticated analytical tools to understand and predict migration trends. For Mexico, employing such models can enhance the formulation of evidence-based policies that address both the drivers and effects of migration.
+
+**Expanded Investigations for Enhanced Insights**
+
+Given more time, I would consider the the following:
+
+- **Regional Specificity in Migration Trends:** Exploring migration patterns at a more granular, sub-national level, such as by states or regions within Mexico, may uncover localized factors influencing migration not visible from a national perspective. Understanding these nuances can aid in crafting precise, region-specific policy responses.
+- **Continental Analysis and Model Application:** Extending the analytical framework to a continental scale could provide broader insights into migration dynamics, comparing patterns across countries or regions within a continent. This upscaling can highlight shared drivers or unique country-specific factors, offering a comprehensive understanding of migration phenomena and informing cross-border or regional policy formulations.
+- **More Variables** I will consider more micro variables beyond the macro variables. Variables such as Personal/household characteristics and intervening obstacles.
 
 **Conclusion:**
-My analysis highlights the complexity of migration and the significance of considering a range of socio-economic and demographic factors in understanding in mexico. While LM provided initial insights, the flexibility of GAM in modeling non-linear relationships offered a deeper understanding of the dynamics involved. This analysis can guide policymakers and researchers in recognizing the multifaceted nature of migration, emphasizing the need for nuanced approaches in both research and policy-making.
-
+The analysis offers a comprehensive understanding of the multifaceted nature of net migration in Mexico, driven by demographic, economic, and socio-political factors. Leveraging the insights from the GAM model, Mexican policymakers and stakeholders are better positioned to devise targeted interventions and policies that facilitate regular migration pathways, address the underlying drivers of migration, and respond proactively to future migration trends. This approach will not only aid in tackling current migration challenges but also in shaping a more effective and responsive migration governance framework for Mexico.
