@@ -1,0 +1,59 @@
+---
+# title: "portfolio"
+output: 
+  html_document:
+    links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+
+<hr>
+
+<a href="https://github.com/Otomisin?tab=repositories">
+  <img src="images/WelcomePage.png" alt="Welcome Page">
+</a>
+
+<hr>
+
+## **Welcome to my page!**
+
+Here, you'll find a collection of my work and knowledge sharing focused on data visualization, data wrangling, and data analysis. I leverage a diverse skillset that includes:
+
+- **Programming Languages:** R, Python and Javascript 
+- **Data Visualization & Analysis:** Adobe Creative Suite (InDesign, Photoshop, Illustrator), Jupyter Notebooks, R Markdown
+- **Geospatial Analysis:** ArcGIS Pro, ArcGIS Online, QGIS
+- **Database Management:** SQL
+- **Web Development**
+
+
+**Data & Geospatial Expertise**
+I'm a passionate data scientist with expertise in leveraging geospatial technologies to tackle environmental challenges, enhance human security, and support safe migration in humanitarian efforts.  At the Global Data Institute(GDI) specifically, the Analytics, Knowledge and Output (AKO) unit I provide operatonal support for country missions with data collection tools, data-driven analysis and insights, the creation of informative maps, and training & capacity building programs. My experience spans:
+
+- **Data Management & Analysis:** Proficient in managing, researching, and analyzing both quantitative and qualitative data. I have strong experience with relational databases, Microsoft applications, and a suite of data visualization tools including Javascript libraries (Shiny, Streamlit) and commercial platforms (Tableau, Power BI, ObservableHQ).
+- **GIS & Remote Sensing:**  An expert in Earth Observation, GIS analysis, and remote sensing applications like flood extraction, building damage assessment, and population monitoring.
+- **Information Management:**  Possess a strong understanding of information management architecture, Kobo development, and relational database systems. Highly proficient in using and maintaining both spatial and non-spatial technology products.
+
+
+**Always Learning & Growing**
+
+Beyond my current skillset, I'm actively exploring cloud computing, machine learning, and artificial intelligence to further enhance and advance my ability to deliver positive social and environmental solutions through data analysis. Kindly reach out if you got an idea!
+
+<center><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDAwNjJiYjBlNGI1YTk1NWZkYmYxOWYyNGRkMjY1MGVlNzY3YzI0MSZjdD1n/33PMXr72xOqBdOUzTO/giphy.gif"></center>
+
+<br>
+Thanks for stopping by! If you have any questions or would like to work together, please don't hesitate to [contact me](mailto:orenaiket@yahoo.com).
+<hr>
+![](images/Page1.png){ width=200% height=50% }
+<hr>
+<div class="icons">
+  <a href="mailto:orenaiket(@)yahoo.com"><i class="fas fa-envelope fa-2x"></i></a>
+  <a href="https://twitter.com/orenaiket"><i class="fab fa-twitter fa-2x"></i></a>
+  <a href="https://www.linkedin.com/in/tosin-orenaike"><i class="fab fa-linkedin fa-2x"></i></a>
+  <a href="https://github.com/Otomisin"><i class="fab fa-github fa-2x"></i></a>
+</div>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
