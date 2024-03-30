@@ -2,7 +2,7 @@
 title: "Attempting drivers of migration"
 subtitle: "Mexico on the Move: How Macro Forces Drive Migration"
 author: "Oluwatosin Orenaike"
-date: "2024-02-13"
+date: "2024-03-14"
 categories: [R, Machine Learning, Migration]
 image: "image.jpg"
 output:
