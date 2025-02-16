@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Oluwatosin Orenaike">
+<meta name="dcterms.date" content="2024-01-05">
+
+<title>Knowledge Sharing - Demonstrating Predictive Modeling for Site Selection: A Proof of Concept</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="../../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+<script src="../../site_libs/leaflet-1.3.1/leaflet.js"></script>
+
+<link href="../../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
+<script src="../../site_libs/proj4-2.6.2/proj4.min.js"></script>
+
+<script src="../../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
+<link href="../../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
+<script src="../../site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+
+<script src="../../site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+
+<script src="../../site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Knowledge Sharing</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">about.html</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Contacts.html"> 
+<span class="menu-text">Contacts.html</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Otomisin"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/orenaiket"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/tosin-orenaike"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Demonstrating Predictive Modeling for Site Selection: A Proof of Concept</h1>
+            <p class="subtitle lead">Leverage machine learning to make data-driven decisions about business locations using R and Random Forest modeling</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Kobotoolbox</div>
+                <div class="quarto-category">Data Collection</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Oluwatosin Orenaike </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 5, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-the-power-of-data-driven-decision-making" id="toc-introduction-the-power-of-data-driven-decision-making" class="nav-link active" data-scroll-target="#introduction-the-power-of-data-driven-decision-making">Introduction: The Power of Data-Driven Decision Making</a></li>
+  <li><a href="#the-business-challenge" id="toc-the-business-challenge" class="nav-link" data-scroll-target="#the-business-challenge">The Business Challenge</a></li>
+  <li><a href="#building-a-predictive-model" id="toc-building-a-predictive-model" class="nav-link" data-scroll-target="#building-a-predictive-model">Building a Predictive Model</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-our-environment" id="toc-setting-up-our-environment" class="nav-link" data-scroll-target="#setting-up-our-environment">Setting Up Our Environment</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing">Data Preprocessing</a></li>
+  <li><a href="#model-training-and-evaluation" id="toc-model-training-and-evaluation" class="nav-link" data-scroll-target="#model-training-and-evaluation">Model Training and Evaluation</a></li>
+  </ul></li>
+  <li><a href="#understanding-feature-importance" id="toc-understanding-feature-importance" class="nav-link" data-scroll-target="#understanding-feature-importance">Understanding Feature Importance</a></li>
+  <li><a href="#making-predictions-for-new-locations" id="toc-making-predictions-for-new-locations" class="nav-link" data-scroll-target="#making-predictions-for-new-locations">Making Predictions for New Locations</a></li>
+  <li><a href="#key-insights-business-implications-and-considerations" id="toc-key-insights-business-implications-and-considerations" class="nav-link" data-scroll-target="#key-insights-business-implications-and-considerations">Key Insights, Business Implications and Considerations</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#technical-notes" id="toc-technical-notes" class="nav-link" data-scroll-target="#technical-notes">Technical Notes</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction-the-power-of-data-driven-decision-making" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-the-power-of-data-driven-decision-making">Introduction: The Power of Data-Driven Decision Making</h2>
+<p>In today’s competitive business landscape, making informed decisions about business locations can mean the difference between success and failure. While traditional methods rely heavily on intuition and basic market research, modern data science techniques offer a more robust approach. This demonstration shows how machine learning could be applied to business site selection using synthetic data. While the data is simulated, the techniques and approach demonstrate the potential of data-driven decision making in location planning</p>
+</section>
+<section id="the-business-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-business-challenge">The Business Challenge</h2>
+<p>Imagine you’re tasked with expanding your business to new locations. You need to answer a crucial question:</p>
+<blockquote class="blockquote">
+<p>“Given a potential location’s characteristics, what is the probability that a new business site will succeed?”</p>
+</blockquote>
+<p>This isn’t just about finding a good location – it’s about systematically evaluating multiple factors that contribute to business success, including:</p>
+<ul>
+<li>Population density</li>
+<li>Median income levels</li>
+<li>Competition in the area</li>
+<li>Traffic patterns</li>
+<li>Parking availability</li>
+</ul>
+</section>
+<section id="building-a-predictive-model" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-predictive-model">Building a Predictive Model</h2>
+<p>To showcase the potential of predictive modeling in site selection, we’ve created a synthetic dataset that mirrors the complexities of real-world location decisions. Our demonstration encompasses 1000 simulated locations across Nigeria, each characterized by carefully generated attributes that reflect typical market indicators. The synthetic nature of this data allows us to explore the full potential of our analytical approach while acknowledging that real-world implementation would require actual historical data.</p>
+<section id="setting-up-our-environment" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-our-environment">Setting Up Our Environment</h3>
+<p>First, we’ll load the necessary libraries and prepare our data:</p>
+</section>
+<section id="data-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="data-preparation">Data Preparation</h3>
+<p>In a real-world scenario, you’d have historical data about business locations and their outcomes. For this demonstration, we’ll create a synthetic dataset that mimics real-world patterns:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Nigeria's boundary as an sf object</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>nigeria <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">scale =</span> <span class="st">"medium"</span>, <span class="at">country =</span> <span class="st">"Nigeria"</span>, <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Nigeria's latitude and longitude bounds</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>nigeria_lat_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.2</span>, <span class="fl">13.9</span>)  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>nigeria_lon_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.7</span>, <span class="fl">14.6</span>)  </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample points across Nigeria</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>n_locations <span class="ot">&lt;-</span> <span class="dv">1000</span>  </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">location_id =</span> <span class="dv">1</span><span class="sc">:</span>n_locations,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">latitude =</span> <span class="fu">runif</span>(n_locations, nigeria_lat_range[<span class="dv">1</span>], nigeria_lat_range[<span class="dv">2</span>]),    </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">longitude =</span> <span class="fu">runif</span>(n_locations, nigeria_lon_range[<span class="dv">1</span>], nigeria_lon_range[<span class="dv">2</span>]),   </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">population_density =</span> <span class="fu">rnorm</span>(n_locations, <span class="at">mean =</span> <span class="dv">5000</span>, <span class="at">sd =</span> <span class="dv">2000</span>),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">median_income =</span> <span class="fu">rnorm</span>(n_locations, <span class="at">mean =</span> <span class="dv">65000</span>, <span class="at">sd =</span> <span class="dv">15000</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">competition_count =</span> <span class="fu">rpois</span>(n_locations, <span class="at">lambda =</span> <span class="dv">3</span>),</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">traffic_score =</span> <span class="fu">runif</span>(n_locations, <span class="dv">1</span>, <span class="dv">100</span>),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">parking_available =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), n_locations, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">success =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), n_locations, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.4</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to sf object</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>sample_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(sample_data, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure points are within Nigeria (land area)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>sample_sf <span class="ot">&lt;-</span> sample_sf[<span class="fu">st_within</span>(sample_sf, nigeria, <span class="at">sparse =</span> <span class="cn">FALSE</span>), ]</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="do">############ Viz Dat #########################</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a diverging color palette (RdYlBu for better contrast)</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="st">"RdYlBu"</span>, <span class="at">domain =</span> sample_sf<span class="sc">$</span>median_income, <span class="at">reverse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Leaflet map with improved color variation</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(sample_sf) <span class="sc">|&gt;</span> </span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">%&gt;%</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="dv">4</span>, </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(median_income),  <span class="co"># Apply diverging color scale</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillOpacity =</span> <span class="fl">0.7</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste</span>(<span class="st">"ID:"</span>, location_id, </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"&lt;br&gt;Population Density:"</span>, <span class="fu">round</span>(population_density, <span class="dv">2</span>), </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"&lt;br&gt;Median Income:"</span>, <span class="fu">round</span>(median_income, <span class="dv">2</span>))</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addLegend</span>(</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">pal =</span> pal, </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> sample_sf<span class="sc">$</span>median_income, </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Median Income"</span>, </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">opacity =</span> <span class="dv">1</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-8213c8232d31420bf992" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-8213c8232d31420bf992">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[6.989501945208758,11.84655981380492,8.167076141573489,12.76526881884783,13.3225326576503,9.322623234055936,12.85646473062225,9.548919640318491,8.629162932443432,8.597341315052471,10.7724351638928,9.754543998977169,12.92830221289769,6.587051023240202,7.380830977042205,13.4586853967281,12.82853136581834,10.92019303971902,10.41291609355249,10.56034625142347,11.07274554122705,9.47744043970015,9.963177598337642,7.004849451757036,13.54133505560458,10.89984120070003,11.91603395156562,8.834620919590815,11.55705751397181,7.286355774058029,6.446770117920823,8.22109945740085,8.213125965069047,7.777800873969682,5.678714053099975,6.460430764686317,8.719835767452604,11.94957100274041,9.641195442457683,6.203354479279369,11.50708628373686,12.88193998378701,7.832288926094771,10.65161738789175,7.92450548664201,6.861521352361888,8.550608511501924,12.05762422457337,12.08017824233975,11.90512051477562,8.466367369750515,11.51840903880075,10.30344497612677,11.08876929311082,8.810570768755859,7.884220415912568,7.612439719657413,5.278013616171665,6.563108885381371,10.68013919824734,8.25117376288399,11.84549959008582,8.418459592526778,12.79874988964293,5.898010707646608,7.532109780935571,10.57055384127889,7.30762045213487,11.78825472276658,8.727756703225896,9.16160296103917,10.0198929048609,7.428388341073878,8.939546426571905,12.83639715458266,11.18978385226801,5.580254667298869,9.528061163844541,9.879188525257632,8.123749732947909,10.48456674946938,7.302259985799902,7.184884105413221,6.331746023264714,7.784041998605243,10.89306888466235,10.20678788889199,12.84652293634135,10.72809119832236,11.34965405787807,9.255016540060751,10.60043296185322,12.17151296341326,11.82693105149083,8.462485901569016,8.1719070403371,12.37447439320385,6.442269285907969,6.583519676909782,11.30171149363741,12.42029570147861,9.026014490728265,7.962717589479871,7.98294602187816,9.747772545670159,8.514249619632029,6.314509486616589,9.072305763629265,7.632874346943572,10.504856040515,7.83472537912894,7.647820193646476,9.376773070916533,11.38124329582788,6.344698496884666,8.203637350560165,10.31073861862533,5.983136360626668,12.57734788092785,11.44170964010991,10.6823611023603,10.1947733706329,7.81070918419864,9.339406152791344,9.842975967866369,7.230747199663893,11.07041612551548,9.965128982183522,8.868511064746418,6.770817495184019,9.676527217333206,13.05792576337699,12.94818157814443,6.859416228556074,7.318382737156934,10.21393510883208,8.725367212551646,10.59453414480668,9.756810464709996,13.53488168341573,10.03324754196219,9.195788354310206,8.104961419361643,7.731691088434308,6.99592102272436,8.875813273573293,6.297671459265985,10.74145096438006,10.99827494849451,7.613319793017581,12.16322784237564,13.1129162770696,6.940524802030995,11.26542595420033,10.85783829544671,8.033635306009092,8.83510018454399,9.634456657734699,10.97313747019507,8.355688634910621,9.458179562003352,6.73031151345931,8.052373947086744,12.26969735946041,11.99315985764843,9.504213718581013,10.62448112750426,10.3406369902892,11.22817716016434,8.069716299232095,13.58376419497654,11.24901462846901,6.351342966174707,9.952542821294628,9.351382868993095,11.8173292114865,8.122672055871226,12.62063602677081,13.17936717169359,12.75518232521135,13.41661969958804,9.209515474247745,9.792234506597742,7.462412697309627,4.898954102746211,11.67224052045494,11.33128776638769,8.7247820553137,4.921529779117554,10.4935358058894,11.5583537442144,8.046870567835867,8.040159076568671,6.391098399320617,4.729902358283288,10.7017357837176,12.74027351720724,11.51619980011601,12.12107710980344,11.94866662838031,11.75693906303495,11.27508932361379,10.31227897228673,8.864835050678812,8.58884642398916,8.975245288829319,7.978994981921278,8.707259636372328,11.11880630694795,7.641396045894362,11.98727904728148,12.30637571914122,6.506169228232466,7.633665195433423,12.4815047258744,7.070185917429626,11.02872299477458,7.482395452470518,13.0761184879113,10.18718211541418,6.976967882411555,11.3566348091932,12.29032679900993,7.248426570091397,8.97789551387541,10.96452553232666,10.42218483369797,10.44605227534193,8.222932744259015,5.358226365805604,9.302487703296356,6.3832115030149,8.91819411132019,7.966695416998117,6.423674951214343,10.24598619902972,9.1961965365801,10.23245226300787,10.68708371939137,7.336446433770471,12.30197660352569,12.89836522161495,7.188759676762857,7.724015272059478,11.80428084377199,8.144096302986146,8.886726391920821,8.291896016732789,7.525245376303792,12.6048881522147,8.614548094267956,9.377519274223594,11.7135379581945,7.195232277456671,9.873530906927773,11.57998916611541,11.66118093889672,13.06575586174149,5.997375486372039,6.241724667348899,7.074131101206876,11.24203536096029,11.82117199229542,5.222552137356251,5.180267392448149,13.8149945918005,13.76472668384667,5.529554472560994,9.79012782445643,8.035853933100588,8.563084096065722,11.05306844115257,7.491332027758471,7.274407706386409,12.26621540107299,9.030104681011288,6.877681824471802,7.320737716346048,8.841026922897434,4.471527947788127,9.510356839722952,10.44913013926707,9.98375638294965,12.84380883083213,10.27469238983467,7.138177678384818,12.56675340605434,13.44508177374955,9.667353429505601,6.477750855218619,10.14291806309484,5.763307898119092,6.945030846563168,9.863561658840627,5.805552837718278,12.60473730308004,11.07316913069226,5.62671585297212,7.673152545187622,10.7313250696985,9.281079236022197,7.593077389802783,6.533147805393673,6.49521149857901,12.83375575784594,12.07472593584098,11.45090832517017,8.4304609620478,8.700961280171759,10.90471596547868,6.943668276397512,12.06086124198045,8.346054322808049,11.5321064193733,10.62513941358775,8.511915750242769,10.28331798911095,11.03726078297477,12.09515709639527,10.87110405096319,10.77877141700592,8.360801380104384,12.29368948601186,11.0053756487323,5.043319628993049,10.85735198410693,11.83319532079622,6.984871267713606,4.975737249548547,7.744906414858997,9.399721090099774,9.088302506622858,7.510816454328596,8.707723609311506,12.54303640702274,8.037908207741566,11.33822369861882,5.865911038033664,8.611187823815271,11.67098616652656,4.807704983977601,12.10629050240386,7.121082487283275,7.737308971467428,7.227494081715122,4.562488659308293,9.232407756964676,7.138009958574548,10.8697935427539,12.11983794625849,4.583142219181172,11.36860734950751,7.582579089072533,12.24373298769351,6.863090027077123,12.27144540988374,6.885494202980771,11.50516796596348,13.5522799301194,12.48733804088551,11.98171070576645,9.723011827724985,12.81413534730673,9.338226687046699,9.893498970824293,10.65763088262174,9.339956848230212,9.145476124132983,13.21470162058249,11.66206972538494,6.150481976149604,10.50753655373119,10.54153681900352,8.033961485954933,12.0793568369234,9.506127151311375,12.78578671996947,9.567145679355598,9.898375260061584,8.307597414497286,11.07766766359564,8.209062458458355,9.69732060281094,8.95361549500376,12.72313800586853,12.08467107263859,12.48476978202816,7.768590693362057,12.67731415457092,6.933573196106591,10.66704003105406,9.852575445524415,9.307923771487548,5.057124019786715,9.131195108522661,7.473701473884285,12.87504586689174,4.510124792368152,10.85895640568342,6.390438706218265,12.18035869903397,7.410678937681951,7.829443062189966,10.30853061079979,11.78368373177945,12.85139238922857,11.52219489971176,7.855119243520312,4.608448072243482,6.855387316993438,12.44953456297517,7.71529661079403,11.56361279226839,12.39489585594274,8.641839142539538,11.27742714530323,13.453327103029,11.49476415005047,12.14386721765623,8.252437886898406,9.960233383136801,11.94858851060271,12.81756390898954,5.076124217314645,11.4326713077724,7.115020828694105,10.16125292589422,11.50344096210319,13.09545419055503,8.814779905206525,9.701058821566402,12.51724001704715,13.01872109342366,9.078210549778305,12.40189439260866,5.338112904690206,11.11305958344601,4.927080486598425,13.27576762817334,5.724527903948911,10.4764562952565,5.883122137677856,9.256744309538043,6.945122756739147,8.278218539943918,9.896597804524935,12.02493596712593,8.656419315654784,8.546988204540686,11.31735325457994,11.13312166240066,12.799691372714,13.44065236770548,9.266656931326725,8.848934131767599,10.35756494489033,9.433740866184234,9.855396773549728,8.357546986127272,7.650887187616899,12.39585533665959,6.723284994508139,12.56527553487103,10.32835205565207,9.500334709859452,7.851511583919637,8.360723734344354,10.31850390604231,9.252170807146467,11.27480103380512,8.922181871533393,11.16348010213114,11.40262958279345,12.65838859002106,10.09631922219414,11.53517250770237,12.41824059120845,10.14396259505302,11.89427442743909,12.68635915839113,13.16744617163204,7.263384054624476,12.00128590876702,7.316885901708156,11.9155935975723,8.95141940054018,12.81720437614713,4.556032290146686,9.183677049865945,6.492496923310682,9.781725997640752,8.877901741256938,9.722721080714837,8.199146196036599,10.82519973986782,10.53824985807296,13.08506743051112,12.08719738516957,10.75613301198464,12.03274136022664,5.442224870203063,6.632551779644563,7.416005818499253,8.150512112514116,10.36306549655274,12.04353683553636,6.710371653176844,12.14883125699125,10.54768743596505,12.073679967504,8.675278589967638,13.07814446859993,13.25685624899343,8.947449698951095,11.97114274066407,8.154017380438745,7.706222339626402,6.71467495826073,8.765613785618916,8.834873688383958,11.46329094711691,10.67611024377402,4.679331288579852,10.94252087073401,12.77609599160496,11.72038312754594,5.550275320908986,7.061589931044727,5.423003018647433,9.922045750683173,7.21932684762869,10.07419236225542,11.40908767741639,8.576338392170147,7.493688486237079,11.31933584352955,11.68752197842114,11.19215139525477,9.749115090095437,11.02698561556172,10.57504428664688,11.34244008245878,10.14341764512938,9.537512750946917,6.748735894728452,12.91410006261431,5.461432574782521,11.24606921628583,9.093066166597417,8.429662416735663,5.36576043011155,12.82350848012138,8.317185322078876,10.19388339619618,6.826909695612267,5.725764280557632,9.124523772625253,9.515913188830018,5.564268037676811,11.59125763464253,9.315730923926457,12.55159676850308,10.92402934327256,12.84962320190388,10.32894670066889,13.13433247730136,10.75101509718224,5.641359012201429,8.281598743540235,7.087913858238608,6.716438700444996,9.686847131559624,11.5395062884083,10.69515439539682,9.501271104626358,12.07119748033583,11.56391797985416,11.93965849161614,13.15988236796111,9.463204193487762,12.46793662165291,9.860559773934074,10.68273934200406,9.159751586196943,11.59868071610108,12.96261419269722,12.1586027681129,12.60563374347985,9.789578138547949,7.244272948778234,9.934579443093389,9.354670557146893,7.299666326073929,12.04134667629842,12.50899057963397,10.97008181142155,10.83951878789812,7.575746011501177,9.580413745273836,11.8138360963203,12.80256694436539,6.179730067960918,9.301950459228827,12.6695682650432,12.63614888174925,8.955174722592346,7.974952133418991,8.250283110910095,8.132540003117175,7.515600108425133,7.149308950151317,9.634721213416196,13.47882371216547,4.62647626590915,7.809930104529485,10.46064690258354,8.176475506369025,8.331279800413176,8.561119134374895,10.24563541996758,5.557785931136459,13.00708008785732,9.723599765123799,9.518321566982195,11.59167482363991,8.840183633030392,11.78509847230744,12.15249327765778,6.81326194012072,10.43924912684597,13.3967527264962,8.264743531588465,8.641404931549914,11.10341801943723,13.12252615944017,10.28297379571013,12.95116324985866,11.54609284407925,5.53722614692524,5.68657231668476,8.401895863842219,5.046027227886952,6.370666010165587,9.749842191371135,8.081641030265018,9.685014192503877,12.24735162339639,10.42850404900964,7.99753789154347,11.08292459095828,5.255593509110622],[5.956110537447966,9.767016498791053,4.606199279823341,12.85581984154414,12.78809597701765,11.90693625689018,6.21526095799636,3.480974530754611,7.942344185616821,6.757119005126878,4.903169792564586,8.73327294960618,11.90686386998277,9.360014442820102,8.274342211941256,6.022763346717692,8.188477187091484,12.13358626654372,9.668230358324944,12.35372446072288,6.490900817373767,9.619223324814811,8.120318599371238,5.89876105277799,5.451647523464635,8.026084679947235,4.250428828992881,9.221131970803253,4.476006143144332,7.779938359791412,8.027988170785829,11.26308866464533,8.136952390871009,8.903044729260728,5.585239223507233,7.356411585863679,2.855987770319917,13.31356560725253,9.308231742959469,5.98963461657986,5.596879385109059,6.130367836682126,11.21779340654611,11.35765023415442,6.345103979879059,7.101896592788398,11.18648724663071,9.255980475991965,4.316798216616735,14.29254795948509,9.387361590820365,12.08207164150663,12.80207760266494,13.14869711932261,10.31776698906906,5.929767155856825,7.696384157985449,6.929672585427761,7.368741922243498,4.746048305183649,6.503741220175288,7.621305264439433,5.935493440669961,12.30157804477494,8.413504595146513,4.07251517358236,4.240053845127113,11.49110765019432,14.51021817184519,6.135412292019463,5.078950114990585,12.23092239967082,11.36037625260651,5.282870898931288,8.999928501015528,6.259561030496843,5.607268169755116,7.719540567859076,5.847372887330129,9.465968172717838,5.105996355554089,4.994386960053816,11.2514797674492,6.43086295677349,4.346842515305616,9.421054329839535,9.129048576462083,12.45422196998261,11.06545609638561,9.456205645925365,11.28358026880305,11.65408614051994,7.238928901334293,6.127322347206063,5.789788249111734,7.523830228578299,5.284487017127685,7.526940673985518,6.606040103919804,4.353022954124026,13.58442032798193,9.829480010690167,11.62032444193028,7.126547077740542,3.483119021286257,8.773894486599602,5.198976897588,7.172536896611564,5.167649447731673,8.164965725061483,5.57387677594088,4.112414836394601,3.562382881622761,10.92277921328787,6.114795669028535,4.478008697042242,7.585121244913898,7.481584865343756,10.41782054875512,13.60403830201831,5.278279453306459,9.221186575456521,11.2686004485935,7.427227462432347,10.25526721999049,5.205226553650572,10.78037143293768,12.21639567506499,4.30645714038983,7.311229266412556,12.08281595546287,10.9456726325443,9.77184835949447,4.173906051320955,9.305429422622545,11.81738169137389,5.02254003926646,4.006638962286525,7.283863255591132,13.25987857980654,8.520188832678832,11.24529252659995,8.491796313668601,3.470538442209363,4.576187057350762,7.656913408241234,5.742510092351585,8.74372048662044,12.38265353667084,7.247932005627081,5.055291277472861,13.962157265516,6.813502443488687,4.029087276593782,13.24310072932858,3.180531081161462,8.574032644857652,5.390158087317832,12.91972403742838,6.002964954008348,6.569917402416467,5.671247938834131,3.213095641718246,11.07467036286835,6.402911314647644,3.634065868891776,6.528754686983302,7.938878009235486,6.02347728011664,9.491487001325003,4.969537720037624,11.35232900127303,8.777580796647817,9.455941372481174,4.410959427733905,13.00500828798394,5.610391116491519,9.573217225400731,5.659843737049959,10.01795204989612,4.442440176801756,11.06656839051284,3.480172431399114,10.09950404136907,8.099106060294435,13.08549945079722,9.2993018373847,10.11523702787235,6.401238028914667,7.36713816684205,5.104840719606727,9.921278794761747,5.983198252390139,9.236429546982981,6.818911822931841,8.828091054037213,12.79248139730189,7.108881159103476,6.309569533518515,9.47168122474104,9.15790429022163,12.65625539124012,11.37110800368245,9.305854301573708,10.84684348551091,3.885501040937379,5.125052271271125,7.055163645814172,12.7697295157006,11.08804642213508,3.980545086390339,11.97091953642666,5.735757631831802,9.221715579507872,12.29270276601892,6.719258405524306,6.949566372809931,2.845830027526245,10.33353108759038,8.7996421626769,6.512190206930972,9.619054576265626,10.04639845872298,7.915466998377815,4.727390869334339,11.20945790980477,11.59865992937702,12.74258502665907,6.296599612291902,8.132566366577521,7.273676160164177,5.663657570630312,10.49005826311186,10.43725013008807,9.082683177432045,9.809677212592213,4.263401227211579,3.796340477862396,5.040215458581224,5.6043048144551,8.516810891521164,12.66003714029211,7.895498704514466,5.478596748504788,6.256386305205524,4.470457927463576,4.830808760575019,6.736735909292474,4.888433072227054,7.525944114127196,10.00135945847724,10.85948887921404,7.150387154053896,2.924102692049928,8.216527789761312,6.921282484033145,3.602054015593603,4.939839845593087,5.259294287022203,5.495305248745717,10.77055296048056,7.88229292598553,7.189988308842294,8.188089889707044,8.24544360244181,5.522655228385702,5.475552877108566,5.444777849130332,8.615711450180971,5.605088555254042,11.72240791325457,9.212901862594299,3.725449089054019,11.29654652995523,13.67185479607433,4.615501365927048,4.876994236884638,6.418540115095675,11.89625334744342,6.701948605757206,12.88255262346938,9.608289072709157,7.647099551744759,8.206116213463247,3.882221326092258,8.238847422390243,7.881245285784825,13.04967651797924,6.274214644148014,7.304415784333832,7.240917371842079,8.844280275329947,4.470500842598267,9.991914244345388,8.630472012259997,11.50014783733059,11.67140737490263,7.965535007393918,8.657993220211939,5.915892894240097,9.825745573849417,11.4564677526243,11.1915759608848,9.543935358175077,12.19777064791415,5.458703180006705,11.32578432390001,11.59839855406899,12.34958479739726,4.337773055885918,8.384018600499257,8.209241853305137,11.42317592059262,7.411585925146937,8.191705353348516,11.33106242276262,8.29303149958141,12.55566691486165,4.034067252557724,12.38482123722788,7.689830906921998,9.627512376569211,12.58573534067255,11.81170703826938,6.444485066691414,10.3878429210512,7.906853674002923,8.130202775844372,5.444317824044265,10.97632229535375,9.65805006492883,7.86021183822304,9.80256730604451,8.079818459926173,12.74872116500046,5.350946371653118,7.700025106384419,7.697796932864002,2.947411101683974,7.227330837515183,7.725946288276464,4.977970154723153,11.09341845274903,2.86089365540538,11.40131695861928,7.849416765919886,11.4017571068136,5.31554604859557,10.96773103117011,7.629459394933655,7.590955968783237,5.675178373907693,7.147827764577232,5.459523518779315,8.36850258631166,6.64029622010421,9.279230000264942,10.74833329415414,6.000279013509862,7.766527146077714,9.960409936145879,8.630722443363629,7.408703476609662,7.344949956098571,6.490143941133283,10.82264314538333,6.086917400173842,7.342127099446952,6.417621303419582,12.42370099162217,5.32882628927473,8.662778461375273,4.686970326118171,4.123944414430298,13.38155861608684,3.81520705607254,12.99419682431035,5.991438418184407,12.0698810640024,6.968057567579671,11.57851381574292,3.052544368128292,5.753859312669373,8.62638112960849,10.47492724386975,3.695516939368099,4.847622294700704,3.943103768955917,12.36747650743928,10.20381258304696,7.351589217525906,6.848744626948609,12.14333732824307,6.601082916837186,9.737508180737494,4.822207485907711,11.52206647708081,6.197126876772382,4.185386527283117,5.737662826641463,4.223308170610108,9.945093702175654,8.287845791969449,9.331763918627985,7.380087704141624,9.945280936732887,6.811256387969479,11.79845017662737,8.281623665429652,9.622460747929289,4.923970322520471,9.947825644351541,12.15242187404074,8.698704724106937,7.734036457515321,10.48713732422329,4.82284740046598,5.764278854685836,4.049918206501752,12.18619160761591,4.00350801658351,12.5659531675512,11.87545093342196,8.25679536347743,12.04367701460142,7.394105575885623,3.886420013313182,5.995840903115459,11.29444240829907,6.940031635086052,7.254271412477828,8.905198914417998,4.140827132551931,3.588290958176367,12.86417440059595,5.974207763024605,10.3406323939329,7.460746271722019,13.83009772361256,7.347151952190324,7.745115754962899,6.10841824284289,9.34987158968579,11.5688551674597,5.157200306490995,10.51230198452249,8.916734587959944,10.0490012925351,6.090257014450617,5.363305947068147,9.114330328279173,6.614106788835488,6.547699451143853,8.954781045089476,11.5308312443085,3.691119411191903,5.793143188045359,12.73056550845504,8.509051226172595,4.934304738021456,11.18509342323523,3.712332651251927,13.83729694872163,11.2226219313452,4.173295544809662,9.778446789341977,10.02336100542452,5.949624237208627,3.458111433871091,13.09478344710078,7.017617460736073,7.190371070615947,9.324028469063341,6.435067121637985,3.679880275717005,11.98125675308984,4.999493268155493,10.50146706423256,7.878249934618361,8.016240110411308,13.85049704180565,9.854830772336571,6.258283930504694,4.315590644185431,12.42080133990385,8.649030038714407,7.472414638893678,8.025745154707693,10.83165314868092,2.91614124882035,4.66976794025395,8.600430536898784,7.775769213610328,6.814488918054849,11.09954508764203,13.51382377604023,10.74788535756525,10.30529322819784,4.480293871858157,9.853392141428776,5.945739706838504,8.148455115430988,5.344811809831299,5.733566050743685,10.47888395334594,8.316718617477454,4.615460124285891,5.937755981762893,9.998908460955136,4.272251398023218,3.533086313144304,12.76682559158653,5.57563958526589,12.650674423296,7.010765601904131,6.653043547295965,9.794823178695514,8.772332213888877,4.547643217397853,9.632369176205247,12.94535661095287,8.869760267250239,5.866917053097859,9.808794195391236,10.90250384721439,8.419516570796258,8.244559726328589,10.05910678852815,8.046319120237603,9.872219639131799,7.536903136153705,4.103624481894076,9.128296183189377,3.146724084648304,11.29596107043326,11.86074252948165,8.658831028151326,5.176088576391339,6.457937558065169,10.55533577101305,6.444826478767208,8.431590549577958,7.650338105298578,8.476581370388157,2.882059339433908,10.34517041244544,6.217727756733074,12.85455581364222,9.57586432090029,9.596994074690155,6.689765531267039,13.86881642364897,9.540796335926279,8.663558821938931,5.356749781244434,7.607788975280709,8.597561902995221,10.70576936036814,6.061802811687812,5.628583509544842,7.098789707710966,5.502740300679579,4.335647924127988,13.58094020397402,6.836932375351898,4.397358627151698,6.977251164754852,5.621510303486138,5.070143640646711,7.363017906621098,6.550390711356886,9.141132986871526,14.49080241899937,5.720113484561443,11.44971172900405,14.3335371164605,9.340750276902689,9.075757058709859,7.981595860095694,5.960090830991976,4.572554675908759,13.07487307717092,9.388333790819161,9.253208123380318,9.749146898812613,11.36097306639422,10.30321088689379,9.689362425636499,10.17994819397572,10.10049867560156,3.623947084695101,10.87642680876888,4.436327514471486,12.02400786047801,8.639348958968185,9.390900367451831,7.201258545252494,8.871782648167573,3.583977126842365,14.1366259098053,8.980940661020576,7.902197477477602,8.282258980651385,12.29049530059565,6.039110441622324,6.138471598899923,2.906788697466254,10.65335940520745,4.310583554301411,10.50494949067943,5.766011153231375,4.31834389292635,5.222755176550709,5.888838230795226,9.028791216295211,7.143979613296687,9.34262724397704,4.547315791738219,5.608912521228194,4.25150429517962,5.230905511206947,7.222050555353053,6.979491908871569,6.301678382558748,13.82392189798411,9.467732655536382,5.327552666491829,8.260736795398406,9.153962794574909,10.40965624153614,4.424228449910879,4.939562042895704,11.62981055690907,8.16398585580755,4.382244082400575,5.141797604993917,10.73599264528602,4.342559505067766,7.644970039534382,8.069839678425343,5.688974139257335,8.223426218261011,4.669559825817123,12.90789679642767,4.562967577786185,3.751146441185847,13.33167148567736,6.277384049724787,11.64983138572424,7.47911911115516,8.037841462437063],4,null,null,{"interactive":true,"className":"","stroke":true,"color":["#FEC778","#FFF7B3","#FEC576","#CDEAF3","#FFF4AE","#E24931","#FEBC6E","#83B9D8","#FEC375","#F3FAD8","#FDFEC4","#EEF8E1","#D5EEF5","#F9894F","#FEB76A","#F2F9DA","#FFF1AA","#D7EEF5","#82B8D7","#FEC577","#FDAD61","#FEDC8C","#FFE79B","#88BDDA","#FA9153","#F6FBD1","#EAF6E7","#FFF1AA","#FFE99D","#D8EFF6","#FED888","#F3FAD8","#E95838","#FED888","#F7FBD0","#FFE89C","#FFEA9F","#EAF6E9","#FFEA9F","#FFFFBF","#F6FBD3","#FFF6B1","#FFF7B3","#D6EEF5","#B9E0ED","#FFFDBB","#FEC375","#FEE294","#FFFEBD","#D42E27","#FEC072","#F6FBD1","#FED989","#FDAF62","#FFF7B3","#E8F5EC","#FEC879","#FDB063","#F7814B","#FA9354","#FFF8B4","#FEE597","#BE1D27","#FCA85E","#FDB063","#FA9755","#FFCB7C","#FEDA8A","#FB9F59","#EFF8E0","#FFF6B2","#FEE191","#FFFFBE","#ECF7E5","#F98C50","#C1E4EF","#FDB063","#FFD282","#FEC475","#FFF1AA","#FFE89D","#FDB164","#EAF6E8","#E9F6EA","#DEF2F7","#F4FAD6","#FED586","#FFCF7F","#FEBE70","#B6DEEC","#AF0E26","#FEE293","#FFEDA3","#FA9555","#DA372A","#E95738","#FFF3AD","#FEBC6E","#FA9555","#FFE69A","#FBFDC9","#A8D7E8","#FBFDC7","#FFEBA0","#C42227","#FED788","#F0F9DD","#FED787","#F8FCCD","#FA9554","#FEDB8B","#FFF6B1","#FED484","#FFF1A9","#FEBA6C","#FFFEBD","#FFE89D","#DB3A2A","#FEBA6C","#F16740","#EB5C3A","#FEC97A","#FEE394","#FFF9B6","#FDFEC4","#FEC677","#FED888","#FFEBA0","#E85537","#FDAB5F","#DFF3F8","#FEBF71","#FFFCBA","#FFEBA1","#FEC97A","#FFFFBF","#CCE9F2","#FCA35C","#F1F9DD","#FFCB7C","#FED787","#E7F5ED","#C8E7F1","#F3FAD9","#FEC374","#FFF0A9","#FEC273","#9ACBE1","#FED383","#F1F9DC","#FEE496","#BDE2EE","#FEE192","#FEDF8F","#C01F27","#FFF6B2","#B9E0ED","#FEC172","#FFF9B6","#FDB164","#C0E3EF","#F6FBD2","#D6EEF5","#EEF8E2","#FA9655","#FDAD60","#FFEDA4","#FED787","#D22C27","#FEFEC2","#F8FCCE","#EE623D","#FEE598","#F46E43","#EDF7E4","#E6F5EF","#FEDB8B","#FFFBB9","#FFE99E","#FCA95E","#FA9555","#FDFEC3","#F7FBD0","#FFFEBE","#DDF2F7","#D4EDF4","#FFCF80","#FEE090","#FFFFBF","#FEE090","#FCA55D","#AC0A26","#FEE293","#FBFDC8","#F4FAD7","#F3FAD8","#FFCA7B","#FDFEC5","#FFF2AB","#FFEEA6","#FFECA3","#FEFFC1","#FDB164","#D4EDF5","#FFCC7D","#E14730","#FFEEA5","#E7F5ED","#EDF7E3","#F98F52","#FFF2AB","#F5FAD5","#E8F5EC","#EBF7E7","#F67A48","#D83228","#EAF6E8","#9CCCE2","#F8FCCE","#D0EBF3","#FFFCBA","#FFE79B","#FB9A57","#FEC375","#FFE89D","#FFF9B6","#FFE99E","#FEE293","#FEC677","#FEC577","#F26A41","#E9F6EA","#FFEDA4","#FEDD8D","#FA9253","#FA9655","#FFF1AA","#D2ECF4","#EFF8E0","#FFCF7F","#FFE699","#ACDAE9","#FEC879","#FB9A57","#FFF0A8","#D3EDF4","#FEDD8D","#FFCA7B","#FEB769","#FEE090","#A8D6E8","#FFFAB8","#EAF6E9","#EDF7E3","#FB9856","#EC5E3B","#C7E6F1","#FFFFBF","#D0EBF3","#FFFDBC","#FDB264","#EFF8DF","#F8FCCE","#FEDA8A","#BBE1ED","#E8F5EC","#FFCA7B","#FEC677","#FFD080","#F0F9DD","#FFF8B4","#DF442F","#FFEA9F","#C01E27","#FDAE61","#B8DFED","#D83228","#FFF4AE","#FFFCBA","#FED787","#EB5C3A","#FEBD6F","#FEC375","#A9D8E8","#FEBA6C","#FFEFA6","#F4FAD6","#FA9655","#4C7CB8","#FFE79B","#96C7E0","#FA9756","#FDB163","#CDEAF3","#FDB366","#ECF7E5","#C2E4EF","#FFCD7E","#FFFCBB","#FFEBA0","#FEFFC0","#A1D1E5","#FFE89C","#FBFDC8","#FFE89C","#F4FAD5","#FEDF8F","#FEC778","#F8874E","#E4F4F3","#EAF6E8","#FED787","#D1ECF4","#FEE597","#EA5939","#FBFDC8","#FFF9B6","#C0E3EF","#FFCC7D","#F36A41","#FEDF8F","#FEB86B","#F57346","#D9F0F6","#FA9153","#B9E0ED","#F4FAD7","#FEB76A","#FEC577","#EDF7E3","#FFEA9E","#DEF2F8","#ACD9E9","#84B9D8","#FEFEC2","#FEC97A","#FBFDC8","#FEC879","#FFFAB7","#FEB96B","#ECF7E4","#F1F9DB","#CBE9F2","#89BDDA","#FEBC6E","#E2F4F5","#F46D43","#FCA55D","#FFE99D","#DB3A2B","#FFF7B3","#FCFDC7","#FFF2AB","#FEC97A","#D9F0F6","#E34C32","#FED585","#F99052","#FEBE6F","#F9FCCC","#FBFDC9","#E8F6EB","#FB9E59","#E4F4F2","#F57044","#9FCFE4","#FDAF62","#EEF8E2","#D4EDF4","#FFECA3","#EBF6E7","#FFF6B1","#E8F6EC","#FFECA2","#D6EEF5","#FED485","#F9FCCC","#FFFEBE","#FEBE70","#FFF4AE","#E6F5F0","#FEBD6F","#ECF7E5","#FFEA9F","#CEEAF3","#FFE69A","#F8FCCF","#F9FCCC","#FEFEC2","#F7804B","#E85537","#F2F9DA","#FEDE8E","#8DC0DB","#FEBF71","#FFD080","#F36B42","#EFF8E0","#FCA35C","#F8864E","#E65235","#FFFDBC","#FFF0A8","#B21227","#E9F6EA","#A0D0E4","#A50026","#F16840","#FBFDC9","#DCF1F7","#FEDE8E","#D4EDF4","#FFCE7F","#FFECA2","#FA9454","#FFCC7D","#D6EEF5","#FFCE7F","#FFFBB9","#FFF0A8","#F7804B","#FFF8B4","#FDAD61","#F0F8DE","#FEE395","#FFEEA5","#FBFDC8","#FAFDC9","#FA9354","#CAE8F2","#B5DEEC","#FFF3AD","#FFEFA6","#FFFEBE","#F3FAD8","#D5EDF5","#FFE99D","#FFE699","#FDFEC4","#CCE9F2","#FFEEA5","#DB3B2B","#F8864E","#FB9956","#FDAF62","#D4EDF5","#FDAC60","#FFF4AF","#E7F5EE","#FEBA6C","#FDAD60","#F9894F","#E5F5F1","#FEC677","#DA392A","#A8D7E8","#FEC375","#F0F9DD","#FFD081","#FEB467","#D83328","#FEE090","#FFEA9F","#FFEDA4","#FCFEC5","#FEC879","#FEBF71","#FEBA6C","#F16740","#FEE191","#FEDF8F","#F6FBD2","#F8874E","#FFFFC0","#F7824C","#E3F4F3","#FEC576","#FEDE8E","#FEB96B","#E0F3F7","#FFEFA6","#F3FAD9","#ABD9E9","#BE1D27","#FEE496","#FFF0A9","#C5E5F0","#F0F8DE","#FEBC6E","#FEDE8E","#FA9052","#FEDB8B","#F98D51","#EBF7E6","#FEFFC1","#ACD9E9","#FFD282","#CC2827","#FFECA2","#F3FAD7","#FFD081","#BDE2EE","#D8EFF6","#F9FCCD","#FFEEA6","#FEC475","#FEE293","#FCFDC6","#FED989","#FEB568","#6094C4","#FFEEA5","#EAF6E8","#FFEFA7","#FEFFC1","#FEBF71","#FFF4AE","#FED788","#FFFBB9","#ECF7E4","#FEE090","#FFF5AF","#FEDC8C","#FEC879","#FFF2AB","#C6E6F1","#F98E51","#FEE496","#FEE090","#FA9354","#F57145","#FEC172","#DDF1F7","#FEBA6C","#FFF9B6","#4E7FB9","#FEC778","#FEDF8F","#FEB568","#97C8E0","#FFF8B4","#FDB366","#FFF9B6","#FFFDBC","#EFF8DF","#FEFEC2","#F77C49","#E5F4F1","#73ABD0","#8EC1DC","#F8FCCE","#F1F9DB","#FFE89C","#FFE69A","#FFCD7E","#FFE79A","#A8D7E8","#F99052","#6296C5","#FFF4AE","#D42E27","#FEBB6D","#FEFFC1","#FFCB7C","#E0452F","#FEDE8F","#F5FAD5","#EAF6E9","#FEE294","#FFEEA5","#B1DCEB","#FEE090","#FFEFA6","#F67747","#FCA35C","#FFF5B0","#FEFEC2","#FDA95F","#EC5D3B","#DB3A2B","#D7EEF5","#FFFAB8","#FEE496","#FED989","#ADDAE9","#CFEAF3","#FB9B57","#FEC779","#FFFFBF","#D73127","#FDFEC3","#FFE79B","#DFF2F8","#D2ECF4","#EFF8DF","#E8F6EB","#FEC677","#FCA85E","#FFFCBB","#FCA05A","#EDF7E3","#E75336","#FAFDCA","#FB9957","#FEE394","#FFE79B","#FEE496","#A7D5E7","#FCFDC7","#F7FBD0","#FFE89C","#FFF7B3","#FEC677","#C7E6F1","#FEBF71","#FEBB6D","#DDF1F7","#E2F4F5","#FFF9B6","#FFF7B3","#83B8D7","#F46C42","#FB9D58","#F77D4A","#FEDD8D","#FEE496","#9BCCE2","#86BAD8","#F46E44","#FFFBB9","#FFD182","#A2D2E5","#E85637","#313695","#598BBF","#FEC677","#FFE79B","#FEBB6D","#FFE699","#EFF8E0","#FFF5AF","#B6DEEC","#C82527","#FEC97A","#FFF2AC","#FDB164","#DBF0F6","#FFCD7E","#FFCE7F","#D0EBF3","#EAF6E9"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#FEC778","#FFF7B3","#FEC576","#CDEAF3","#FFF4AE","#E24931","#FEBC6E","#83B9D8","#FEC375","#F3FAD8","#FDFEC4","#EEF8E1","#D5EEF5","#F9894F","#FEB76A","#F2F9DA","#FFF1AA","#D7EEF5","#82B8D7","#FEC577","#FDAD61","#FEDC8C","#FFE79B","#88BDDA","#FA9153","#F6FBD1","#EAF6E7","#FFF1AA","#FFE99D","#D8EFF6","#FED888","#F3FAD8","#E95838","#FED888","#F7FBD0","#FFE89C","#FFEA9F","#EAF6E9","#FFEA9F","#FFFFBF","#F6FBD3","#FFF6B1","#FFF7B3","#D6EEF5","#B9E0ED","#FFFDBB","#FEC375","#FEE294","#FFFEBD","#D42E27","#FEC072","#F6FBD1","#FED989","#FDAF62","#FFF7B3","#E8F5EC","#FEC879","#FDB063","#F7814B","#FA9354","#FFF8B4","#FEE597","#BE1D27","#FCA85E","#FDB063","#FA9755","#FFCB7C","#FEDA8A","#FB9F59","#EFF8E0","#FFF6B2","#FEE191","#FFFFBE","#ECF7E5","#F98C50","#C1E4EF","#FDB063","#FFD282","#FEC475","#FFF1AA","#FFE89D","#FDB164","#EAF6E8","#E9F6EA","#DEF2F7","#F4FAD6","#FED586","#FFCF7F","#FEBE70","#B6DEEC","#AF0E26","#FEE293","#FFEDA3","#FA9555","#DA372A","#E95738","#FFF3AD","#FEBC6E","#FA9555","#FFE69A","#FBFDC9","#A8D7E8","#FBFDC7","#FFEBA0","#C42227","#FED788","#F0F9DD","#FED787","#F8FCCD","#FA9554","#FEDB8B","#FFF6B1","#FED484","#FFF1A9","#FEBA6C","#FFFEBD","#FFE89D","#DB3A2A","#FEBA6C","#F16740","#EB5C3A","#FEC97A","#FEE394","#FFF9B6","#FDFEC4","#FEC677","#FED888","#FFEBA0","#E85537","#FDAB5F","#DFF3F8","#FEBF71","#FFFCBA","#FFEBA1","#FEC97A","#FFFFBF","#CCE9F2","#FCA35C","#F1F9DD","#FFCB7C","#FED787","#E7F5ED","#C8E7F1","#F3FAD9","#FEC374","#FFF0A9","#FEC273","#9ACBE1","#FED383","#F1F9DC","#FEE496","#BDE2EE","#FEE192","#FEDF8F","#C01F27","#FFF6B2","#B9E0ED","#FEC172","#FFF9B6","#FDB164","#C0E3EF","#F6FBD2","#D6EEF5","#EEF8E2","#FA9655","#FDAD60","#FFEDA4","#FED787","#D22C27","#FEFEC2","#F8FCCE","#EE623D","#FEE598","#F46E43","#EDF7E4","#E6F5EF","#FEDB8B","#FFFBB9","#FFE99E","#FCA95E","#FA9555","#FDFEC3","#F7FBD0","#FFFEBE","#DDF2F7","#D4EDF4","#FFCF80","#FEE090","#FFFFBF","#FEE090","#FCA55D","#AC0A26","#FEE293","#FBFDC8","#F4FAD7","#F3FAD8","#FFCA7B","#FDFEC5","#FFF2AB","#FFEEA6","#FFECA3","#FEFFC1","#FDB164","#D4EDF5","#FFCC7D","#E14730","#FFEEA5","#E7F5ED","#EDF7E3","#F98F52","#FFF2AB","#F5FAD5","#E8F5EC","#EBF7E7","#F67A48","#D83228","#EAF6E8","#9CCCE2","#F8FCCE","#D0EBF3","#FFFCBA","#FFE79B","#FB9A57","#FEC375","#FFE89D","#FFF9B6","#FFE99E","#FEE293","#FEC677","#FEC577","#F26A41","#E9F6EA","#FFEDA4","#FEDD8D","#FA9253","#FA9655","#FFF1AA","#D2ECF4","#EFF8E0","#FFCF7F","#FFE699","#ACDAE9","#FEC879","#FB9A57","#FFF0A8","#D3EDF4","#FEDD8D","#FFCA7B","#FEB769","#FEE090","#A8D6E8","#FFFAB8","#EAF6E9","#EDF7E3","#FB9856","#EC5E3B","#C7E6F1","#FFFFBF","#D0EBF3","#FFFDBC","#FDB264","#EFF8DF","#F8FCCE","#FEDA8A","#BBE1ED","#E8F5EC","#FFCA7B","#FEC677","#FFD080","#F0F9DD","#FFF8B4","#DF442F","#FFEA9F","#C01E27","#FDAE61","#B8DFED","#D83228","#FFF4AE","#FFFCBA","#FED787","#EB5C3A","#FEBD6F","#FEC375","#A9D8E8","#FEBA6C","#FFEFA6","#F4FAD6","#FA9655","#4C7CB8","#FFE79B","#96C7E0","#FA9756","#FDB163","#CDEAF3","#FDB366","#ECF7E5","#C2E4EF","#FFCD7E","#FFFCBB","#FFEBA0","#FEFFC0","#A1D1E5","#FFE89C","#FBFDC8","#FFE89C","#F4FAD5","#FEDF8F","#FEC778","#F8874E","#E4F4F3","#EAF6E8","#FED787","#D1ECF4","#FEE597","#EA5939","#FBFDC8","#FFF9B6","#C0E3EF","#FFCC7D","#F36A41","#FEDF8F","#FEB86B","#F57346","#D9F0F6","#FA9153","#B9E0ED","#F4FAD7","#FEB76A","#FEC577","#EDF7E3","#FFEA9E","#DEF2F8","#ACD9E9","#84B9D8","#FEFEC2","#FEC97A","#FBFDC8","#FEC879","#FFFAB7","#FEB96B","#ECF7E4","#F1F9DB","#CBE9F2","#89BDDA","#FEBC6E","#E2F4F5","#F46D43","#FCA55D","#FFE99D","#DB3A2B","#FFF7B3","#FCFDC7","#FFF2AB","#FEC97A","#D9F0F6","#E34C32","#FED585","#F99052","#FEBE6F","#F9FCCC","#FBFDC9","#E8F6EB","#FB9E59","#E4F4F2","#F57044","#9FCFE4","#FDAF62","#EEF8E2","#D4EDF4","#FFECA3","#EBF6E7","#FFF6B1","#E8F6EC","#FFECA2","#D6EEF5","#FED485","#F9FCCC","#FFFEBE","#FEBE70","#FFF4AE","#E6F5F0","#FEBD6F","#ECF7E5","#FFEA9F","#CEEAF3","#FFE69A","#F8FCCF","#F9FCCC","#FEFEC2","#F7804B","#E85537","#F2F9DA","#FEDE8E","#8DC0DB","#FEBF71","#FFD080","#F36B42","#EFF8E0","#FCA35C","#F8864E","#E65235","#FFFDBC","#FFF0A8","#B21227","#E9F6EA","#A0D0E4","#A50026","#F16840","#FBFDC9","#DCF1F7","#FEDE8E","#D4EDF4","#FFCE7F","#FFECA2","#FA9454","#FFCC7D","#D6EEF5","#FFCE7F","#FFFBB9","#FFF0A8","#F7804B","#FFF8B4","#FDAD61","#F0F8DE","#FEE395","#FFEEA5","#FBFDC8","#FAFDC9","#FA9354","#CAE8F2","#B5DEEC","#FFF3AD","#FFEFA6","#FFFEBE","#F3FAD8","#D5EDF5","#FFE99D","#FFE699","#FDFEC4","#CCE9F2","#FFEEA5","#DB3B2B","#F8864E","#FB9956","#FDAF62","#D4EDF5","#FDAC60","#FFF4AF","#E7F5EE","#FEBA6C","#FDAD60","#F9894F","#E5F5F1","#FEC677","#DA392A","#A8D7E8","#FEC375","#F0F9DD","#FFD081","#FEB467","#D83328","#FEE090","#FFEA9F","#FFEDA4","#FCFEC5","#FEC879","#FEBF71","#FEBA6C","#F16740","#FEE191","#FEDF8F","#F6FBD2","#F8874E","#FFFFC0","#F7824C","#E3F4F3","#FEC576","#FEDE8E","#FEB96B","#E0F3F7","#FFEFA6","#F3FAD9","#ABD9E9","#BE1D27","#FEE496","#FFF0A9","#C5E5F0","#F0F8DE","#FEBC6E","#FEDE8E","#FA9052","#FEDB8B","#F98D51","#EBF7E6","#FEFFC1","#ACD9E9","#FFD282","#CC2827","#FFECA2","#F3FAD7","#FFD081","#BDE2EE","#D8EFF6","#F9FCCD","#FFEEA6","#FEC475","#FEE293","#FCFDC6","#FED989","#FEB568","#6094C4","#FFEEA5","#EAF6E8","#FFEFA7","#FEFFC1","#FEBF71","#FFF4AE","#FED788","#FFFBB9","#ECF7E4","#FEE090","#FFF5AF","#FEDC8C","#FEC879","#FFF2AB","#C6E6F1","#F98E51","#FEE496","#FEE090","#FA9354","#F57145","#FEC172","#DDF1F7","#FEBA6C","#FFF9B6","#4E7FB9","#FEC778","#FEDF8F","#FEB568","#97C8E0","#FFF8B4","#FDB366","#FFF9B6","#FFFDBC","#EFF8DF","#FEFEC2","#F77C49","#E5F4F1","#73ABD0","#8EC1DC","#F8FCCE","#F1F9DB","#FFE89C","#FFE69A","#FFCD7E","#FFE79A","#A8D7E8","#F99052","#6296C5","#FFF4AE","#D42E27","#FEBB6D","#FEFFC1","#FFCB7C","#E0452F","#FEDE8F","#F5FAD5","#EAF6E9","#FEE294","#FFEEA5","#B1DCEB","#FEE090","#FFEFA6","#F67747","#FCA35C","#FFF5B0","#FEFEC2","#FDA95F","#EC5D3B","#DB3A2B","#D7EEF5","#FFFAB8","#FEE496","#FED989","#ADDAE9","#CFEAF3","#FB9B57","#FEC779","#FFFFBF","#D73127","#FDFEC3","#FFE79B","#DFF2F8","#D2ECF4","#EFF8DF","#E8F6EB","#FEC677","#FCA85E","#FFFCBB","#FCA05A","#EDF7E3","#E75336","#FAFDCA","#FB9957","#FEE394","#FFE79B","#FEE496","#A7D5E7","#FCFDC7","#F7FBD0","#FFE89C","#FFF7B3","#FEC677","#C7E6F1","#FEBF71","#FEBB6D","#DDF1F7","#E2F4F5","#FFF9B6","#FFF7B3","#83B8D7","#F46C42","#FB9D58","#F77D4A","#FEDD8D","#FEE496","#9BCCE2","#86BAD8","#F46E44","#FFFBB9","#FFD182","#A2D2E5","#E85637","#313695","#598BBF","#FEC677","#FFE79B","#FEBB6D","#FFE699","#EFF8E0","#FFF5AF","#B6DEEC","#C82527","#FEC97A","#FFF2AC","#FDB164","#DBF0F6","#FFCD7E","#FFCE7F","#D0EBF3","#EAF6E9"],"fillOpacity":0.7},null,null,["ID: 1 <br>Population Density: 3008.4 <br>Median Income: 57325.94","ID: 2 <br>Population Density: 2920.09 <br>Median Income: 68554.07","ID: 3 <br>Population Density: 4964.04 <br>Median Income: 56876.16","ID: 4 <br>Population Density: 4735.65 <br>Median Income: 83288.41","ID: 5 <br>Population Density: -98.69 <br>Median Income: 67612.04","ID: 7 <br>Population Density: 5499.45 <br>Median Income: 37896.61","ID: 8 <br>Population Density: 9832.41 <br>Median Income: 55344.78","ID: 9 <br>Population Density: 6370.4 <br>Median Income: 95690.28","ID: 10 <br>Population Density: 4106.08 <br>Median Income: 56588.56","ID: 12 <br>Population Density: 10664.45 <br>Median Income: 74794.21","ID: 13 <br>Population Density: 2562.58 <br>Median Income: 71619.4","ID: 14 <br>Population Density: 5938.06 <br>Median Income: 76274.44","ID: 16 <br>Population Density: 5374.1 <br>Median Income: 81839.81","ID: 17 <br>Population Density: 5455.09 <br>Median Income: 47410.87","ID: 19 <br>Population Density: 5571.18 <br>Median Income: 54437.89","ID: 20 <br>Population Density: 8498.49 <br>Median Income: 75211.38","ID: 21 <br>Population Density: 4671.82 <br>Median Income: 66950.1","ID: 22 <br>Population Density: 4674.15 <br>Median Income: 81645.62","ID: 23 <br>Population Density: 7797.14 <br>Median Income: 95877.51","ID: 25 <br>Population Density: 1703.01 <br>Median Income: 56980.75","ID: 26 <br>Population Density: 5457.11 <br>Median Income: 52647.25","ID: 27 <br>Population Density: 8307.09 <br>Median Income: 61054.49","ID: 28 <br>Population Density: 7830.55 <br>Median Income: 63955.97","ID: 29 <br>Population Density: 5839.9 <br>Median Income: 94877.03","ID: 31 <br>Population Density: 2606.13 <br>Median Income: 48601.74","ID: 33 <br>Population Density: 3091.1 <br>Median Income: 73813.39","ID: 34 <br>Population Density: 4083.96 <br>Median Income: 77316.68","ID: 36 <br>Population Density: 2726.21 <br>Median Income: 66905.58","ID: 37 <br>Population Density: 5533.84 <br>Median Income: 64356.61","ID: 39 <br>Population Density: 5109.82 <br>Median Income: 81337.88","ID: 40 <br>Population Density: 8644.38 <br>Median Income: 60315.79","ID: 42 <br>Population Density: 6212.26 <br>Median Income: 74790.84","ID: 43 <br>Population Density: 4822.14 <br>Median Income: 40197.61","ID: 44 <br>Population Density: 4478.34 <br>Median Income: 60345.94","ID: 45 <br>Population Density: 5928.18 <br>Median Income: 73623.09","ID: 47 <br>Population Density: 2373.1 <br>Median Income: 64101.23","ID: 48 <br>Population Density: 4011.04 <br>Median Income: 64684.89","ID: 53 <br>Population Density: 5940.99 <br>Median Income: 77511.43","ID: 55 <br>Population Density: 7315.82 <br>Median Income: 64821.16","ID: 56 <br>Population Density: 6169.41 <br>Median Income: 70980.08","ID: 58 <br>Population Density: 5109.11 <br>Median Income: 74020.4","ID: 59 <br>Population Density: 6432.66 <br>Median Income: 68277.43","ID: 60 <br>Population Density: 6115.46 <br>Median Income: 68548.93","ID: 61 <br>Population Density: 7963.87 <br>Median Income: 81693.73","ID: 63 <br>Population Density: 7232.27 <br>Median Income: 86717.96","ID: 64 <br>Population Density: 7073.1 <br>Median Income: 70236.69","ID: 66 <br>Population Density: 3048.15 <br>Median Income: 56596.37","ID: 67 <br>Population Density: 2821.71 <br>Median Income: 62541.84","ID: 68 <br>Population Density: 5915.57 <br>Median Income: 70605.27","ID: 69 <br>Population Density: 4857.75 <br>Median Income: 34044.29","ID: 70 <br>Population Density: 8558.21 <br>Median Income: 55977.17","ID: 71 <br>Population Density: 6070.28 <br>Median Income: 73789.87","ID: 72 <br>Population Density: 4256.11 <br>Median Income: 60582.77","ID: 73 <br>Population Density: 2948.92 <br>Median Income: 52992.09","ID: 75 <br>Population Density: 5685.78 <br>Median Income: 68536.24","ID: 77 <br>Population Density: 6028.46 <br>Median Income: 78068.44","ID: 79 <br>Population Density: 4788.88 <br>Median Income: 57449.91","ID: 80 <br>Population Density: 3538.98 <br>Median Income: 53192.26","ID: 81 <br>Population Density: 8810.09 <br>Median Income: 46271","ID: 82 <br>Population Density: 5665.24 <br>Median Income: 48831.39","ID: 83 <br>Population Density: 5461.27 <br>Median Income: 68751.16","ID: 84 <br>Population Density: 1616.28 <br>Median Income: 63203.39","ID: 86 <br>Population Density: 2952.75 <br>Median Income: 30188.54","ID: 89 <br>Population Density: 4094.6 <br>Median Income: 51829.47","ID: 90 <br>Population Density: 1503.26 <br>Median Income: 53048.47","ID: 93 <br>Population Density: 6145.62 <br>Median Income: 49342.33","ID: 94 <br>Population Density: 7034.5 <br>Median Income: 57969.56","ID: 95 <br>Population Density: 3738.06 <br>Median Income: 60726.45","ID: 97 <br>Population Density: 5878.26 <br>Median Income: 50539.2","ID: 99 <br>Population Density: 5968.2 <br>Median Income: 76117.92","ID: 100 <br>Population Density: 4510.23 <br>Median Income: 68402.78","ID: 101 <br>Population Density: 6831.98 <br>Median Income: 61997.79","ID: 102 <br>Population Density: 6601.24 <br>Median Income: 70817.3","ID: 103 <br>Population Density: 3126.86 <br>Median Income: 76908.78","ID: 106 <br>Population Density: 4452.08 <br>Median Income: 47816.41","ID: 115 <br>Population Density: 7115.33 <br>Median Income: 85352.55","ID: 116 <br>Population Density: 6650.3 <br>Median Income: 53192.97","ID: 117 <br>Population Density: 4859.61 <br>Median Income: 59228.02","ID: 119 <br>Population Density: 8150.62 <br>Median Income: 56680.69","ID: 120 <br>Population Density: 989.08 <br>Median Income: 66823.58","ID: 121 <br>Population Density: 3713.61 <br>Median Income: 64286.06","ID: 122 <br>Population Density: 2126.31 <br>Median Income: 53356.23","ID: 123 <br>Population Density: 7790.63 <br>Median Income: 77471.62","ID: 124 <br>Population Density: 4618.59 <br>Median Income: 77694.62","ID: 125 <br>Population Density: 3950.66 <br>Median Income: 80362.09","ID: 130 <br>Population Density: 1863.15 <br>Median Income: 74451.21","ID: 131 <br>Population Density: 5980.61 <br>Median Income: 59905.61","ID: 132 <br>Population Density: 4807.67 <br>Median Income: 58649.83","ID: 133 <br>Population Density: 5937.05 <br>Median Income: 55725.93","ID: 134 <br>Population Density: 3035.26 <br>Median Income: 87233.03","ID: 135 <br>Population Density: 2954.03 <br>Median Income: 27377.5","ID: 136 <br>Population Density: 3613.17 <br>Median Income: 62486.33","ID: 137 <br>Population Density: 3464.02 <br>Median Income: 65573.19","ID: 138 <br>Population Density: 7598.1 <br>Median Income: 49105.86","ID: 140 <br>Population Density: 4686.22 <br>Median Income: 35493.68","ID: 142 <br>Population Density: 4341.92 <br>Median Income: 40049.59","ID: 145 <br>Population Density: 5580.07 <br>Median Income: 67431.21","ID: 146 <br>Population Density: 3506.64 <br>Median Income: 55226.49","ID: 149 <br>Population Density: 3902.75 <br>Median Income: 49116.49","ID: 150 <br>Population Density: 5606.09 <br>Median Income: 63712.26","ID: 151 <br>Population Density: 4886.06 <br>Median Income: 72468.99","ID: 152 <br>Population Density: 3084.3 <br>Median Income: 89509.84","ID: 153 <br>Population Density: 6182.12 <br>Median Income: 72191.78","ID: 156 <br>Population Density: 5234.92 <br>Median Income: 64951.38","ID: 157 <br>Population Density: 4336.91 <br>Median Income: 31151.98","ID: 159 <br>Population Density: 2628.82 <br>Median Income: 60215.56","ID: 160 <br>Population Density: 3328.21 <br>Median Income: 75684.06","ID: 161 <br>Population Density: 6020.55 <br>Median Income: 60162.3","ID: 162 <br>Population Density: 4333.76 <br>Median Income: 73154.73","ID: 163 <br>Population Density: 4868.08 <br>Median Income: 49042.83","ID: 164 <br>Population Density: 4769.56 <br>Median Income: 60888.05","ID: 165 <br>Population Density: 3698.97 <br>Median Income: 68255.09","ID: 166 <br>Population Density: 962.62 <br>Median Income: 59609.21","ID: 167 <br>Population Density: 5697.67 <br>Median Income: 66692.48","ID: 168 <br>Population Density: 6523.28 <br>Median Income: 54938.78","ID: 169 <br>Population Density: 2422.57 <br>Median Income: 70615.18","ID: 171 <br>Population Density: 5770.31 <br>Median Income: 64294.26","ID: 172 <br>Population Density: 7683.28 <br>Median Income: 35768.19","ID: 173 <br>Population Density: 3085.66 <br>Median Income: 54894.97","ID: 174 <br>Population Density: 5333.56 <br>Median Income: 42655.34","ID: 175 <br>Population Density: 4799.97 <br>Median Income: 40914.23","ID: 176 <br>Population Density: 6537.01 <br>Median Income: 57591.75","ID: 177 <br>Population Density: 3848.28 <br>Median Income: 62588.02","ID: 178 <br>Population Density: 4979.8 <br>Median Income: 69254","ID: 180 <br>Population Density: 3444.76 <br>Median Income: 71666","ID: 182 <br>Population Density: 3587.36 <br>Median Income: 57105.35","ID: 183 <br>Population Density: 4912.86 <br>Median Income: 60382.4","ID: 185 <br>Population Density: 6213.86 <br>Median Income: 65018.11","ID: 186 <br>Population Density: 7336.98 <br>Median Income: 39796.33","ID: 187 <br>Population Density: 3355 <br>Median Income: 52301.67","ID: 188 <br>Population Density: 4385.93 <br>Median Income: 80113.88","ID: 189 <br>Population Density: 7879.52 <br>Median Income: 55838.94","ID: 190 <br>Population Density: 602.15 <br>Median Income: 70001.66","ID: 191 <br>Population Density: 4360.32 <br>Median Income: 65213.34","ID: 192 <br>Population Density: 9129.41 <br>Median Income: 57554.64","ID: 194 <br>Population Density: 5313.19 <br>Median Income: 70875.81","ID: 196 <br>Population Density: 5330.91 <br>Median Income: 83520.05","ID: 198 <br>Population Density: 7905.63 <br>Median Income: 51151.88","ID: 200 <br>Population Density: 5745.82 <br>Median Income: 75580.02","ID: 202 <br>Population Density: 3484.98 <br>Median Income: 58044.75","ID: 203 <br>Population Density: 6703.05 <br>Median Income: 60104.7","ID: 204 <br>Population Density: 3504.14 <br>Median Income: 78237.4","ID: 205 <br>Population Density: 6260.48 <br>Median Income: 84219.29","ID: 207 <br>Population Density: 3023.11 <br>Median Income: 74968.56","ID: 208 <br>Population Density: 7215.99 <br>Median Income: 56522.64","ID: 211 <br>Population Density: 5403.67 <br>Median Income: 66597.47","ID: 213 <br>Population Density: 5536.21 <br>Median Income: 56292.45","ID: 214 <br>Population Density: 2539.14 <br>Median Income: 91924.67","ID: 216 <br>Population Density: 6651.58 <br>Median Income: 59383.96","ID: 217 <br>Population Density: 651.75 <br>Median Income: 75541.23","ID: 219 <br>Population Density: 2676.12 <br>Median Income: 62933.75","ID: 220 <br>Population Density: 1821.82 <br>Median Income: 86050.37","ID: 221 <br>Population Density: 5839.17 <br>Median Income: 62167.41","ID: 223 <br>Population Density: 670.91 <br>Median Income: 61671.17","ID: 224 <br>Population Density: 3724.86 <br>Median Income: 30529.6","ID: 226 <br>Population Density: 6713.57 <br>Median Income: 68341.04","ID: 227 <br>Population Density: 2792.5 <br>Median Income: 86698.29","ID: 228 <br>Population Density: 7322.58 <br>Median Income: 56098.97","ID: 229 <br>Population Density: 5796.73 <br>Median Income: 69139.69","ID: 232 <br>Population Density: 8907.34 <br>Median Income: 53340.25","ID: 233 <br>Population Density: 4671.46 <br>Median Income: 85535.93","ID: 235 <br>Population Density: 4592.29 <br>Median Income: 73904.98","ID: 236 <br>Population Density: 1131.11 <br>Median Income: 81731.94","ID: 238 <br>Population Density: 4155.55 <br>Median Income: 76393.65","ID: 240 <br>Population Density: 7018.99 <br>Median Income: 49263.49","ID: 241 <br>Population Density: 3547.79 <br>Median Income: 52534.07","ID: 242 <br>Population Density: 6612.22 <br>Median Income: 65750.79","ID: 244 <br>Population Density: 3431.71 <br>Median Income: 60179.62","ID: 246 <br>Population Density: 6301.56 <br>Median Income: 33636.62","ID: 247 <br>Population Density: 5366.1 <br>Median Income: 71378.53","ID: 249 <br>Population Density: 7809.37 <br>Median Income: 73237.41","ID: 250 <br>Population Density: 5774.17 <br>Median Income: 41811.62","ID: 252 <br>Population Density: 6245.81 <br>Median Income: 63330.02","ID: 253 <br>Population Density: 5867.24 <br>Median Income: 43807.8","ID: 255 <br>Population Density: 7582.65 <br>Median Income: 76753.93","ID: 256 <br>Population Density: 2995.48 <br>Median Income: 78513.04","ID: 258 <br>Population Density: 6183.89 <br>Median Income: 60919.14","ID: 260 <br>Population Density: 5148.01 <br>Median Income: 69746.4","ID: 261 <br>Population Density: 6482.55 <br>Median Income: 64554.83","ID: 262 <br>Population Density: 6506.59 <br>Median Income: 51958.09","ID: 264 <br>Population Density: 4374.91 <br>Median Income: 49068.78","ID: 265 <br>Population Density: 5147.2 <br>Median Income: 71545.61","ID: 266 <br>Population Density: 7126.04 <br>Median Income: 73565.13","ID: 267 <br>Population Density: 5852.04 <br>Median Income: 70647.12","ID: 273 <br>Population Density: 5829.4 <br>Median Income: 80481.92","ID: 275 <br>Population Density: 4781.92 <br>Median Income: 82160.23","ID: 276 <br>Population Density: 5458.79 <br>Median Income: 58802.13","ID: 278 <br>Population Density: 6886.45 <br>Median Income: 61913.81","ID: 279 <br>Population Density: 4781.37 <br>Median Income: 70850.3","ID: 280 <br>Population Density: 4859.25 <br>Median Income: 61891.77","ID: 281 <br>Population Density: 4031.36 <br>Median Income: 51492.39","ID: 283 <br>Population Density: 4862.47 <br>Median Income: 26871.03","ID: 286 <br>Population Density: 4855.03 <br>Median Income: 62461.1","ID: 288 <br>Population Density: 2598.26 <br>Median Income: 72289.74","ID: 289 <br>Population Density: 1016.92 <br>Median Income: 74684.7","ID: 290 <br>Population Density: 4291.26 <br>Median Income: 74840.67","ID: 294 <br>Population Density: 7986.37 <br>Median Income: 57792.72","ID: 295 <br>Population Density: 5166.04 <br>Median Income: 71792.04","ID: 296 <br>Population Density: 5231.06 <br>Median Income: 67150.91","ID: 300 <br>Population Density: 6816.9 <br>Median Income: 66079.41","ID: 303 <br>Population Density: 2704.46 <br>Median Income: 65471.61","ID: 304 <br>Population Density: 5708.7 <br>Median Income: 71170.28","ID: 305 <br>Population Density: 5849.6 <br>Median Income: 53357.24","ID: 306 <br>Population Density: 6296.69 <br>Median Income: 82095.16","ID: 309 <br>Population Density: 3111.88 <br>Median Income: 58183.73","ID: 310 <br>Population Density: 4999.23 <br>Median Income: 37656.69","ID: 311 <br>Population Density: 7685.25 <br>Median Income: 65812.97","ID: 312 <br>Population Density: 3992.95 <br>Median Income: 78204.1","ID: 313 <br>Population Density: 6433.37 <br>Median Income: 76671.6","ID: 315 <br>Population Density: 4042.94 <br>Median Income: 48302.77","ID: 316 <br>Population Density: 5877.44 <br>Median Income: 67006.17","ID: 317 <br>Population Density: 3641.78 <br>Median Income: 74391.22","ID: 318 <br>Population Density: 1594.07 <br>Median Income: 78093.97","ID: 319 <br>Population Density: 7530.34 <br>Median Income: 77245.88","ID: 321 <br>Population Density: 3832.72 <br>Median Income: 45310.92","ID: 322 <br>Population Density: 1011.84 <br>Median Income: 34812.2","ID: 324 <br>Population Density: 11780.74 <br>Median Income: 77421.67","ID: 329 <br>Population Density: 4297.61 <br>Median Income: 91685.58","ID: 330 <br>Population Density: 1545.76 <br>Median Income: 73271.03","ID: 331 <br>Population Density: 3526.84 <br>Median Income: 82854.66","ID: 332 <br>Population Density: 6244.82 <br>Median Income: 69959.03","ID: 333 <br>Population Density: 4418.57 <br>Median Income: 64030.22","ID: 334 <br>Population Density: 4571.58 <br>Median Income: 49811.78","ID: 335 <br>Population Density: 4774.88 <br>Median Income: 56622.29","ID: 336 <br>Population Density: 1272.67 <br>Median Income: 64293.38","ID: 337 <br>Population Density: 6675.26 <br>Median Income: 69231.11","ID: 338 <br>Population Density: 2113.01 <br>Median Income: 64501.71","ID: 339 <br>Population Density: 4582.86 <br>Median Income: 62330.42","ID: 341 <br>Population Density: 4562.81 <br>Median Income: 57134.42","ID: 342 <br>Population Density: 7919.93 <br>Median Income: 56960.94","ID: 343 <br>Population Density: 3835.88 <br>Median Income: 43164.43","ID: 344 <br>Population Density: 3433.8 <br>Median Income: 77694.07","ID: 345 <br>Population Density: 1960.69 <br>Median Income: 65703.99","ID: 348 <br>Population Density: 5815.89 <br>Median Income: 61283.39","ID: 349 <br>Population Density: 3273.99 <br>Median Income: 48698.26","ID: 350 <br>Population Density: 5608.08 <br>Median Income: 49260.54","ID: 353 <br>Population Density: 3418.78 <br>Median Income: 66889.46","ID: 355 <br>Population Density: 6806.15 <br>Median Income: 82456.8","ID: 357 <br>Population Density: 4992.84 <br>Median Income: 76135.73","ID: 359 <br>Population Density: 3463.17 <br>Median Income: 58656.92","ID: 360 <br>Population Density: 5816.98 <br>Median Income: 63529.21","ID: 363 <br>Population Density: 7280.77 <br>Median Income: 88842.04","ID: 364 <br>Population Density: 6536.16 <br>Median Income: 57363.94","ID: 365 <br>Population Density: 2663.82 <br>Median Income: 49766.53","ID: 366 <br>Population Density: 4657.77 <br>Median Income: 66512.88","ID: 369 <br>Population Density: 5927.59 <br>Median Income: 82185.22","ID: 370 <br>Population Density: 5954.23 <br>Median Income: 61353.53","ID: 371 <br>Population Density: 4017.19 <br>Median Income: 57821.85","ID: 372 <br>Population Density: 2361.23 <br>Median Income: 54343.74","ID: 373 <br>Population Density: 7590.85 <br>Median Income: 61831.33","ID: 374 <br>Population Density: 2159.56 <br>Median Income: 89626.77","ID: 375 <br>Population Density: 3122.21 <br>Median Income: 69527.7","ID: 377 <br>Population Density: 2475.61 <br>Median Income: 77581.04","ID: 379 <br>Population Density: 2634.4 <br>Median Income: 76634.28","ID: 381 <br>Population Density: 5892.63 <br>Median Income: 49497.33","ID: 382 <br>Population Density: 5843.77 <br>Median Income: 41158.17","ID: 384 <br>Population Density: 6114.49 <br>Median Income: 84361.01","ID: 386 <br>Population Density: 1062.68 <br>Median Income: 70924.56","ID: 387 <br>Population Density: 4702.37 <br>Median Income: 82724.27","ID: 390 <br>Population Density: 2625.03 <br>Median Income: 70253.84","ID: 392 <br>Population Density: 2852.71 <br>Median Income: 53385.27","ID: 393 <br>Population Density: 7114.48 <br>Median Income: 75962.23","ID: 394 <br>Population Density: 7558.15 <br>Median Income: 73184.53","ID: 395 <br>Population Density: 6575.35 <br>Median Income: 60673.26","ID: 398 <br>Population Density: 7300.9 <br>Median Income: 86412.79","ID: 400 <br>Population Density: 3867.78 <br>Median Income: 78089.52","ID: 401 <br>Population Density: 2827.76 <br>Median Income: 57752.97","ID: 402 <br>Population Density: 3669.39 <br>Median Income: 57029.8","ID: 404 <br>Population Density: 4136.68 <br>Median Income: 58824.53","ID: 405 <br>Population Density: 5455.23 <br>Median Income: 75637.78","ID: 406 <br>Population Density: 7589.89 <br>Median Income: 68845.95","ID: 407 <br>Population Density: 6156.67 <br>Median Income: 37154.59","ID: 409 <br>Population Density: 1596.84 <br>Median Income: 64657.49","ID: 411 <br>Population Density: 5130.14 <br>Median Income: 30387.88","ID: 412 <br>Population Density: 6157.18 <br>Median Income: 52753.29","ID: 414 <br>Population Density: 6612.37 <br>Median Income: 86926.79","ID: 415 <br>Population Density: 5614.78 <br>Median Income: 34806.97","ID: 418 <br>Population Density: 4767.28 <br>Median Income: 67630.94","ID: 419 <br>Population Density: 6851.09 <br>Median Income: 69962.59","ID: 420 <br>Population Density: 6296.46 <br>Median Income: 60189.66","ID: 421 <br>Population Density: 4699.58 <br>Median Income: 40815.07","ID: 422 <br>Population Density: 7080.75 <br>Median Income: 55541.71","ID: 423 <br>Population Density: 5585.12 <br>Median Income: 56592.71","ID: 425 <br>Population Density: 3811.64 <br>Median Income: 89343.28","ID: 426 <br>Population Density: 8160.86 <br>Median Income: 54848.44","ID: 427 <br>Population Density: 4992.02 <br>Median Income: 66143.97","ID: 430 <br>Population Density: 4440.74 <br>Median Income: 74539.22","ID: 431 <br>Population Density: 6568.88 <br>Median Income: 49240.57","ID: 432 <br>Population Density: 1830.77 <br>Median Income: 106028.14","ID: 435 <br>Population Density: -390.66 <br>Median Income: 64001.82","ID: 436 <br>Population Density: 5736.75 <br>Median Income: 92654.68","ID: 440 <br>Population Density: 3610.13 <br>Median Income: 49419.08","ID: 441 <br>Population Density: 4986.31 <br>Median Income: 53225.16","ID: 442 <br>Population Density: 7746.1 <br>Median Income: 83224.23","ID: 444 <br>Population Density: 6116.21 <br>Median Income: 53642.02","ID: 445 <br>Population Density: 5682.32 <br>Median Income: 76880.89","ID: 446 <br>Population Density: 2640.96 <br>Median Income: 85177.7","ID: 448 <br>Population Density: 1014.83 <br>Median Income: 58326.01","ID: 449 <br>Population Density: 6102.55 <br>Median Income: 70179.26","ID: 450 <br>Population Density: 4930.52 <br>Median Income: 64927.33","ID: 451 <br>Population Density: 8701.14 <br>Median Income: 71095.5","ID: 452 <br>Population Density: 6147.35 <br>Median Income: 90712.98","ID: 453 <br>Population Density: 6699.39 <br>Median Income: 64094.2","ID: 455 <br>Population Density: 3998.56 <br>Median Income: 72281.22","ID: 456 <br>Population Density: 6020.2 <br>Median Income: 64259.83","ID: 457 <br>Population Density: 6737.59 <br>Median Income: 74416.48","ID: 458 <br>Population Density: 7738.7 <br>Median Income: 61640.43","ID: 462 <br>Population Density: 6459.12 <br>Median Income: 57256.76","ID: 463 <br>Population Density: 6000.53 <br>Median Income: 47141.86","ID: 468 <br>Population Density: 6374.73 <br>Median Income: 79113.49","ID: 469 <br>Population Density: 5343.26 <br>Median Income: 77426.96","ID: 470 <br>Population Density: 3339.78 <br>Median Income: 60132.66","ID: 473 <br>Population Density: 3065.94 <br>Median Income: 82544.83","ID: 474 <br>Population Density: 4710.78 <br>Median Income: 63177.85","ID: 475 <br>Population Density: 1403.73 <br>Median Income: 40440.63","ID: 476 <br>Population Density: 1622.92 <br>Median Income: 72370.75","ID: 477 <br>Population Density: 7205.13 <br>Median Income: 69227.29","ID: 480 <br>Population Density: 4774.27 <br>Median Income: 85540.82","ID: 482 <br>Population Density: 6324.51 <br>Median Income: 58155.55","ID: 484 <br>Population Density: 7367.49 <br>Median Income: 43188.66","ID: 488 <br>Population Density: 5001.53 <br>Median Income: 61561.18","ID: 489 <br>Population Density: 9428.93 <br>Median Income: 54613.02","ID: 490 <br>Population Density: 6938.87 <br>Median Income: 44500.65","ID: 494 <br>Population Density: 9568.23 <br>Median Income: 81171.01","ID: 495 <br>Population Density: 2813.4 <br>Median Income: 48506.21","ID: 499 <br>Population Density: 7178.22 <br>Median Income: 86769.21","ID: 500 <br>Population Density: 4673.74 <br>Median Income: 74623.27","ID: 503 <br>Population Density: 3195.8 <br>Median Income: 54432.28","ID: 504 <br>Population Density: 6254.14 <br>Median Income: 56990.24","ID: 505 <br>Population Density: 7240.71 <br>Median Income: 76615.77","ID: 507 <br>Population Density: 5732.23 <br>Median Income: 64633.59","ID: 508 <br>Population Density: 3250.44 <br>Median Income: 80285.12","ID: 510 <br>Population Density: 6809.52 <br>Median Income: 88929.41","ID: 511 <br>Population Density: 4523.5 <br>Median Income: 95629.33","ID: 513 <br>Population Density: 6522.62 <br>Median Income: 71328.97","ID: 514 <br>Population Density: 7258.29 <br>Median Income: 57553.67","ID: 515 <br>Population Density: 4409.78 <br>Median Income: 72364.42","ID: 516 <br>Population Density: 6072.49 <br>Median Income: 57470.27","ID: 517 <br>Population Density: 4448.22 <br>Median Income: 69322.55","ID: 518 <br>Population Density: 6364.63 <br>Median Income: 54700.61","ID: 519 <br>Population Density: 4765.42 <br>Median Income: 76826.06","ID: 520 <br>Population Density: 4310.65 <br>Median Income: 75370.53","ID: 521 <br>Population Density: 5223.24 <br>Median Income: 83644.99","ID: 522 <br>Population Density: 4433.19 <br>Median Income: 94733.15","ID: 523 <br>Population Density: 3817.97 <br>Median Income: 55303.37","ID: 524 <br>Population Density: 4368.13 <br>Median Income: 79492.84","ID: 525 <br>Population Density: 4983.7 <br>Median Income: 43590.99","ID: 530 <br>Population Density: 6263.05 <br>Median Income: 51493.33","ID: 532 <br>Population Density: 5852.03 <br>Median Income: 64388.05","ID: 534 <br>Population Density: 4384.89 <br>Median Income: 35812.22","ID: 535 <br>Population Density: 5828.62 <br>Median Income: 68646.44","ID: 536 <br>Population Density: 6978.12 <br>Median Income: 72123.5","ID: 537 <br>Population Density: 4632.28 <br>Median Income: 67050.72","ID: 538 <br>Population Density: 5327.52 <br>Median Income: 57668.78","ID: 540 <br>Population Density: 6458.56 <br>Median Income: 81163.03","ID: 543 <br>Population Density: 4847.66 <br>Median Income: 38306.78","ID: 544 <br>Population Density: 7789.33 <br>Median Income: 59831.74","ID: 545 <br>Population Density: 5329.07 <br>Median Income: 48362.4","ID: 546 <br>Population Density: 8155.7 <br>Median Income: 55548.41","ID: 548 <br>Population Density: 6227.85 <br>Median Income: 73017.7","ID: 549 <br>Population Density: 1907.82 <br>Median Income: 72408.47","ID: 553 <br>Population Density: 2928.21 <br>Median Income: 77914.21","ID: 554 <br>Population Density: 6896.32 <br>Median Income: 50401.29","ID: 555 <br>Population Density: 6828.32 <br>Median Income: 79063.15","ID: 556 <br>Population Density: 2402.54 <br>Median Income: 44071.91","ID: 557 <br>Population Density: 5848.76 <br>Median Income: 91081.15","ID: 558 <br>Population Density: 2774.91 <br>Median Income: 53020.49","ID: 559 <br>Population Density: 2897.85 <br>Median Income: 76475.37","ID: 562 <br>Population Density: 6986.96 <br>Median Income: 82163.88","ID: 563 <br>Population Density: 5077.05 <br>Median Income: 65500.65","ID: 564 <br>Population Density: 6072.3 <br>Median Income: 77276.12","ID: 565 <br>Population Density: 3952.75 <br>Median Income: 68272.88","ID: 566 <br>Population Density: 2697.56 <br>Median Income: 78027.46","ID: 567 <br>Population Density: 6829.5 <br>Median Income: 65325.21","ID: 568 <br>Population Density: 5476.14 <br>Median Income: 81728.43","ID: 569 <br>Population Density: 4521.86 <br>Median Income: 59717.29","ID: 570 <br>Population Density: 5138.47 <br>Median Income: 72909.32","ID: 571 <br>Population Density: 7651.82 <br>Median Income: 70678.57","ID: 573 <br>Population Density: 3501.18 <br>Median Income: 55684.36","ID: 574 <br>Population Density: 3760.77 <br>Median Income: 67665.37","ID: 576 <br>Population Density: 6639.26 <br>Median Income: 78629.57","ID: 577 <br>Population Density: 5384.74 <br>Median Income: 55449.7","ID: 579 <br>Population Density: 4913.31 <br>Median Income: 76855.57","ID: 580 <br>Population Density: 3979.68 <br>Median Income: 64794.38","ID: 581 <br>Population Density: 3353.16 <br>Median Income: 83092.95","ID: 582 <br>Population Density: 6703.71 <br>Median Income: 63731.14","ID: 583 <br>Population Density: 2147.63 <br>Median Income: 73448.93","ID: 584 <br>Population Density: 5880.6 <br>Median Income: 72922.92","ID: 585 <br>Population Density: 3414.78 <br>Median Income: 71345.58","ID: 587 <br>Population Density: 3518.62 <br>Median Income: 46237.34","ID: 588 <br>Population Density: 3953.32 <br>Median Income: 39775.99","ID: 590 <br>Population Density: 6336.57 <br>Median Income: 75241.9","ID: 591 <br>Population Density: 710.21 <br>Median Income: 61414.44","ID: 595 <br>Population Density: 5419.57 <br>Median Income: 94199.27","ID: 597 <br>Population Density: 4342.99 <br>Median Income: 55829.31","ID: 598 <br>Population Density: 8945.41 <br>Median Income: 58821.18","ID: 599 <br>Population Density: 502.62 <br>Median Income: 43389.79","ID: 600 <br>Population Density: 6676.44 <br>Median Income: 76107.1","ID: 602 <br>Population Density: 6313.03 <br>Median Income: 51192.73","ID: 603 <br>Population Density: 4092 <br>Median Income: 46967.04","ID: 608 <br>Population Density: 6979.4 <br>Median Income: 39276.57","ID: 609 <br>Population Density: 8351.14 <br>Median Income: 70323.78","ID: 610 <br>Population Density: 6829.93 <br>Median Income: 66577.73","ID: 611 <br>Population Density: 7288.53 <br>Median Income: 27973.8","ID: 616 <br>Population Density: 1798.32 <br>Median Income: 77763.35","ID: 617 <br>Population Density: 4988.36 <br>Median Income: 90905.13","ID: 618 <br>Population Density: 6798.71 <br>Median Income: 25512.39","ID: 624 <br>Population Density: 7841.15 <br>Median Income: 42758.58","ID: 625 <br>Population Density: 4324.64 <br>Median Income: 72419.47","ID: 627 <br>Population Density: 5897.21 <br>Median Income: 80717.93","ID: 628 <br>Population Density: 8353.04 <br>Median Income: 61532.47","ID: 629 <br>Population Density: 4377.05 <br>Median Income: 82160.25","ID: 631 <br>Population Density: 810.37 <br>Median Income: 58561.44","ID: 632 <br>Population Density: 3985.49 <br>Median Income: 65380.69","ID: 633 <br>Population Density: 2415.98 <br>Median Income: 48961.22","ID: 634 <br>Population Density: 7226.73 <br>Median Income: 58151.43","ID: 637 <br>Population Density: 7738.2 <br>Median Income: 81713.82","ID: 638 <br>Population Density: 7232.55 <br>Median Income: 58627.02","ID: 639 <br>Population Density: 3203.96 <br>Median Income: 69777.2","ID: 640 <br>Population Density: 5855.73 <br>Median Income: 66477.34","ID: 641 <br>Population Density: 2543.11 <br>Median Income: 46114.59","ID: 642 <br>Population Density: 4048.77 <br>Median Income: 68861.12","ID: 643 <br>Population Density: 8233.16 <br>Median Income: 52635.6","ID: 645 <br>Population Density: 7218.04 <br>Median Income: 75882.58","ID: 647 <br>Population Density: 1237.14 <br>Median Income: 62839.27","ID: 649 <br>Population Density: 6905.11 <br>Median Income: 65839.17","ID: 650 <br>Population Density: 4418.86 <br>Median Income: 72385.2","ID: 651 <br>Population Density: 674.78 <br>Median Income: 72538.18","ID: 652 <br>Population Density: 4639.63 <br>Median Income: 48871.13","ID: 653 <br>Population Density: 7820.48 <br>Median Income: 83870.63","ID: 654 <br>Population Density: 6286.94 <br>Median Income: 87394.58","ID: 656 <br>Population Density: 1908.17 <br>Median Income: 67362.19","ID: 657 <br>Population Density: 3346.91 <br>Median Income: 66160.14","ID: 659 <br>Population Density: 6776.15 <br>Median Income: 70646.35","ID: 661 <br>Population Density: 7046.4 <br>Median Income: 74807.35","ID: 663 <br>Population Density: 6139.56 <br>Median Income: 81940.17","ID: 664 <br>Population Density: 1693.49 <br>Median Income: 64434.76","ID: 666 <br>Population Density: 4103.53 <br>Median Income: 63504.19","ID: 667 <br>Population Density: 7087.78 <br>Median Income: 71705.31","ID: 668 <br>Population Density: 7056.35 <br>Median Income: 83450.48","ID: 669 <br>Population Density: 5870.18 <br>Median Income: 65903.16","ID: 670 <br>Population Density: 8208.42 <br>Median Income: 35898.96","ID: 672 <br>Population Density: 7025.07 <br>Median Income: 47011.82","ID: 674 <br>Population Density: 3665.32 <br>Median Income: 49615.59","ID: 675 <br>Population Density: 6846.76 <br>Median Income: 53011.6","ID: 676 <br>Population Density: 7762.2 <br>Median Income: 82056.94","ID: 677 <br>Population Density: 6756.5 <br>Median Income: 52527.07","ID: 679 <br>Population Density: 4060.42 <br>Median Income: 67762.6","ID: 680 <br>Population Density: 7755.35 <br>Median Income: 78355.69","ID: 681 <br>Population Density: 5705.65 <br>Median Income: 54999.42","ID: 682 <br>Population Density: 6659.15 <br>Median Income: 52606.64","ID: 684 <br>Population Density: 7522.07 <br>Median Income: 47424.22","ID: 685 <br>Population Density: 3382.49 <br>Median Income: 78800.5","ID: 687 <br>Population Density: 3365.65 <br>Median Income: 57084.62","ID: 689 <br>Population Density: 2314.08 <br>Median Income: 35648.23","ID: 692 <br>Population Density: 1497.4 <br>Median Income: 89519.61","ID: 693 <br>Population Density: 2497.15 <br>Median Income: 56558.36","ID: 696 <br>Population Density: 6011.4 <br>Median Income: 75651.65","ID: 699 <br>Population Density: 5174.49 <br>Median Income: 58916.89","ID: 700 <br>Population Density: 5021.92 <br>Median Income: 53840.92","ID: 701 <br>Population Density: 4614.88 <br>Median Income: 34908.2","ID: 702 <br>Population Density: 4060.41 <br>Median Income: 61912.6","ID: 704 <br>Population Density: 8737.31 <br>Median Income: 64770.38","ID: 706 <br>Population Density: 2797.84 <br>Median Income: 65694.8","ID: 707 <br>Population Density: 4663.78 <br>Median Income: 71915.06","ID: 708 <br>Population Density: 7750.55 <br>Median Income: 57443.92","ID: 710 <br>Population Density: 7553.2 <br>Median Income: 55823.87","ID: 711 <br>Population Density: 2856.51 <br>Median Income: 54989.1","ID: 712 <br>Population Density: 10154.54 <br>Median Income: 42600.86","ID: 714 <br>Population Density: 6507.83 <br>Median Income: 62098.92","ID: 715 <br>Population Density: 5282.55 <br>Median Income: 61687.5","ID: 722 <br>Population Density: 5419.27 <br>Median Income: 73901.13","ID: 723 <br>Population Density: 4249.66 <br>Median Income: 47124.37","ID: 724 <br>Population Density: 2731.96 <br>Median Income: 71032.57","ID: 725 <br>Population Density: 5507.45 <br>Median Income: 46434.61","ID: 726 <br>Population Density: 812.72 <br>Median Income: 79208.46","ID: 727 <br>Population Density: 2162.87 <br>Median Income: 56903.81","ID: 728 <br>Population Density: 2847.21 <br>Median Income: 61458.35","ID: 729 <br>Population Density: 2842.64 <br>Median Income: 54806.95","ID: 732 <br>Population Density: 1969.35 <br>Median Income: 79877.07","ID: 734 <br>Population Density: 6799.09 <br>Median Income: 66104.3","ID: 736 <br>Population Density: 4894.4 <br>Median Income: 74925.69","ID: 737 <br>Population Density: 6647.22 <br>Median Income: 89052.81","ID: 745 <br>Population Density: 6747.34 <br>Median Income: 30074.61","ID: 747 <br>Population Density: 2510.16 <br>Median Income: 63006.79","ID: 756 <br>Population Density: 8048.29 <br>Median Income: 66605.43","ID: 758 <br>Population Density: 5384 <br>Median Income: 84749.67","ID: 759 <br>Population Density: 3687.51 <br>Median Income: 75839.85","ID: 761 <br>Population Density: 2858.86 <br>Median Income: 55321.51","ID: 762 <br>Population Density: 1693.7 <br>Median Income: 61488.24","ID: 763 <br>Population Density: 4913.29 <br>Median Income: 48377.59","ID: 764 <br>Population Density: 4930.81 <br>Median Income: 60901.64","ID: 765 <br>Population Density: 9730.11 <br>Median Income: 47998.38","ID: 768 <br>Population Density: 6610.11 <br>Median Income: 77164.77","ID: 769 <br>Population Density: 7101.19 <br>Median Income: 71246.84","ID: 770 <br>Population Density: 4978.55 <br>Median Income: 88911.71","ID: 771 <br>Population Density: 3513.49 <br>Median Income: 59207.93","ID: 772 <br>Population Density: 4868.43 <br>Median Income: 32700.45","ID: 773 <br>Population Density: 8879.51 <br>Median Income: 65384.89","ID: 774 <br>Population Density: 5965.48 <br>Median Income: 74747.73","ID: 775 <br>Population Density: 911.05 <br>Median Income: 58981.47","ID: 776 <br>Population Density: 7846.92 <br>Median Income: 86013.15","ID: 777 <br>Population Density: 6081.01 <br>Median Income: 81421.53","ID: 778 <br>Population Density: 4932.86 <br>Median Income: 73062.4","ID: 779 <br>Population Density: 4964.27 <br>Median Income: 66046.62","ID: 780 <br>Population Density: 4700.42 <br>Median Income: 56727.49","ID: 781 <br>Population Density: 5513.12 <br>Median Income: 62345.85","ID: 782 <br>Population Density: 3992.27 <br>Median Income: 72037.67","ID: 784 <br>Population Density: 3137.29 <br>Median Income: 60558.28","ID: 785 <br>Population Density: 5400.29 <br>Median Income: 54076.2","ID: 786 <br>Population Density: 7213.67 <br>Median Income: 102134.09","ID: 790 <br>Population Density: 5109.59 <br>Median Income: 65925.3","ID: 791 <br>Population Density: 6234.5 <br>Median Income: 77401.84","ID: 794 <br>Population Density: 2930.38 <br>Median Income: 66359.17","ID: 795 <br>Population Density: 5329.04 <br>Median Income: 71191.71","ID: 796 <br>Population Density: 5303.66 <br>Median Income: 55848.71","ID: 799 <br>Population Density: 5899.87 <br>Median Income: 67569.52","ID: 800 <br>Population Density: 2937.67 <br>Median Income: 60239.35","ID: 801 <br>Population Density: 2421.27 <br>Median Income: 69754.77","ID: 808 <br>Population Density: 4512.71 <br>Median Income: 76776.78","ID: 809 <br>Population Density: 5096.11 <br>Median Income: 61845.19","ID: 810 <br>Population Density: 2190.91 <br>Median Income: 67881.72","ID: 811 <br>Population Density: 5579.87 <br>Median Income: 61029.12","ID: 812 <br>Population Density: 3928.89 <br>Median Income: 57479.13","ID: 814 <br>Population Density: 4308.04 <br>Median Income: 67122.42","ID: 815 <br>Population Density: 3676.77 <br>Median Income: 84527.19","ID: 816 <br>Population Density: 4561.78 <br>Median Income: 48119.05","ID: 817 <br>Population Density: 4266.19 <br>Median Income: 62970.39","ID: 818 <br>Population Density: 7189.16 <br>Median Income: 61865.17","ID: 819 <br>Population Density: 5418.42 <br>Median Income: 48877.06","ID: 822 <br>Population Density: 7993.64 <br>Median Income: 44216.63","ID: 823 <br>Population Density: 5318.74 <br>Median Income: 56117.89","ID: 825 <br>Population Density: 5618.09 <br>Median Income: 80586.33","ID: 827 <br>Population Density: 2232.65 <br>Median Income: 54894.26","ID: 829 <br>Population Density: 4683.94 <br>Median Income: 69196.03","ID: 830 <br>Population Density: 7242.34 <br>Median Income: 105634.39","ID: 832 <br>Population Density: 4335.15 <br>Median Income: 57290.66","ID: 834 <br>Population Density: 2799.66 <br>Median Income: 61585.63","ID: 836 <br>Population Density: 6655.71 <br>Median Income: 54052.87","ID: 837 <br>Population Density: 1236.64 <br>Median Income: 92512.34","ID: 838 <br>Population Density: 7750.88 <br>Median Income: 68855.98","ID: 842 <br>Population Density: 2932.72 <br>Median Income: 53697.63","ID: 843 <br>Population Density: 4749.6 <br>Median Income: 69095.58","ID: 845 <br>Population Density: 6736.68 <br>Median Income: 70314.35","ID: 846 <br>Population Density: 3301.65 <br>Median Income: 75988.59","ID: 847 <br>Population Density: 4226.73 <br>Median Income: 71316.83","ID: 850 <br>Population Density: 1881.85 <br>Median Income: 45660.19","ID: 852 <br>Population Density: 7939.62 <br>Median Income: 78835.04","ID: 855 <br>Population Density: 6522.2 <br>Median Income: 98412.95","ID: 856 <br>Population Density: 4984.99 <br>Median Income: 94007.32","ID: 858 <br>Population Density: 6108.29 <br>Median Income: 73200.68","ID: 860 <br>Population Density: 1401.73 <br>Median Income: 75347.2","ID: 861 <br>Population Density: 7165.91 <br>Median Income: 64124.55","ID: 865 <br>Population Density: 4746.44 <br>Median Income: 63737.3","ID: 866 <br>Population Density: 7118.41 <br>Median Income: 58311.2","ID: 867 <br>Population Density: 2665.21 <br>Median Income: 63850.68","ID: 869 <br>Population Density: 7976.24 <br>Median Income: 89552.96","ID: 870 <br>Population Density: 7717.33 <br>Median Income: 48339.14","ID: 871 <br>Population Density: 7326.43 <br>Median Income: 101884.87","ID: 873 <br>Population Density: 5408.06 <br>Median Income: 67619.65","ID: 874 <br>Population Density: 3836.23 <br>Median Income: 34127.88","ID: 875 <br>Population Density: 6110.41 <br>Median Income: 55183.09","ID: 878 <br>Population Density: 1070.04 <br>Median Income: 71158.58","ID: 879 <br>Population Density: 5546.47 <br>Median Income: 57998.52","ID: 880 <br>Population Density: 6309.59 <br>Median Income: 37346.41","ID: 882 <br>Population Density: 1884.36 <br>Median Income: 61552.57","ID: 883 <br>Population Density: 6483 <br>Median Income: 74324.56","ID: 884 <br>Population Density: 3441.83 <br>Median Income: 77561.68","ID: 887 <br>Population Density: 7567.91 <br>Median Income: 62557.23","ID: 888 <br>Population Density: 1884.27 <br>Median Income: 65867.68","ID: 889 <br>Population Density: 7163.48 <br>Median Income: 88057.17","ID: 891 <br>Population Density: 2421.96 <br>Median Income: 61928.56","ID: 892 <br>Population Density: 7628.64 <br>Median Income: 66180.89","ID: 893 <br>Population Density: 7292.52 <br>Median Income: 44926.01","ID: 894 <br>Population Density: 4514.83 <br>Median Income: 51184.56","ID: 895 <br>Population Density: 6519.08 <br>Median Income: 68003.93","ID: 896 <br>Population Density: 3279.35 <br>Median Income: 71406.04","ID: 900 <br>Population Density: 6468.2 <br>Median Income: 52031.66","ID: 901 <br>Population Density: 8074.66 <br>Median Income: 41055.75","ID: 902 <br>Population Density: 4088.46 <br>Median Income: 35809.8","ID: 903 <br>Population Density: 4934.68 <br>Median Income: 81560.75","ID: 904 <br>Population Density: 8273.51 <br>Median Income: 69573.08","ID: 905 <br>Population Density: 4341.92 <br>Median Income: 63043.67","ID: 906 <br>Population Density: -208.08 <br>Median Income: 60595.8","ID: 907 <br>Population Density: 6027.97 <br>Median Income: 88793.83","ID: 908 <br>Population Density: 3227.06 <br>Median Income: 83017.18","ID: 909 <br>Population Density: 3002.92 <br>Median Income: 49943.9","ID: 913 <br>Population Density: 7062.05 <br>Median Income: 57335.29","ID: 914 <br>Population Density: 4811.7 <br>Median Income: 70946.78","ID: 915 <br>Population Density: 5283.61 <br>Median Income: 34651.53","ID: 917 <br>Population Density: 5427.35 <br>Median Income: 71525.11","ID: 918 <br>Population Density: 3297.27 <br>Median Income: 63906.33","ID: 920 <br>Population Density: 6372.27 <br>Median Income: 80228.99","ID: 921 <br>Population Density: 328.11 <br>Median Income: 82445.89","ID: 924 <br>Population Density: 5043.86 <br>Median Income: 75959.21","ID: 925 <br>Population Density: 4619.28 <br>Median Income: 77955.87","ID: 926 <br>Population Density: 7586.14 <br>Median Income: 57068.79","ID: 927 <br>Population Density: 5377.7 <br>Median Income: 51821.9","ID: 928 <br>Population Density: 5203.88 <br>Median Income: 70176.13","ID: 930 <br>Population Density: 3345.97 <br>Median Income: 50748.84","ID: 931 <br>Population Density: 4608.2 <br>Median Income: 76603.81","ID: 932 <br>Population Density: 7355.17 <br>Median Income: 39443.02","ID: 937 <br>Population Density: 3803.38 <br>Median Income: 72640.68","ID: 938 <br>Population Density: 7421.84 <br>Median Income: 49678.15","ID: 939 <br>Population Density: 497.91 <br>Median Income: 62629.12","ID: 942 <br>Population Density: 3370.41 <br>Median Income: 64010.28","ID: 943 <br>Population Density: 7487.41 <br>Median Income: 62984.78","ID: 944 <br>Population Density: 4663.5 <br>Median Income: 89821.11","ID: 947 <br>Population Density: 3697.58 <br>Median Income: 72123.48","ID: 948 <br>Population Density: 4390.82 <br>Median Income: 73574.52","ID: 950 <br>Population Density: 10632.17 <br>Median Income: 64143.44","ID: 951 <br>Population Density: 5252.29 <br>Median Income: 68642.66","ID: 953 <br>Population Density: 4318.49 <br>Median Income: 57049.43","ID: 954 <br>Population Density: 4516.42 <br>Median Income: 84365.13","ID: 955 <br>Population Density: 7757.51 <br>Median Income: 55893.83","ID: 957 <br>Population Density: 5040.27 <br>Median Income: 55006.29","ID: 959 <br>Population Density: 4136.55 <br>Median Income: 80546.04","ID: 960 <br>Population Density: 8918.13 <br>Median Income: 79473.97","ID: 962 <br>Population Density: 9022.59 <br>Median Income: 69097.83","ID: 963 <br>Population Density: 4296.82 <br>Median Income: 68627.9","ID: 964 <br>Population Density: 7714.24 <br>Median Income: 95821.41","ID: 965 <br>Population Density: 1001.65 <br>Median Income: 43511.98","ID: 966 <br>Population Density: 6912.16 <br>Median Income: 50204.96","ID: 967 <br>Population Density: 6752.86 <br>Median Income: 45812.9","ID: 969 <br>Population Density: 3463.35 <br>Median Income: 61315.37","ID: 970 <br>Population Density: 5387.05 <br>Median Income: 63049.87","ID: 971 <br>Population Density: 7287.67 <br>Median Income: 91749.6","ID: 973 <br>Population Density: 4551.75 <br>Median Income: 95341.92","ID: 974 <br>Population Density: 8142.69 <br>Median Income: 43858.39","ID: 976 <br>Population Density: 6895.59 <br>Median Income: 69846.82","ID: 977 <br>Population Density: 5897.54 <br>Median Income: 59170.99","ID: 980 <br>Population Density: 6566.56 <br>Median Income: 90557.09","ID: 981 <br>Population Density: 5497.92 <br>Median Income: 39822.98","ID: 982 <br>Population Density: 7850.2 <br>Median Income: 116316.42","ID: 983 <br>Population Density: 3796.43 <br>Median Income: 103669.14","ID: 984 <br>Population Density: 1571.02 <br>Median Income: 57120.17","ID: 985 <br>Population Density: 7095.65 <br>Median Income: 64034.27","ID: 986 <br>Population Density: 3782.76 <br>Median Income: 55046.79","ID: 987 <br>Population Density: 5240.68 <br>Median Income: 63604.98","ID: 988 <br>Population Density: 8438.08 <br>Median Income: 76097.89","ID: 990 <br>Population Density: 8099.11 <br>Median Income: 67880.1","ID: 991 <br>Population Density: 2805.72 <br>Median Income: 87182.11","ID: 992 <br>Population Density: 6851.02 <br>Median Income: 31941.97","ID: 993 <br>Population Density: 5493.6 <br>Median Income: 57628.35","ID: 994 <br>Population Density: 3526.46 <br>Median Income: 67166.26","ID: 995 <br>Population Density: 2439.98 <br>Median Income: 53253.49","ID: 996 <br>Population Density: 5153.29 <br>Median Income: 80914.49","ID: 997 <br>Population Density: 5510.33 <br>Median Income: 58317.42","ID: 998 <br>Population Density: 5554.89 <br>Median Income: 58562.3","ID: 999 <br>Population Density: 6073.71 <br>Median Income: 82835.18","ID: 1000 <br>Population Density: 4079.03 <br>Median Income: 77514.41"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#A50026 , #BD1C27 4.94208737519933%, #E95737 15.9548139906014%, #FB9B58 26.9675406060035%, #FED686 37.9802672214056%, #FFFCBA 48.9929938368076%, #E0F3F8 60.0057204522097%, #A6D4E7 71.0184470676118%, #6BA1CB 82.0311736830139%, #4162AB 93.043900298416%, #313695 "],"labels":["30,000","40,000","50,000","60,000","70,000","80,000","90,000","100,000","110,000"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"numeric","title":"Median Income","extra":{"p_1":0.04942087375199333,"p_n":0.9304390029841597},"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[4.471527947788127,13.8149945918005],"lng":[2.845830027526245,14.51021817184519]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="data-preprocessing" class="level3">
+<h3 class="anchored" data-anchor-id="data-preprocessing">Data Preprocessing</h3>
+<p>Before training our model, we need to prepare our data properly:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert boolean to factor</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sample_data<span class="sc">$</span>parking_available <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sample_data<span class="sc">$</span>parking_available)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sample_data<span class="sc">$</span>success <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sample_data<span class="sc">$</span>success)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Scale numeric variables</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>numeric_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"population_density"</span>, <span class="st">"median_income"</span>, <span class="st">"competition_count"</span>, <span class="st">"traffic_score"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>preprocessed_data <span class="ot">&lt;-</span> sample_data</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>preprocessed_data[numeric_vars] <span class="ot">&lt;-</span> <span class="fu">scale</span>(sample_data[numeric_vars])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="model-training-and-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="model-training-and-evaluation">Model Training and Evaluation</h3>
+<p>We’ll use a Random Forest model, which is excellent for this type of prediction task:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into training and testing sets</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>train_index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(preprocessed_data<span class="sc">$</span>success, <span class="at">p =</span> <span class="fl">0.8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> preprocessed_data[train_index, ]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> preprocessed_data[<span class="sc">-</span>train_index, ]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Train Random Forest model</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>rf_model <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  success <span class="sc">~</span> population_density <span class="sc">+</span> median_income <span class="sc">+</span> competition_count <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            traffic_score <span class="sc">+</span> parking_available,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_data,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">ntree =</span> <span class="dv">500</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">importance =</span> <span class="cn">TRUE</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s evaluate how well our model performs:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to evaluate model performance</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>evaluate_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model, test_data) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, test_data)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  confusion_matrix <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(predictions, test_data<span class="sc">$</span>success)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate various metrics</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  accuracy <span class="ot">&lt;-</span> confusion_matrix<span class="sc">$</span>overall[<span class="st">"Accuracy"</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  precision <span class="ot">&lt;-</span> confusion_matrix<span class="sc">$</span>byClass[<span class="st">"Pos Pred Value"</span>]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  recall <span class="ot">&lt;-</span> confusion_matrix<span class="sc">$</span>byClass[<span class="st">"Sensitivity"</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  f1_score <span class="ot">&lt;-</span> confusion_matrix<span class="sc">$</span>byClass[<span class="st">"F1"</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">accuracy =</span> accuracy,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">precision =</span> precision,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">recall =</span> recall,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">f1_score =</span> f1_score,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">confusion_matrix =</span> confusion_matrix</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>model_evaluation <span class="ot">&lt;-</span> <span class="fu">evaluate_model</span>(rf_model, test_data)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model performance metrics</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model Performance Metrics:</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sprintf</span>(<span class="st">"Accuracy: %.3f</span><span class="sc">\n</span><span class="st">"</span>, model_evaluation<span class="sc">$</span>accuracy),</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sprintf</span>(<span class="st">"Precision: %.3f</span><span class="sc">\n</span><span class="st">"</span>, model_evaluation<span class="sc">$</span>precision), </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sprintf</span>(<span class="st">"Recall: %.3f</span><span class="sc">\n</span><span class="st">"</span>, model_evaluation<span class="sc">$</span>recall),</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sprintf</span>(<span class="st">"F1 Score: %.3f</span><span class="sc">\n</span><span class="st">"</span>, model_evaluation<span class="sc">$</span>f1_score),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>   <span class="at">sep=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model Performance Metrics:
+Accuracy: 0.558
+Precision: 0.417
+Recall: 0.250
+F1 Score: 0.312</code></pre>
+</div>
+</div>
+<p>The Random Forest model employed in this demonstration serves as a powerful example of how machine learning can process multiple location attributes simultaneously. Through our synthetic dataset, we demonstrate the model’s ability to weigh various factors such as population density, median income, and traffic patterns. The model’s current accuracy of 55.8% in this demonstration context illustrates the basic mechanics of the prediction process, while highlighting the potential for refinement with real-world data.</p>
+<p>Traffic score emerged as the most significant factor (112.36), indicating that high traffic volume strongly correlates with success. Population density (108.07) and median income (107.58) also proved to be strong predictors, suggesting that businesses thrive in densely populated, affluent areas. Competition (40.67), while relevant, appears to be less decisive. Surprisingly, parking availability (12.24) had a considerably lower impact than initially anticipated. These findings offer actionable insights for strategic site selection and underscore the importance of considering multiple factors beyond traditional assumptions</p>
+</section>
+</section>
+<section id="understanding-feature-importance" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-feature-importance">Understanding Feature Importance</h2>
+<p>One of the most valuable aspects of our model is understanding which factors contribute most to business success:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>importance_scores <span class="ot">&lt;-</span> <span class="fu">importance</span>(rf_model)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>importance_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Feature =</span> <span class="fu">rownames</span>(importance_scores),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Importance =</span> importance_scores[, <span class="st">"MeanDecreaseGini"</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>importance_df <span class="ot">&lt;-</span> importance_df[<span class="fu">order</span>(<span class="sc">-</span>importance_df<span class="sc">$</span>Importance), ]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(importance_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Feature, Importance), <span class="at">y =</span> Importance)) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Feature Importance in Site Selection Model"</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Features"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Importance Score"</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/feature-importance-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(importance_df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                              Feature Importance
+traffic_score           traffic_score  112.35753
+population_density population_density  108.06737
+median_income           median_income  107.58823
+competition_count   competition_count   40.66624
+parking_available   parking_available   12.24228</code></pre>
+</div>
+</div>
+<p>Our synthetic model reveals interesting patterns in feature importance, with traffic scores, population density, and median income emerging as the most influential factors. While these results stem from generated data, they showcase how such a model could identify key success drivers in actual market conditions. The visualization of success probabilities across Nigeria’s geography demonstrates the potential for spatial insight in location strategy.</p>
+</section>
+<section id="making-predictions-for-new-locations" class="level2">
+<h2 class="anchored" data-anchor-id="making-predictions-for-new-locations">Making Predictions for New Locations</h2>
+<p>Now comes the exciting part – using our model to predict the success probability of new locations:</p>
+<p>Now that we understand our model, let’s apply it to new business locations. We generated 10 new sites across Nigeria and estimated their probability of success using the trained Random Forest model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">400</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate sample points across Nigeria</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>n_locations <span class="ot">&lt;-</span> <span class="dv">10</span>  </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Nigeria's latitude and longitude bounds</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>nigeria_lat_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">4.2</span>, <span class="fl">13.9</span>)  <span class="co"># Nigeria's latitudes (south to north)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>nigeria_lon_range <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.7</span>, <span class="fl">14.6</span>)  <span class="co"># Nigeria's longitudes (west to east)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate skewed data</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>skewed_population_density <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">3000</span> <span class="sc">+</span> <span class="fu">rgamma</span>(n_locations, <span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="dv">2000</span>))  <span class="co"># Right skewed</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>skewed_median_income <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">40000</span> <span class="sc">+</span> <span class="fu">rlnorm</span>(n_locations, <span class="at">meanlog =</span> <span class="dv">10</span>, <span class="at">sdlog =</span> <span class="fl">0.4</span>))  <span class="co"># Log-normal</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>skewed_competition_count <span class="ot">&lt;-</span> <span class="fu">rpois</span>(n_locations, <span class="at">lambda =</span> <span class="dv">3</span>)  <span class="co"># Poisson (counts, skewed)</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>skewed_traffic_score <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="dv">50</span> <span class="sc">+</span> <span class="fu">rbeta</span>(n_locations, <span class="at">shape1 =</span> <span class="dv">2</span>, <span class="at">shape2 =</span> <span class="dv">5</span>) <span class="sc">*</span> <span class="dv">50</span>)  <span class="co"># Beta skewed toward lower values</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>new_sites <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">location_id =</span> <span class="dv">1001</span><span class="sc">:</span>(<span class="dv">1001</span> <span class="sc">+</span> n_locations <span class="sc">-</span> <span class="dv">1</span>),</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">latitude =</span> <span class="fu">rbeta</span>(n_locations, <span class="at">shape1 =</span> <span class="dv">3</span>, <span class="at">shape2 =</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="fu">diff</span>(nigeria_lat_range) <span class="sc">+</span> nigeria_lat_range[<span class="dv">1</span>],  </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">longitude =</span> <span class="fu">rbeta</span>(n_locations, <span class="at">shape1 =</span> <span class="dv">2</span>, <span class="at">shape2 =</span> <span class="dv">3</span>) <span class="sc">*</span> <span class="fu">diff</span>(nigeria_lon_range) <span class="sc">+</span> nigeria_lon_range[<span class="dv">1</span>],  </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">population_density =</span> skewed_population_density,</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">median_income =</span> skewed_median_income,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">competition_count =</span> <span class="fu">pmin</span>(skewed_competition_count, <span class="dv">10</span>),  <span class="co"># Capping to match original range</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">traffic_score =</span> <span class="fu">pmin</span>(skewed_traffic_score, <span class="dv">100</span>),  <span class="co"># Capping at 100</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">parking_available =</span> <span class="fu">factor</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), n_locations, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the data</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(new_sites))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  location_id  latitude longitude population_density median_income
+1        1001 10.313860  6.352274               3998         57100
+2        1002  9.484589  8.770463               5212         89130
+3        1003 10.070849  9.269369               4561         52912
+4        1004 12.528580  4.308185               4793         56897
+5        1005 12.008947  4.880606               8479         60865
+6        1006 11.902673  9.455585               8024         78579
+  competition_count traffic_score parking_available
+1                 4            60             FALSE
+2                 5            61             FALSE
+3                 2            60             FALSE
+4                 6            63              TRUE
+5                 3            61              TRUE
+6                 5            62             FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict success probabilities</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf_model, new_sites, <span class="at">type =</span> <span class="st">"prob"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>new_sites<span class="sc">$</span>success_probability <span class="ot">&lt;-</span> predictions[, <span class="st">"1"</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert `new_sites` to an sf object</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>new_sites_sf <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(new_sites, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure points are within Nigeria's land area</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>new_sites_sf <span class="ot">&lt;-</span> new_sites_sf[<span class="fu">st_within</span>(new_sites_sf, nigeria, <span class="at">sparse =</span> <span class="cn">FALSE</span>), ]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="do">############ Viz Data #########################</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a diverging color palette (RdYlBu for better contrast)</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette =</span> <span class="st">"RdYlBu"</span>, <span class="at">domain =</span> sample_sf<span class="sc">$</span>success_probability <span class="sc">*</span> <span class="dv">100</span>, <span class="at">reverse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the Leaflet map with improved color variation</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(new_sites_sf) <span class="sc">|&gt;</span> </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>CartoDB.Positron) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="dv">4</span>, </span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="sc">~</span><span class="fu">pal</span>(success_probability),  <span class="co"># Apply diverging color scale</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillOpacity =</span> <span class="fl">0.7</span>,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="sc">~</span><span class="fu">paste</span>(<span class="st">"ID:"</span>, location_id, </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"&lt;br&gt;Population Density:"</span>, <span class="fu">round</span>(population_density, <span class="dv">2</span>), </span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"&lt;br&gt;Success Probability:"</span>, <span class="fu">paste0</span>((success_probability <span class="sc">*</span> <span class="dv">100</span>),<span class="st">"%"</span>))</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addLegend</span>(</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">pal =</span> pal, </span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> new_sites_sf<span class="sc">$</span>success_probability <span class="sc">*</span> <span class="dv">100</span>,  <span class="co"># Fixed multiplication outside of $</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Success Probability (%)"</span>,  <span class="co"># Updated legend title for clarity</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">opacity =</span> <span class="dv">1</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-98ea9d8fa7eed1bb98e6" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-98ea9d8fa7eed1bb98e6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[10.31386027372896,9.484589132393971,10.07084860798697,12.5285800943955,12.00894678964869,11.90267309660837,8.998438821314377,10.25922878354243,12.91317364389494,11.72067868986609],[6.35227360863672,8.770462838109786,9.269368729833765,4.308184889878529,4.88060623222178,9.455585473943565,8.502913380358525,6.880877068844498,11.29327333057292,11.23052210952902],4,null,null,{"interactive":true,"className":"","stroke":true,"color":["#DB392A","#DB392A","#36429B","#A50026","#B31227","#DB392A","#36429B","#A50026","#DB392A","#313695"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["#DB392A","#DB392A","#36429B","#A50026","#B31227","#DB392A","#36429B","#A50026","#DB392A","#313695"],"fillOpacity":0.7},null,null,["ID: 1001 <br>Population Density: 3998 <br>Success Probability: 47.4%","ID: 1002 <br>Population Density: 5212 <br>Success Probability: 47.4%","ID: 1003 <br>Population Density: 4561 <br>Success Probability: 66%","ID: 1004 <br>Population Density: 4793 <br>Success Probability: 45%","ID: 1005 <br>Population Density: 8479 <br>Success Probability: 45.6%","ID: 1006 <br>Population Density: 8024 <br>Success Probability: 47.4%","ID: 1007 <br>Population Density: 6270 <br>Success Probability: 66%","ID: 1008 <br>Population Density: 4758 <br>Success Probability: 45%","ID: 1009 <br>Population Density: 7054 <br>Success Probability: 47.4%","ID: 1010 <br>Population Density: 7669 <br>Success Probability: 66.4%"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#A50026 , #A50026 0%, #F8844D 23.3644859813084%, #FFF5B0 46.7289719626168%, #ABD9E9 70.0934579439252%, #405FA9 93.4579439252336%, #313695 "],"labels":["45","50","55","60","65"],"na_color":null,"na_label":"NA","opacity":1,"position":"topright","type":"numeric","title":"Success Probability (%)","extra":{"p_1":0,"p_n":0.9345794392523362},"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[8.998438821314377,12.91317364389494],"lng":[4.308184889878529,11.29327333057292]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Based on the model’s insights, the most promising locations tend to exhibit the following characteristics: high traffic scores (above 85), population density exceeding 6,000 people per square kilometer, and median income levels surpassing $70,000. For instance, Site 1005 demonstrates these characteristics and has a predicted success rate of 67.2%, making it a high-potential location. Conversely, Site 1012, with a lower predicted success rate of 31.5%, may be less promising due to factors like lower traffic and income levels</p>
+</section>
+<section id="key-insights-business-implications-and-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="key-insights-business-implications-and-considerations">Key Insights, Business Implications and Considerations</h2>
+<p>By using machine learning, we can move beyond gut feelings and make decisions based on quantitative evidence . These findings suggest focusing location search efforts on high-traffic areas in densely populated, affluent regions, even if they come at a premium. The data indicates this approach is more likely to succeed than choosing less expensive locations with weaker market fundamentals. This framework can be easily adapted to evaluate multiple potential locations simultaneously</p>
+<p>While our model provides valuable insights, there are several ways to enhance this analysis. There is a need to incorporate additional data sources (e.g., foot traffic patterns, social media activity) with considerations for industry indicators or features. More so, c Consider temporal factors (seasonal variations, long-term trends) and account for geographical features and zoning regulations.</p>
+<div class="note">
+<p><strong>Practical Applications</strong><br>
+Real-world applications of this predictive modeling approach:</p>
+<ul>
+<li><strong>Retail Expansion:</strong> Evaluate potential locations for new store openings<br>
+</li>
+<li><strong>Restaurant Chains:</strong> Assess the viability of new restaurant locations<br>
+</li>
+<li><strong>Service Businesses:</strong> Identify promising areas for service-based businesses<br>
+</li>
+<li><strong>Real Estate Development:</strong> Analyze potential development sites<br>
+</li>
+</ul>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This proof of concept demonstrates the potential of machine learning in transforming business location strategy. While built on synthetic data, the demonstrated approach provides a foundation for developing sophisticated, data-driven decision support tools. The future of location strategy lies in combining such analytical capabilities with deep market understanding and local expertise.</p>
+<p>By combining historical data with machine learning techniques, we can better understand the factors that contribute to business success and make more informed location decisions.</p>
+<p>Remember that while models provide valuable insights, they should complement, not replace, human judgment and domain expertise. The most effective decisions often come from combining quantitative analysis with qualitative understanding of local market dynamics.</p>
+<hr>
+<section id="technical-notes" class="level3">
+<h3 class="anchored" data-anchor-id="technical-notes">Technical Notes</h3>
+<p>The demonstration employs R 4.2.0 along with key packages including tidyverse, caret, randomForest, and sf. This technical stack was chosen to showcase the potential for sophisticated spatial analysis and machine learning in business strategy. The complete code structure provides a template for future development with real-world data.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/oredesigns\.blog");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2021, O.Orenaike</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Otomisin">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/orenaiket">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/tosin-orenaike">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/post-with-code/index.html",
+      "/posts/Predictive_model/index.html",
       "/posts/geofencing/index.html"
     ]
   }

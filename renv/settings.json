@@ -1,6 +1,8 @@
 {
   "bioconductor.version": null,
-  "external.libraries": [],
+  "external.libraries": [
+    "C:/Program Files/R/R-4.3.2/library"
+  ],
   "ignored.packages": [],
   "package.dependency.fields": [
     "Imports",
